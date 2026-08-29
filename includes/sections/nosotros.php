@@ -44,43 +44,15 @@ $galeria     = $cliente['nosotros_galeria'] ?? [];
         <?php endif; ?>
 
         <!-- Redes sociales -->
-        <?php if (!empty($redes_vivas)): ?>
+        <?php if (!empty($cliente['redes']['instagram'])): ?>
         <div class="nosotros-redes">
-            <h3>Seguinos en redes</h3>
-            <div class="redes-grid">
-                <?php if (!empty($cliente['redes']['instagram'])): ?>
-                <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="red-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    <span>Instagram</span>
-                </a>
-                <?php endif; ?>
-                <?php if (!empty($cliente['redes']['facebook'])): ?>
-                <a href="<?= htmlspecialchars($cliente['redes']['facebook']) ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="red-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    <span>Facebook</span>
-                </a>
-                <?php endif; ?>
-                <?php if (!empty($cliente['redes']['tiktok'])): ?>
-                <a href="<?= htmlspecialchars($cliente['redes']['tiktok']) ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="red-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-                    <span>TikTok</span>
-                </a>
-                <?php endif; ?>
-                <?php if (!empty($cliente['redes']['web'])): ?>
-                <a href="<?= htmlspecialchars($cliente['redes']['web']) ?>"
-                   target="_blank" rel="noopener noreferrer"
-                   class="red-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                    <span>Sitio Web</span>
-                </a>
-                <?php endif; ?>
-            </div>
+            <h3>Seguinos en Instagram</h3>
+            <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
+               target="_blank" rel="noopener noreferrer"
+               class="btn btn-instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Seguinos en Instagram
+            </a>
         </div>
         <?php endif; ?>
 

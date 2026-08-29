@@ -109,6 +109,42 @@ Gracias por acompañar en este caminito
 
 ---
 
+## Sección: Ofertas de la temporada que se va
+
+- **Ubicación en config.php**: `seccion_ofertas`
+- **Archivos de imagen** (en `assets/img/cliente/ofertas/`):
+  - `outdoor.jpg`
+  - `outdoor-colorcrema.jpg`
+  - `outdoor-campera.jpg`
+- **CTA**: WhatsApp con mensaje configurado en `whatsapp_mensaje_ofertas`.
+- **Notas**: Cada oferta muestra un pie que invita a pedir el catálogo de oportunidades por WhatsApp.
+
+---
+
+## Sección: Lo indispensable
+
+- **Ubicación en config.php**: `seccion_indispensables`
+- **Bloque de identidad**:
+  - Imagen: `assets/img/cliente/identidad/renovando.jpg`
+  - Mensaje: renovación de energías y transición al calorcito.
+- **Items** (en `assets/img/cliente/indispensables/`):
+  - `indispensable ella.jpg`
+  - `indispensable el.jpg`
+- **Notas**: Sección con enfoque estético/identitario, no de venta directa.
+
+---
+
+## Sección: Lo que se viene
+
+- **Ubicación en config.php**: `seccion_campania_verano`
+- **Archivos de imagen** (en `assets/img/cliente/campañas/`):
+  - `verano fem.jpg`
+  - `verano fem 2.jpg`
+- **CTA**: Botón a Instagram con gradiente de marca.
+- **Notas**: Campaña de verano con colores cálidos. Invita a seguir el Instagram para novedades.
+
+---
+
 ## Notas Adicionales
 
 - **Pedidos especiales del cliente**: 

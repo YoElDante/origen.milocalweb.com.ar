@@ -86,7 +86,6 @@ $structured_data = [
             ],
             'sameAs' => array_values(array_filter([
                 $cliente['redes']['instagram'] ?? '',
-                $cliente['redes']['web'] ?? '',
             ])),
         ],
         ...$json_products,
@@ -169,11 +168,12 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
 
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#destacados">Destacados</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#indispensable">Indispensable</a></li>
+                <li><a href="#lo-que-se-viene">Lo que se viene</a></li>
                 <li><a href="#productos">Productos</a></li>
                 <li><a href="#nosotros">Quiénes Somos</a></li>
                 <li><a href="#ubicacion">Ubicación</a></li>
-                <li><a href="#reels">Reels</a></li>
                 <li><a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">Contactanos</a></li>
             </ul>
         </nav>

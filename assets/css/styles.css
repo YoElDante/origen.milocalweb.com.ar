@@ -172,6 +172,24 @@ em, .font-accent {
     border: 2px solid currentColor;
 }
 
+.btn-instagram {
+    background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+    color: #ffffff;
+}
+
+.btn-instagram:hover {
+    filter: brightness(1.1);
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe5b;
+}
+
 /* ─── Navbar ─── */
 .site-header {
     position: sticky;
@@ -707,44 +725,96 @@ em, .font-accent {
     }
 }
 
-/* ─── Aside ─── */
+/* ─── Aside Publicitario MiLocalWeb ─── */
 .publicidad-aside {
-    background-color: var(--color-bg-alt, #e5e5e5);
-    padding: 1.5rem 1rem;
-    text-align: center;
+    padding: 2rem 1.5rem;
+    background-color: var(--color-bg, #ffffff);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .aside-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
 }
 
-.aside-title {
-    display: block;
+.aside-logo {
+    flex-shrink: 0;
+    display: flex;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.aside-logo:hover {
+    opacity: 1;
+}
+
+.aside-logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.aside-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.aside-slogan {
     font-family: 'Oswald', sans-serif;
-    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--color-accent, #00bbaa);
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
 }
 
-.aside-text {
-    margin-bottom: 1rem;
+.aside-pregunta {
+    font-size: 0.9rem;
     color: var(--color-muted, #5c7c8a);
 }
 
 .aside-cta {
     display: inline-flex;
-    padding: 0.6rem 1.2rem;
-    background-color: var(--color-accent, #00bbaa);
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.3rem;
+    background-color: var(--color-primary, #000000);
     color: #ffffff;
-    border-radius: 4px;
     font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 0.88rem;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .aside-cta:hover {
-    background-color: var(--color-accent-hover, #2accb8);
+    background-color: var(--color-primary-hover, #2b2b2b);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .aside-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.9rem;
+    }
+
+    .aside-texto {
+        align-items: center;
+    }
+
+    .aside-logo-img {
+        height: 58px;
+    }
 }
 
 /* ─── Ubicación ─── */
@@ -951,6 +1021,8 @@ em, .font-accent {
     position: relative;
     background-color: var(--color-bg-alt, #e5e5e5);
     padding: 3rem 1rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .site-footer::before {
@@ -972,15 +1044,22 @@ em, .font-accent {
     grid-template-columns: 1fr;
     max-width: 1200px;
     margin: 0 auto 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .footer-brand {
     text-align: center;
 }
 
+.footer-logo-link {
+    display: inline-block;
+    line-height: 0;
+}
+
 .footer-logo {
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
     margin: 0 auto 0.75rem;
 }
@@ -1034,55 +1113,392 @@ em, .font-accent {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     font-size: 0.9rem;
+    transition: background-color 0.2s ease;
 }
 
 .footer-wa-link:hover {
     background-color: #1ebe5b;
 }
 
+/* ─── Badge MiLocalWeb ─── */
 .footer-badge {
     position: relative;
     z-index: 1;
-    text-align: center;
-    padding: 1.5rem 1rem;
-    border-top: 1px solid rgba(0,0,0,0.08);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    margin-bottom: 1.5rem;
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
 }
 
-.footer-badge p {
-    margin: 0 0 0.5rem;
+.footer-mlw-logo {
+    flex-shrink: 0;
+    display: flex;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.footer-mlw-logo:hover {
+    opacity: 1;
+}
+
+.mlw-logo-img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: right;
+}
+
+.footer-badge-text p {
+    margin: 0;
     font-size: 0.95rem;
+    color: var(--color-text, #2b2b2b);
+}
+
+.footer-badge-text .mlw-link {
+    color: var(--color-accent, #00bbaa);
+    transition: opacity 0.2s ease;
+}
+
+.footer-badge-text .mlw-link:hover {
+    opacity: 0.7;
+}
+
+.footer-badge-cta {
+    font-size: 0.82rem;
 }
 
 .footer-badge-cta a {
-    color: var(--color-accent, #00bbaa);
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.footer-bottom {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     color: var(--color-muted, #5c7c8a);
+    font-weight: 500;
+    border-bottom: 1px dashed rgba(92, 124, 138, 0.4);
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.footer-bottom p {
-    margin: 0;
+.footer-badge-cta a:hover {
+    color: var(--color-accent, #00bbaa);
+    border-color: var(--color-accent, #00bbaa);
+}
+
+@media (max-width: 768px) {
+    .footer-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .footer-badge-text {
+        text-align: center;
+        align-items: center;
+    }
+
+    .mlw-logo-img {
+        height: 38px;
+    }
 }
 
 @media (min-width: 768px) {
     .footer-content {
         grid-template-columns: repeat(3, 1fr);
-        align-items: start;
+        align-items: center;
     }
     .footer-brand {
-        text-align: left;
+        text-align: center;
     }
     .footer-logo {
-        margin: 0 0 0.75rem;
+        margin: 0 auto 0.75rem;
+    }
+}
+
+/* ─── Ofertas de la temporada que se va ─── */
+.section-ofertas {
+    background-color: var(--color-bg, #ffffff);
+}
+
+.ofertas-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+
+.oferta-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-card-bg, #dfd3ca);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.oferta-card:hover {
+    background-color: var(--color-verano-fem-dark, #d4c5bb);
+    transform: translateY(-4px);
+}
+
+.oferta-img-wrapper {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.oferta-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.oferta-card:hover .oferta-img {
+    transform: scale(1.04);
+}
+
+.oferta-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem;
+}
+
+.oferta-nombre {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.oferta-desc {
+    flex-grow: 1;
+    font-size: 0.95rem;
+    color: var(--color-text, #2b2b2b);
+    margin-bottom: 1rem;
+}
+
+.oferta-pie {
+    font-size: 0.9rem;
+    color: var(--color-muted, #5c7c8a);
+    margin-bottom: 1rem;
+}
+
+.btn-oferta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: auto;
+    padding: 0.7rem 1.2rem;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: background-color 0.2s ease;
+}
+
+.btn-oferta:hover {
+    background-color: #1ebe5b;
+}
+
+/* ─── Lo indispensable ─── */
+.section-indispensable {
+    background-color: var(--color-bg-alt, #e5e5e5);
+}
+
+.indispensable-layout {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+.indispensable-renovando {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-card-bg, #dfd3ca);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.renovando-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.indispensable-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.indispensable-texto {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.indispensable-texto h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.indispensable-texto p {
+    margin: 0;
+    color: var(--color-text, #2b2b2b);
+    font-size: 1rem;
+}
+
+.indispensable-mini-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.indispensable-mini-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.indispensable-mini-card:hover {
+    transform: translateY(-4px);
+}
+
+.mini-card-img-wrapper {
+    background-color: rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.mini-card-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.mini-card-body {
+    padding: 0.85rem;
+}
+
+.mini-card-nombre {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.mini-card-desc {
+    font-size: 0.82rem;
+    color: var(--color-text, #2b2b2b);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ─── Lo que se viene ─── */
+.section-campania {
+    background-color: var(--color-verano-fem, #dfd3ca);
+    padding: 2.5rem 1rem;
+}
+
+.campania-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.campania-card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.campania-img {
+    width: 100%;
+    height: auto;
+    max-height: 42vh;
+    object-fit: contain;
+    display: block;
+}
+
+.campania-cta {
+    text-align: center;
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.campania-cta p {
+    max-width: 560px;
+    margin: 0;
+    color: var(--color-text, #2b2b2b);
+    font-size: 1rem;
+}
+
+.campania-cta .btn-instagram {
+    width: 80vw;
+    max-width: 320px;
+}
+
+@media (min-width: 768px) {
+    .ofertas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .indispensable-layout {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+    }
+
+    .indispensable-renovando {
+        height: 100%;
+    }
+
+    .renovando-img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .campania-grid {
+        gap: 1rem;
+        max-width: 680px;
+    }
+
+    .campania-img {
+        max-height: 55vh;
+    }
+
+    .campania-cta .btn-instagram {
+        width: auto;
+        min-width: 280px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ofertas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .campania-grid {
+        max-width: 760px;
     }
 }
 

@@ -23,49 +23,26 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
         <div class="footer-content">
             <div class="footer-brand">
                 <?php if (!empty($cliente['logo_img'])): ?>
-                <img src="<?= htmlspecialchars($cliente['logo_img']) ?>"
-                     alt="<?= htmlspecialchars($cliente['nombre']) ?>"
-                     class="footer-logo"
-                     width="80"
-                     height="80"
-                     loading="lazy">
+                <a href="#inicio" class="footer-logo-link" aria-label="Volver al inicio">
+                    <img src="<?= htmlspecialchars($cliente['logo_img']) ?>"
+                         alt="<?= htmlspecialchars($cliente['nombre']) ?>"
+                         class="footer-logo"
+                         width="160"
+                         height="160"
+                         loading="lazy">
+                </a>
                 <?php endif; ?>
-                <p class="footer-slogan"><?= htmlspecialchars($cliente['slogan']) ?></p>
             </div>
 
-            <?php if (!empty($redes_vivas)): ?>
+            <?php if (!empty($cliente['redes']['instagram'])): ?>
             <div class="footer-social">
                 <h4>Seguinos</h4>
-                <div class="social-links">
-                    <?php if (!empty($cliente['redes']['instagram'])): ?>
-                    <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
-                       target="_blank" rel="noopener noreferrer"
-                       class="social-link" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($cliente['redes']['facebook'])): ?>
-                    <a href="<?= htmlspecialchars($cliente['redes']['facebook']) ?>"
-                       target="_blank" rel="noopener noreferrer"
-                       class="social-link" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($cliente['redes']['tiktok'])): ?>
-                    <a href="<?= htmlspecialchars($cliente['redes']['tiktok']) ?>"
-                       target="_blank" rel="noopener noreferrer"
-                       class="social-link" aria-label="TikTok">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($cliente['redes']['web'])): ?>
-                    <a href="<?= htmlspecialchars($cliente['redes']['web']) ?>"
-                       target="_blank" rel="noopener noreferrer"
-                       class="social-link" aria-label="Sitio Web">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                    </a>
-                    <?php endif; ?>
-                </div>
+                <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn btn-instagram">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Seguinos en Instagram
+                </a>
             </div>
             <?php endif; ?>
 
@@ -80,29 +57,36 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
 
         <!-- Badge MiLocalWeb -->
         <div class="footer-badge">
-            <p>
-                Hecho con <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--color-accent, #00bbaa)" style="display:inline;vertical-align:middle;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                por
-                <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="mlw-link">
-                    <strong>MiLocalWeb.com.ar</strong>
-                </a>
-            </p>
-            <p class="footer-badge-cta">
-                ¿Te gustó esta web?
-                <a href="https://wa.me/5493513783473?text=Hola!%20Quiero%20una%20web%20como%20la%20de%20<?= urlencode($cliente['nombre']) ?>%20para%20mi%20negocio"
-                   target="_blank" rel="noopener noreferrer">
-                    Pedí la tuya sin cargo
-                </a>
-            </p>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; <?= date('Y') ?> <?= htmlspecialchars($cliente['nombre']) ?>. Todos los derechos reservados.</p>
+            <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="footer-mlw-logo" title="MiLocalWeb.com.ar — Páginas web para negocios locales">
+                 <img src="<?= $img ?>milocalweb/logos/logo-principal-690x300-transp.webp"
+                       alt="MiLocalWeb.com.ar — Páginas web para negocios locales"
+                       class="mlw-logo-img"
+                       loading="lazy"
+                       decoding="async"
+                       width="691" height="300">
+            </a>
+            <div class="footer-badge-text">
+                <p>
+                    Hecho con <?php include $svg . 'heart.svg'; ?>
+                    por
+                    <a href="https://milocalweb.com.ar#contacto" target="_blank" rel="noopener" class="mlw-link">
+                        <strong>MiLocalWeb.com.ar</strong>
+                    </a>
+                </p>
+                <p class="footer-badge-cta">
+                    ¿Te gustó esta web?
+                    <a href="https://wa.me/5493513783473?text=Hola!%20Quiero%20una%20web%20como%20la%20de%20<?= urlencode($cliente['nombre']) ?>%20para%20mi%20negocio"
+                       target="_blank" rel="noopener noreferrer">
+                        Pedí la tuya sin cargo
+                        <?php include $svg . 'whatsapp.svg'; ?>
+                    </a>
+                </p>
+            </div>
         </div>
 
         <!-- Botón volver arriba -->
         <button class="back-to-top" aria-label="Volver arriba" title="Volver arriba">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            <?php include $svg . 'chevron-up.svg'; ?>
         </button>
     </footer>
 

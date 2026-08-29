@@ -19,6 +19,7 @@ $assets  = $base . '/assets';
 $css     = $assets . '/css/';
 $js      = $assets . '/js/';
 $img     = $assets . '/img/';
+$svg     = __DIR__ . '/assets/img/svg/';
 
 // Cache busting
 $cssFile    = __DIR__ . '/assets/css/styles.css';

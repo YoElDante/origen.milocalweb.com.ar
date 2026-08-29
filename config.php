@@ -160,10 +160,9 @@ return [
     // ─── Quiénes Somos ───────────────────────────────────────────────
 
     'nosotros_texto' => "Volver al Origen es volver a lo que te hace bien. Es escuchar al cuerpo y moverse con él, no contra él. Es perderse en la montaña y encontrarse. Así nació Origen: de la necesidad de reconectar. Hoy Origen son clientes amigos que eligen moverse, sentirse vivos y volver a lo esencial.",
-    'nosotros_galeria' => [
-        '/assets/img/cliente/local/local-1.webp',
-        '/assets/img/cliente/local/local-2.webp',
-    ],
+    'nosotros_video' => '/assets/vid/identidad/Que significa volver al Origen .mp4',
+    'nosotros_video_poster' => '/assets/vid/identidad/Que significa volver al origen - Caratula.jpg',
+    'nosotros_video_titulo' => '¿Qué significa volver al Origen?',
 
     // ─── Aside Publicitario ──────────────────────────────────────────
 

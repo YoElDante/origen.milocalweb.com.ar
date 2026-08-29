@@ -2,8 +2,8 @@
 /**
  * Sección Quiénes Somos / Nosotros.
  *
- * Muestra fotos del local o equipo, un breve texto sobre el negocio,
- * enlaces a redes sociales y un CTA final a WhatsApp.
+ * Muestra el texto de la marca a la izquierda y un video de identidad
+ * a la derecha en desktop. Incluye redes sociales y CTA final a WhatsApp.
  *
  * @package MiLocalWeb\Clientes
  */
@@ -15,46 +15,52 @@ $wa_full     = $wa_link . '?text=' . $wa_msg;
 $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
     return !empty($url);
 });
-$galeria     = $cliente['nosotros_galeria'] ?? [];
+$video       = $cliente['nosotros_video'] ?? '';
+$poster      = $cliente['nosotros_video_poster'] ?? '';
+$video_titulo = $cliente['nosotros_video_titulo'] ?? 'Video sobre ' . ($cliente['nombre'] ?? 'nosotros');
 ?>
 <section id="nosotros" class="section section-nosotros" aria-label="Quiénes somos">
     <div class="section-container">
         <h2 class="section-title">Quiénes Somos</h2>
 
-        <?php if (!empty($cliente['nosotros_texto'])): ?>
-        <p class="nosotros-texto"><?= nl2br(htmlspecialchars($cliente['nosotros_texto'])) ?></p>
-        <?php endif; ?>
+        <div class="nosotros-layout">
+            <div class="nosotros-content">
+                <?php if (!empty($cliente['nosotros_texto'])): ?>
+                <p class="nosotros-texto"><?= nl2br(htmlspecialchars($cliente['nosotros_texto'])) ?></p>
+                <?php endif; ?>
 
-        <p class="nosotros-quote font-mono"><?= htmlspecialchars($cliente['slogan']) ?></p>
+                <p class="nosotros-quote font-mono"><?= htmlspecialchars($cliente['slogan']) ?></p>
 
-        <!-- Galería de fotos del local -->
-        <?php if (!empty($galeria)): ?>
-        <div class="nosotros-gallery">
-            <?php foreach ($galeria as $i => $foto): ?>
-            <div class="gallery-item">
-                <img src="<?= htmlspecialchars($foto) ?>"
-                     alt="<?= htmlspecialchars($cliente['nombre']) ?> — Nuestro local en Río Tercero"
-                     class="gallery-img"
-                     width="600"
-                     height="400"
-                     loading="lazy">
+                <!-- Redes sociales -->
+                <?php if (!empty($cliente['redes']['instagram'])): ?>
+                <div class="nosotros-redes">
+                    <h3>Seguinos en Instagram</h3>
+                    <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn btn-instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        Seguinos en Instagram
+                    </a>
+                </div>
+                <?php endif; ?>
             </div>
-            <?php endforeach; ?>
-        </div>
-        <?php endif; ?>
 
-        <!-- Redes sociales -->
-        <?php if (!empty($cliente['redes']['instagram'])): ?>
-        <div class="nosotros-redes">
-            <h3>Seguinos en Instagram</h3>
-            <a href="<?= htmlspecialchars($cliente['redes']['instagram']) ?>"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-instagram">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                Seguinos en Instagram
-            </a>
+            <!-- Video de identidad -->
+            <?php if (!empty($video)): ?>
+            <div class="nosotros-media">
+                <video
+                    class="nosotros-video"
+                    src="<?= htmlspecialchars($video) ?>"
+                    <?php if (!empty($poster)): ?>poster="<?= htmlspecialchars($poster) ?>"<?php endif; ?>
+                    preload="metadata"
+                    playsinline
+                    controls
+                    aria-label="<?= htmlspecialchars($video_titulo) ?>">
+                    <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($video) ?>">Descargar video</a>.</p>
+                </video>
+            </div>
+            <?php endif; ?>
         </div>
-        <?php endif; ?>
 
         <!-- CTA final -->
         <div class="nosotros-cta">

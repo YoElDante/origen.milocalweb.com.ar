@@ -9,12 +9,6 @@
 
 $reels = [
     [
-        'video'  => '/assets/vid/reels/volver-al-origen.mp4',
-        'poster' => '/assets/vid/reels/volver-al-origen.jpg',
-        'titulo' => '¿Qué significa volver al Origen?',
-        'desc'   => 'La historia de la marca: reconectar con el cuerpo y la montaña.',
-    ],
-    [
         'video'  => '/assets/vid/reels/pantalones-cargo-tecnicos.mp4',
         'poster' => '/assets/vid/reels/pantalones-cargo-tecnicos.jpg',
         'titulo' => 'Pantalones cargo técnicos',

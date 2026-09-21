@@ -1814,6 +1814,38 @@ em, .font-accent {
     gap: 1.25rem;
 }
 
+.catalog-section {
+    margin-top: 2.75rem;
+}
+
+.catalog-section:first-of-type {
+    margin-top: 0;
+}
+
+.catalog-section__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.catalog-section__photo {
+    width: 96px;
+    height: 72px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.catalog-section__title {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
 .catalog-card {
     display: flex;
     flex-direction: column;
@@ -1833,13 +1865,16 @@ em, .font-accent {
     position: relative;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: var(--color-bg, #ffffff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .catalog-card__image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.25s ease;
 }
 

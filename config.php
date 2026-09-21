@@ -117,7 +117,7 @@ return [
             'video' => '',
             'alt' => 'Docena de medias tenis blanca Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['medias', 'tenis', 'running'],
         ],
         [
@@ -130,7 +130,7 @@ return [
             'video' => '',
             'alt' => 'Docena de medias tenis colores Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['medias', 'tenis', 'running'],
         ],
         [
@@ -143,7 +143,7 @@ return [
             'video' => '',
             'alt' => 'Medias tobilleras I-Run unisex Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['medias', 'running', 'unisex'],
         ],
         [
@@ -156,7 +156,7 @@ return [
             'video' => '',
             'alt' => 'Medias unisex I-Run Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['medias', 'running', 'unisex'],
         ],
         [
@@ -169,7 +169,7 @@ return [
             'video' => '',
             'alt' => 'Biker I-Run mujer Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['calzas', 'biker', 'running'],
         ],
         [
@@ -182,7 +182,7 @@ return [
             'video' => '',
             'alt' => 'Biker I-Run negro Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['calzas', 'biker', 'running'],
         ],
         [
@@ -195,7 +195,7 @@ return [
             'video' => '',
             'alt' => 'Calza running con cierres Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['calzas', 'running', 'gym'],
         ],
         [
@@ -208,7 +208,7 @@ return [
             'video' => '',
             'alt' => 'Pantalón dama Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['pantalones', 'running', 'dama'],
         ],
         [
@@ -221,7 +221,7 @@ return [
             'video' => '/assets/vid/productos/catalogo/pantalon-desmontable.mp4',
             'alt' => 'Pantalón desmontable técnico Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['pantalones', 'outdoor', 'técnico'],
         ],
         [
@@ -234,7 +234,7 @@ return [
             'video' => '',
             'alt' => 'Short microfibra I-Run dama Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Indumentaria',
             'tags' => ['shorts', 'running', 'dama'],
         ],
         [
@@ -247,7 +247,7 @@ return [
             'video' => '',
             'alt' => 'Musculosa deportiva Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'gym', 'running'],
         ],
         [
@@ -260,7 +260,7 @@ return [
             'video' => '',
             'alt' => 'Musculosa dryfit I-Run Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'dryfit', 'running'],
         ],
         [
@@ -273,7 +273,7 @@ return [
             'video' => '',
             'alt' => 'Remera corte alto Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'dama', 'gym'],
         ],
         [
@@ -286,7 +286,7 @@ return [
             'video' => '',
             'alt' => 'Remera cuello en V microperforada Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'running', 'transpirable'],
         ],
         [
@@ -299,7 +299,7 @@ return [
             'video' => '',
             'alt' => 'Remera cuello en V varios talles Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'running', 'gym'],
         ],
         [
@@ -312,7 +312,7 @@ return [
             'video' => '',
             'alt' => 'Remera cuello V detalle en cintura Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'dama', 'gym'],
         ],
         [
@@ -325,7 +325,7 @@ return [
             'video' => '',
             'alt' => 'Remera hombre cuello redondo Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'hombre', 'running'],
         ],
         [
@@ -338,7 +338,7 @@ return [
             'video' => '',
             'alt' => 'Remera I-Run dama detalle espalda Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'dama', 'running'],
         ],
         [
@@ -351,7 +351,7 @@ return [
             'video' => '',
             'alt' => 'Remera I-Run dama Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['remeras', 'dama', 'running'],
         ],
         [
@@ -364,7 +364,7 @@ return [
             'video' => '',
             'alt' => 'Top deportivo I-Run dama Origen 8.8',
             'rutas' => ['productos'],
-            'categoria' => 'indumentaria',
+            'categoria' => 'Ropa',
             'tags' => ['tops', 'dama', 'gym'],
         ],
         [
@@ -377,7 +377,7 @@ return [
             'video' => '/assets/vid/productos/catalogo/bolso-irun-negro.mp4',
             'alt' => 'Bolso I-RUN negro Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['bolsos', 'running', 'gym'],
         ],
         [
@@ -390,7 +390,7 @@ return [
             'video' => '',
             'alt' => 'Bolso I-RUN 47x20x28 Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['bolsos', 'running', 'gym'],
         ],
         [
@@ -403,7 +403,7 @@ return [
             'video' => '/assets/vid/productos/catalogo/botella-infantil.mp4',
             'alt' => 'Botella infantil Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['botellas', 'infantil', 'hidratación'],
         ],
         [
@@ -416,7 +416,7 @@ return [
             'video' => '',
             'alt' => 'Botellas térmicas infantiles Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['botellas', 'infantil', 'hidratación'],
         ],
         [
@@ -429,7 +429,7 @@ return [
             'video' => '',
             'alt' => 'Botellas de hidratación Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['botellas', 'hidratación', 'running'],
         ],
         [
@@ -442,7 +442,7 @@ return [
             'video' => '',
             'alt' => 'Botellas metálicas Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['botellas', 'hidratación', 'térmica'],
         ],
         [
@@ -455,7 +455,7 @@ return [
             'video' => '',
             'alt' => 'Gorras, gorros y sombreros Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['gorras', 'outdoor', 'running'],
         ],
         [
@@ -468,7 +468,7 @@ return [
             'video' => '/assets/vid/productos/catalogo/lentes-deportivos.mp4',
             'alt' => 'Lentes deportivos Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['lentes', 'running', 'bike'],
         ],
         [
@@ -481,7 +481,7 @@ return [
             'video' => '',
             'alt' => 'Cinturón de hidratación Navajo Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['hidratación', 'running', 'trekking'],
         ],
         [
@@ -494,7 +494,7 @@ return [
             'video' => '/assets/vid/productos/catalogo/chaleco-hidratacion-navajo.mp4',
             'alt' => 'Chaleco de hidratación Navajo 7L Origen 8.8',
             'rutas' => ['productos', 'accesorios'],
-            'categoria' => 'accesorios',
+            'categoria' => 'Accesorios',
             'tags' => ['hidratación', 'trail', 'trekking'],
         ],
     ],

@@ -72,7 +72,7 @@ try {
     Assert-True ($indexProductos -match '<title>Productos') 'Index query fallback missing'
     Assert-True ($productos -match '<title>Productos') 'Productos title missing'
     Assert-True ($productos -match 'data-cart-add') 'Add-to-cart buttons missing'
-    Assert-True ($productos -match 'data-product-id="short-con-calza"') 'Product data attributes missing'
+    Assert-True ($productos -match 'data-product-id="biker-irun-negro"') 'Product data attributes missing'
     Assert-True ($productosSlash -match '<title>Productos') 'Productos trailing slash title missing'
     Assert-True ($ofertas -match '<title>Ofertas') 'Ofertas title missing'
     Assert-True ($ofertasWithQuery -match '<title>Ofertas') 'Path should win over query param'

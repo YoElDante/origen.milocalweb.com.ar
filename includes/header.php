@@ -187,7 +187,6 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="/" class="<?= $currentPage === 'home' ? 'is-active' : '' ?>">Inicio</a></li>
                 <li><a href="/productos" class="<?= $currentPage === 'productos' ? 'is-active' : '' ?>">Productos</a></li>
-                <li><a href="/ofertas" class="<?= $currentPage === 'ofertas' ? 'is-active' : '' ?>">Ofertas</a></li>
                 <li><a href="/accesorios" class="<?= $currentPage === 'accesorios' ? 'is-active' : '' ?>">Accesorios</a></li>
                 <li><a href="/#nosotros">Quiénes Somos</a></li>
                 <li><a href="/#ubicacion">Ubicación</a></li>

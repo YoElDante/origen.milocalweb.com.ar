@@ -171,7 +171,7 @@
 
         const image = document.createElement('img');
         image.className = 'cart-item__image';
-        image.src = item.imagen || '/assets/img/cliente/logos/logo-600x600-transp.webp';
+        image.src = item.imagen || '/assets/img/cliente/logos/logo-origen88.webp';
         image.alt = item.nombre;
         image.loading = 'lazy';
         image.width = 96;

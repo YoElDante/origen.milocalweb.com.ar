@@ -1,5 +1,5 @@
 /**
- * Origen Run & Bike — Interacciones de la landing page.
+ * Origen 8.8 — Interacciones de la landing page.
  * Vanilla JS. Sin frameworks.
  */
 
@@ -74,41 +74,22 @@
     window.addEventListener('scroll', updateBackToTop, { passive: true });
     updateBackToTop();
 
-    // ─── Reels play/pause ───
-    document.querySelectorAll('.reel-card').forEach(function (card) {
-        const video = card.querySelector('video');
-        const playBtn = card.querySelector('.reel-play');
+    // ─── Autoplay de videos al entrar en pantalla ───
+    const autoplayVideos = document.querySelectorAll('video[data-autoplay]');
+    if ('IntersectionObserver' in window && autoplayVideos.length) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(function () {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.3 });
 
-        if (!video || !playBtn) return;
-
-        playBtn.addEventListener('click', function () {
-            if (video.paused) {
-                // Pausar otros videos
-                document.querySelectorAll('.reel-card video').forEach(function (v) {
-                    if (v !== video) {
-                        v.pause();
-                        const btn = v.closest('.reel-card')?.querySelector('.reel-play');
-                        if (btn) btn.style.opacity = '1';
-                    }
-                });
-                video.play();
-                playBtn.style.opacity = '0';
-            } else {
-                video.pause();
-                playBtn.style.opacity = '1';
-            }
+        autoplayVideos.forEach(function (video) {
+            observer.observe(video);
         });
-
-        video.addEventListener('pause', function () {
-            playBtn.style.opacity = '1';
-        });
-
-        video.addEventListener('play', function () {
-            playBtn.style.opacity = '0';
-        });
-
-        video.addEventListener('ended', function () {
-            playBtn.style.opacity = '1';
-        });
-    });
+    }
 })();

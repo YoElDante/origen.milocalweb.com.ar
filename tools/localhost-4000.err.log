@@ -1,0 +1,311 @@
+[Sun Sep 20 13:52:19 2026] PHP 8.4.6 Development Server (http://127.0.0.1:4000) started
+[Sun Sep 20 13:52:20 2026] 127.0.0.1:65300 Accepted
+[Sun Sep 20 13:52:20 2026] 127.0.0.1:65300 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65327 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65328 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65327 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65328 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65331 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65332 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65331 [200]: GET /assets/img/cliente/identidad/origen-bolsa-paisaje.jpg
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65335 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65332 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65328 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65336 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65335 [200]: GET /assets/vid/reels/pantalones-cargo-tecnicos.jpg
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65336 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65331 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65336 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65335 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65339 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65339 [200]: GET /assets/vid/reels/lentes-deportivos.jpg
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65342 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65339 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65343 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65342 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65343 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65342 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65343 Closing
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65345 Accepted
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65345 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 13:53:07 2026] 127.0.0.1:65345 Closing
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65348 Accepted
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65349 Accepted
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65348 Closing
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65349 Closing
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65351 Accepted
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65351 Closing
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65353 Accepted
+[Sun Sep 20 13:53:08 2026] 127.0.0.1:65353 Closing
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65358 Accepted
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65358 [200]: GET /assets/img/cliente/iconos/favicon.ico
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65358 Closing
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65360 Accepted
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65360 [200]: GET /assets/img/cliente/iconos/favicon.ico
+[Sun Sep 20 13:53:09 2026] 127.0.0.1:65360 Closing
+[Sun Sep 20 13:54:28 2026] 127.0.0.1:65375 Accepted
+[Sun Sep 20 13:54:28 2026] 127.0.0.1:65375 Closing
+[Sun Sep 20 13:54:43 2026] 127.0.0.1:65380 Accepted
+[Sun Sep 20 13:54:43 2026] 127.0.0.1:65380 Closing
+[Sun Sep 20 13:54:44 2026] 127.0.0.1:65381 Accepted
+[Sun Sep 20 13:54:44 2026] 127.0.0.1:65381 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58530 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58530 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58532 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58538 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58532 [200]: GET /assets/img/cliente/ofertas/outdoor.jpg
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58539 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58538 [200]: GET /assets/img/cliente/ofertas/outdoor-colorcrema.jpg
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58540 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58539 [200]: GET /assets/img/cliente/identidad/renovando.jpg
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58541 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58540 [200]: GET /assets/img/cliente/ofertas/outdoor-campera.jpg
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58542 Accepted
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58541 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58532 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58542 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58538 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58539 Closing
+[Sun Sep 20 18:51:45 2026] 127.0.0.1:58540 Closing
+[Sun Sep 20 18:51:47 2026] 127.0.0.1:58547 Accepted
+[Sun Sep 20 18:51:47 2026] 127.0.0.1:58548 Accepted
+[Sun Sep 20 18:51:47 2026] 127.0.0.1:58547 Closing
+[Sun Sep 20 18:51:47 2026] 127.0.0.1:58548 Closing
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58550 Accepted
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58553 Accepted
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58554 Accepted
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58550 [200]: GET /assets/img/cliente/productos/short-con-calza.webp
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58553 [200]: GET /assets/img/cliente/productos/short-sin-calza.webp
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58554 [200]: GET /assets/img/cliente/productos/tops.webp
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58550 Closing
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58553 Closing
+[Sun Sep 20 18:51:48 2026] 127.0.0.1:58554 Closing
+[Sun Sep 20 18:51:55 2026] 127.0.0.1:58557 Accepted
+[Sun Sep 20 18:51:55 2026] 127.0.0.1:58557 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:51:55 2026] 127.0.0.1:58557 Closing
+[Sun Sep 20 18:52:17 2026] 127.0.0.1:58573 Accepted
+[Sun Sep 20 18:52:17 2026] 127.0.0.1:58573 Closing
+[Sun Sep 20 18:52:17 2026] 127.0.0.1:58575 Accepted
+[Sun Sep 20 18:52:17 2026] 127.0.0.1:58575 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 18:52:17 2026] 127.0.0.1:58575 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58590 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58591 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58592 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58593 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58590 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58591 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58592 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58593 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58590 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58591 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58592 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58593 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58598 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58600 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58601 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58602 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58603 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58605 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58598 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58600 [200]: GET /assets/img/cliente/productos/short-con-calza.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58601 [200]: GET /assets/img/cliente/productos/short-sin-calza.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58602 [200]: GET /assets/img/cliente/productos/tops.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58603 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58605 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58607 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58609 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58607 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58609 [200]: GET /assets/img/cliente/ofertas/outdoor-campera.jpg
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58600 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58601 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58602 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58609 Closing
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58611 Accepted
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58611 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:52:18 2026] 127.0.0.1:58611 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58650 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58650 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58652 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58652 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58652 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58655 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58659 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58660 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58661 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58655 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58660 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58659 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58661 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58655 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58660 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58659 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58661 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58663 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58663 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58665 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58665 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58667 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58667 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58669 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58669 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58671 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58671 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58671 Closing
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58673 Accepted
+[Sun Sep 20 18:52:27 2026] 127.0.0.1:58673 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58681 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58683 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58681 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58683 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58683 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58686 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58687 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58686 [200]: GET /assets/img/cliente/identidad/origen-bolsa-paisaje.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58687 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58689 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58686 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58687 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58689 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58694 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58695 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58696 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58697 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58697 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58694 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58695 [200]: GET /assets/vid/reels/lentes-deportivos.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58696 [200]: GET /assets/vid/reels/pantalones-cargo-tecnicos.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58699 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58699 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58697 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58694 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58695 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58696 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58699 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58704 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58706 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58707 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58708 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58709 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58704 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58706 [200]: GET /assets/img/cliente/ofertas/outdoor-campera.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58707 [200]: GET /assets/img/cliente/ofertas/outdoor.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58708 [200]: GET /assets/img/cliente/ofertas/outdoor-colorcrema.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58709 [200]: GET /assets/img/cliente/identidad/renovando.jpg
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58711 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58711 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58709 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58706 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58707 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58708 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58713 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58713 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58715 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58718 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58719 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58715 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58718 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58719 Closing
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58721 Accepted
+[Sun Sep 20 18:52:31 2026] 127.0.0.1:58721 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58724 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58725 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58724 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58725 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58730 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58731 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58732 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58730 [200]: GET /assets/img/cliente/productos/short-con-calza.webp
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58731 [200]: GET /assets/img/cliente/productos/short-sin-calza.webp
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58732 [200]: GET /assets/img/cliente/productos/tops.webp
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58730 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58731 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58732 Closing
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58734 Accepted
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58734 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:52:32 2026] 127.0.0.1:58734 Closing
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58740 Accepted
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58742 Accepted
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58740 Closing
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58742 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58742 Closing
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58746 Accepted
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58747 Accepted
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58748 Accepted
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58746 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58747 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58748 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58746 Closing
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58747 Closing
+[Sun Sep 20 18:52:37 2026] 127.0.0.1:58748 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58750 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58750 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58750 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58753 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58755 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58756 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58753 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58758 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58755 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58756 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58761 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58758 [200]: GET /assets/img/cliente/productos/short-con-calza.webp
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58762 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58761 [200]: GET /assets/img/cliente/productos/short-sin-calza.webp
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58764 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58762 [200]: GET /assets/img/cliente/productos/tops.webp
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58766 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58764 [200]: GET /assets/img/cliente/ofertas/outdoor-campera.jpg
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58758 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58768 Accepted
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58766 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58761 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58768 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58762 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58764 Closing
+[Sun Sep 20 18:52:38 2026] 127.0.0.1:58766 Closing
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58828 Accepted
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58829 Accepted
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58828 Closing
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58829 [200]: GET /assets/css/styles.css?v=1789758313
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58829 Closing
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58833 Accepted
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58834 Accepted
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58835 Accepted
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58833 [200]: GET /assets/js/main.js?v=1787885629
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58834 [200]: GET /assets/js/cart.js?v=1789758849
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58835 [200]: GET /assets/img/cliente/logos/logo-800x788.webp
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58833 Closing
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58834 Closing
+[Sun Sep 20 18:55:31 2026] 127.0.0.1:58835 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58837 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58837 [200]: GET /assets/img/cliente/identidad/textura-fondo-piedra.webp
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58837 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58841 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58842 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58843 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58841 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58842 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58843 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58847 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58848 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58849 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58847 [200]: GET /assets/img/cliente/productos/short-con-calza.webp
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58848 [200]: GET /assets/img/cliente/productos/short-sin-calza.webp
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58849 [200]: GET /assets/img/cliente/productos/tops.webp
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58847 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58848 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58849 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58851 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58854 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58855 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58851 [200]: GET /assets/img/cliente/ofertas/outdoor-campera.jpg
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58854 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58855 [200]: GET /assets/img/milocalweb/logos/logo-principal-690x300-transp.webp
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58851 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58855 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58857 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58857 [200]: GET /assets/img/cliente/iconos/favicon.ico
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58857 Closing
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58859 Accepted
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58859 [200]: GET /assets/img/cliente/iconos/favicon.ico
+[Sun Sep 20 18:55:32 2026] 127.0.0.1:58859 Closing

@@ -1,5 +1,11 @@
 # Plan de Desarrollo — Landing Page Origen
 
+> **Estado:** documento historico de la landing original.
+> Para el desarrollo actual de catalogo con carrito liviano, usar
+> `docs/plan-desarrollo-origen-catalogo-carrito.md`.
+> Para replicar el patron en otros clientes, usar
+> `docs/plan-template-php-catalogo-carrito.md`.
+
 > **Proyecto:** origen.milocalweb.com.ar
 > **Cliente:** Origen Run & Bike — Ropa e indumentaria deportiva (running · trekking · bikes)
 > **Localidad:** Río Tercero, Córdoba

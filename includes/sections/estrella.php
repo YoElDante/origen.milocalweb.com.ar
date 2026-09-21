@@ -1,11 +1,9 @@
 <?php
 /**
- * Secciones de Ofertas, Indispensables y Campaña Verano.
+ * Sección de Ofertas.
  *
- * Reemplaza la sección anterior de "Destacados" por tres bloques diferenciados:
- * 1. Ofertas de la temporada que se va.
- * 2. Lo indispensable (identidad + transición al calorcito).
- * 3. Lo que se viene (campaña de verano).
+ * Reemplaza la sección anterior de "Destacados" por las ofertas
+ * de la temporada que se va.
  *
  * @package MiLocalWeb\Clientes
  */
@@ -15,11 +13,7 @@ $wa_link   = 'https://wa.me/' . $wa_number;
 $wa_msg    = urlencode($cliente['whatsapp_mensaje_ofertas'] ?? 'Hola! Estoy en la web y me gustaría ver oportunidades en ropa de invierno y camperas');
 $wa_full   = $wa_link . '?text=' . $wa_msg;
 
-$instagram_link = $cliente['redes']['instagram'] ?? '#';
-
-$ofertas      = $cliente['seccion_ofertas'] ?? [];
-$indispensables = $cliente['seccion_indispensables'] ?? [];
-$campania     = $cliente['seccion_campania_verano'] ?? [];
+$ofertas = $cliente['seccion_ofertas'] ?? [];
 ?>
 
 <!-- ─── Ofertas de la temporada que se va ─── -->
@@ -32,12 +26,17 @@ $campania     = $cliente['seccion_campania_verano'] ?? [];
         <div class="ofertas-grid">
             <?php
             $cta_textos = ['Preguntá por la oferta', 'No te lo pierdas', 'Pedí el tuyo'];
+            $pie_textos = [
+                '¡Consultanos por las promos de otoño-invierno que ya se van! Dale, preguntanos por WhatsApp.',
+                'Las promos de otoño-invierno están haciendo las valijas… ¡consultanos antes de que se vayan!',
+                '¿Te quedaste con ganas de algo? Consultanos por las promos que ya se van, ¡no dejes que se escapen!',
+            ];
             foreach ($ofertas['ofertas'] as $index => $oferta):
             ?>
             <article class="oferta-card">
                 <div class="oferta-img-wrapper">
                     <img src="<?= htmlspecialchars($oferta['imagen'] ?? '') ?>"
-                         alt="<?= htmlspecialchars($oferta['nombre'] ?? 'Oferta') ?> — Origen Run & Bike"
+                         alt="<?= htmlspecialchars($oferta['nombre'] ?? 'Oferta') ?> — Origen 8.8"
                          class="oferta-img"
                          width="600"
                          height="450"
@@ -46,7 +45,7 @@ $campania     = $cliente['seccion_campania_verano'] ?? [];
                 <div class="oferta-body">
                     <h3 class="oferta-nombre"><?= htmlspecialchars($oferta['nombre'] ?? '') ?></h3>
                     <p class="oferta-desc"><?= htmlspecialchars($oferta['descripcion'] ?? '') ?></p>
-                    <p class="oferta-pie">¿Querés ver más oportunidades? Pedinos el catálogo por WhatsApp.</p>
+                    <p class="oferta-pie"><?= htmlspecialchars($pie_textos[$index % count($pie_textos)]) ?></p>
                     <a href="<?= $wa_full ?>"
                        target="_blank" rel="noopener noreferrer"
                        class="btn-oferta">
@@ -57,90 +56,11 @@ $campania     = $cliente['seccion_campania_verano'] ?? [];
             </article>
             <?php endforeach; ?>
         </div>
-    </div>
-</section>
-<?php endif; ?>
 
-<!-- ─── Lo indispensable ─── -->
-<?php if (!empty($indispensables['items']) || !empty($indispensables['identidad'])): ?>
-<section id="indispensable" class="section section-indispensable" aria-label="Lo indispensable">
-    <div class="section-container">
-        <h2 class="section-title"><?= htmlspecialchars($indispensables['titulo'] ?? 'Lo indispensable') ?></h2>
-        <p class="section-subtitle"><?= htmlspecialchars($indispensables['subtitulo'] ?? '') ?></p>
-
-        <div class="indispensable-layout">
-            <?php if (!empty($indispensables['identidad'])): ?>
-            <div class="indispensable-renovando">
-                <img src="<?= htmlspecialchars($indispensables['identidad']['imagen'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($indispensables['identidad']['titulo'] ?? 'Identidad Origen') ?>"
-                     class="renovando-img"
-                     width="800"
-                     height="1000"
-                     loading="lazy">
-            </div>
-            <?php endif; ?>
-
-            <div class="indispensable-contenido">
-                <?php if (!empty($indispensables['identidad'])): ?>
-                <div class="indispensable-texto">
-                    <h3><?= htmlspecialchars($indispensables['identidad']['titulo'] ?? '') ?></h3>
-                    <p><?= htmlspecialchars($indispensables['identidad']['descripcion'] ?? '') ?></p>
-                </div>
-                <?php endif; ?>
-
-                <?php if (!empty($indispensables['items'])): ?>
-                <div class="indispensable-mini-grid">
-                    <?php foreach ($indispensables['items'] as $item): ?>
-                    <article class="indispensable-mini-card">
-                        <div class="mini-card-img-wrapper">
-                            <img src="<?= htmlspecialchars($item['imagen'] ?? '') ?>"
-                                 alt="<?= htmlspecialchars($item['nombre'] ?? 'Indispensable') ?> — Origen Run & Bike"
-                                 class="mini-card-img"
-                                 width="400"
-                                 height="500"
-                                 loading="lazy">
-                        </div>
-                        <div class="mini-card-body">
-                            <h4 class="mini-card-nombre"><?= htmlspecialchars($item['nombre'] ?? '') ?></h4>
-                            <p class="mini-card-desc"><?= htmlspecialchars($item['descripcion'] ?? '') ?></p>
-                        </div>
-                    </article>
-                    <?php endforeach; ?>
-                </div>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<!-- ─── Lo que se viene ─── -->
-<?php if (!empty($campania['imagenes'])): ?>
-<section id="lo-que-se-viene" class="section section-campania" aria-label="Lo que se viene">
-    <div class="section-container">
-        <h2 class="section-title"><?= htmlspecialchars($campania['titulo'] ?? 'Lo que se viene') ?></h2>
-        <p class="section-subtitle"><?= htmlspecialchars($campania['subtitulo'] ?? '') ?></p>
-
-        <div class="campania-grid">
-            <?php foreach ($campania['imagenes'] as $imagen_campania): ?>
-            <article class="campania-card">
-                <img src="<?= htmlspecialchars($imagen_campania['imagen'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($imagen_campania['alt'] ?? 'Campaña de verano Origen') ?>"
-                     class="campania-img"
-                     width="800"
-                     height="600"
-                     loading="lazy">
-            </article>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="campania-cta">
-            <p>Estemos conectadas. Seguinos en Instagram para ser la primera en ver lo nuevo.</p>
-            <a href="<?= htmlspecialchars($instagram_link) ?>"
-               target="_blank" rel="noopener noreferrer"
-               class="btn btn-instagram">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <?= htmlspecialchars($campania['cta_texto'] ?? 'Seguinos en Instagram') ?>
+        <div class="section-more">
+            <a href="/productos" class="btn-ver-productos">
+                Ver todos los productos
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
         </div>
     </div>

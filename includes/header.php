@@ -15,81 +15,101 @@ $wa_msg    = urlencode($cliente['whatsapp_mensaje'] ?? 'Hola! Vi tu web y quisie
 $wa_full   = $wa_link . '?text=' . $wa_msg;
 
 $cs          = $cliente['colors'] ?? [];
-$site_url    = 'https://origen.milocalweb.com.ar/';
+$site_base   = catalog_site_url($cliente);
+$site_url    = $site_base . '/';
+$currentPage = $page ?? 'home';
+$currentUrl  = $pageConfig['url'] ?? catalog_page_url($cliente, $currentPage);
 $og_image    = $cliente['seo_og_image'] ?? $cliente['logo_img'] ?? '';
-$og_desc     = $cliente['og_descripcion'] ?? $cliente['hero_descripcion'] ?? $cliente['slogan'];
+$og_desc     = $pageConfig['descripcion'] ?? $cliente['og_descripcion'] ?? $cliente['hero_descripcion'] ?? $cliente['slogan'];
 $meta_desc   = $og_desc;
+$pageTitle   = $pageConfig['titulo'] ?? ($cliente['nombre'] . ' — ' . $cliente['slogan']);
+$schemaGraph = [];
 
-// Apertura del negocio para JSON-LD
-$opening_hours = [
-    'Mo-Fr 09:00-20:00',
-    'Sa 09:00-12:00',
+$schemaGraph[] = [
+    '@type' => 'Store',
+    '@id'   => $site_url . '#store',
+    'name'  => $cliente['nombre'],
+    'description' => $cliente['rubro'],
+    'url'   => $site_url,
+    'telephone' => '+54' . ltrim($wa_number, '54'),
+    'email' => $cliente['email'] ?: null,
+    'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => 'Ejército de los Andes 129',
+        'addressLocality' => 'Río Tercero',
+        'postalCode' => 'X5850',
+        'addressRegion' => 'Córdoba',
+        'addressCountry' => 'AR',
+    ],
+    'geo' => [
+        '@type' => 'GeoCoordinates',
+        'latitude' => $cliente['seo_lat'] ?? '-32.1838792',
+        'longitude' => $cliente['seo_long'] ?? '-64.1177626',
+    ],
+    'openingHoursSpecification' => [
+        [
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            'opens' => '09:00',
+            'closes' => '20:00',
+        ],
+        [
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => 'Saturday',
+            'opens' => '09:00',
+            'closes' => '12:00',
+        ],
+    ],
+    'sameAs' => array_values(array_filter([
+        $cliente['redes']['instagram'] ?? '',
+    ])),
 ];
 
-// Productos para JSON-LD
-$json_products = [];
-foreach ($cliente['productos'] ?? [] as $p) {
-    $json_products[] = [
-        '@type' => 'Product',
-        'name'  => $p['nombre'] ?? '',
-        'description' => $p['descripcion'] ?? '',
-        'image' => (strpos($p['imagen'] ?? '', 'http') === 0) ? $p['imagen'] : ($site_url . ltrim($p['imagen'] ?? '', '/')),
-        'offers' => [
-            '@type' => 'Offer',
-            'availability' => 'https://schema.org/InStock',
-            'priceCurrency' => 'ARS',
-            'seller' => [
-                '@type' => 'Store',
-                'name'  => $cliente['nombre'],
+$schemaGraph[] = [
+    '@type' => 'WebSite',
+    '@id' => $site_url . '#website',
+    'url' => $site_url,
+    'name' => $cliente['nombre'],
+    'inLanguage' => 'es-AR',
+];
+
+if ($currentPage !== 'home') {
+    $schemaGraph[] = [
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => 'Inicio',
+                'item' => $site_url,
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => $pageConfig['h1'] ?? $pageTitle,
+                'item' => $currentUrl,
             ],
         ],
     ];
 }
 
+if (!empty($pageProducts)) {
+    $schemaGraph[] = [
+        '@type' => 'ItemList',
+        'name' => $pageConfig['h1'] ?? 'Catálogo',
+        'itemListElement' => array_map(function ($product, $index) use ($cliente) {
+            return [
+                '@type' => 'ListItem',
+                'position' => $index + 1,
+                'item' => catalog_product_schema($cliente, $product),
+            ];
+        }, $pageProducts, array_keys($pageProducts)),
+    ];
+}
+
 $structured_data = [
     '@context' => 'https://schema.org',
-    '@graph'   => [
-        [
-            '@type' => 'Store',
-            '@id'   => $site_url . '#store',
-            'name'  => $cliente['nombre'],
-            'description' => $cliente['rubro'],
-            'url'   => $site_url,
-            'telephone' => '+54' . ltrim($wa_number, '54'),
-            'email' => $cliente['email'] ?: null,
-            'address' => [
-                '@type' => 'PostalAddress',
-                'streetAddress' => 'Ejército de los Andes 129',
-                'addressLocality' => 'Río Tercero',
-                'postalCode' => 'X5850',
-                'addressRegion' => 'Córdoba',
-                'addressCountry' => 'AR',
-            ],
-            'geo' => [
-                '@type' => 'GeoCoordinates',
-                'latitude' => $cliente['seo_lat'] ?? '-32.1838792',
-                'longitude' => $cliente['seo_long'] ?? '-64.1177626',
-            ],
-            'openingHoursSpecification' => [
-                [
-                    '@type' => 'OpeningHoursSpecification',
-                    'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-                    'opens' => '09:00',
-                    'closes' => '20:00',
-                ],
-                [
-                    '@type' => 'OpeningHoursSpecification',
-                    'dayOfWeek' => 'Saturday',
-                    'opens' => '09:00',
-                    'closes' => '12:00',
-                ],
-            ],
-            'sameAs' => array_values(array_filter([
-                $cliente['redes']['instagram'] ?? '',
-            ])),
-        ],
-        ...$json_products,
-    ],
+    '@graph'   => $schemaGraph,
 ];
 
 $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
@@ -100,23 +120,21 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= htmlspecialchars($meta_desc) ?>">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="<?= !empty($pageConfig['is_not_found']) ? 'noindex, follow' : 'index, follow' ?>">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="<?= htmlspecialchars($cliente['nombre']) ?> — <?= htmlspecialchars($cliente['slogan']) ?>">
+    <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
     <meta property="og:description" content="<?= htmlspecialchars($og_desc) ?>">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_AR">
-    <meta property="og:url" content="<?= htmlspecialchars($site_url) ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($currentUrl) ?>">
     <?php if (!empty($og_image)): ?>
     <meta property="og:image" content="<?= htmlspecialchars((strpos($og_image, 'http') === 0) ? $og_image : $site_url . ltrim($og_image, '/')) ?>">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <?php endif; ?>
 
-    <title><?= htmlspecialchars($cliente['nombre']) ?> — <?= htmlspecialchars($cliente['slogan']) ?></title>
+    <title><?= htmlspecialchars($pageTitle) ?></title>
 
-    <link rel="canonical" href="<?= htmlspecialchars($site_url) ?>">
+    <link rel="canonical" href="<?= htmlspecialchars($currentUrl) ?>">
 
     <!-- Favicon -->
     <?php if (!empty($cliente['favicon'])): ?>
@@ -147,7 +165,7 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
     <header class="site-header">
         <nav class="navbar" role="navigation" aria-label="Navegación principal">
             <div class="navbar-brand">
-                <a href="#inicio" class="brand-link">
+                <a href="/" class="brand-link">
                     <?php if (!empty($cliente['logo_img'])): ?>
                     <img src="<?= htmlspecialchars($cliente['logo_img']) ?>"
                          alt="<?= htmlspecialchars($cliente['nombre']) ?>"
@@ -167,13 +185,13 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
             </button>
 
             <ul class="navbar-menu" id="navbar-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#ofertas">Ofertas</a></li>
-                <li><a href="#indispensable">Indispensable</a></li>
-                <li><a href="#lo-que-se-viene">Lo que se viene</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#nosotros">Quiénes Somos</a></li>
-                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="/" class="<?= $currentPage === 'home' ? 'is-active' : '' ?>">Inicio</a></li>
+                <li><a href="/productos" class="<?= $currentPage === 'productos' ? 'is-active' : '' ?>">Productos</a></li>
+                <li><a href="/ofertas" class="<?= $currentPage === 'ofertas' ? 'is-active' : '' ?>">Ofertas</a></li>
+                <li><a href="/accesorios" class="<?= $currentPage === 'accesorios' ? 'is-active' : '' ?>">Accesorios</a></li>
+                <li><a href="/#nosotros">Quiénes Somos</a></li>
+                <li><a href="/#ubicacion">Ubicación</a></li>
+                <li><a href="/carrito" class="nav-cart-link <?= $currentPage === 'carrito' ? 'is-active' : '' ?>">Carrito <span class="cart-count" data-cart-count hidden>0</span></a></li>
                 <li><a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">Contactanos</a></li>
             </ul>
         </nav>

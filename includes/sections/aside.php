@@ -14,7 +14,7 @@ if (!$aside_visibilidad) {
 }
 
 $mlw_wa_number = '543513783473';
-$mlw_wa_msg    = urlencode('Hola! Vi la web de ' . ($cliente['nombre'] ?? 'Origen Run & Bike') . ' hecha por ustedes y me encantó. Quiero consultar para tener la mía.');
+$mlw_wa_msg    = urlencode('Hola! Vi la web de ' . ($cliente['nombre'] ?? 'Origen 8.8') . ' hecha por ustedes y me encantó. Quiero consultar para tener la mía.');
 $mlw_wa_full   = 'https://wa.me/' . $mlw_wa_number . '?text=' . $mlw_wa_msg;
 ?>
 <aside class="publicidad-aside" aria-label="Publicidad">

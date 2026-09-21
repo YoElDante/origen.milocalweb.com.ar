@@ -23,7 +23,7 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
         <div class="footer-content">
             <div class="footer-brand">
                 <?php if (!empty($cliente['logo_img'])): ?>
-                <a href="#inicio" class="footer-logo-link" aria-label="Volver al inicio">
+                <a href="/" class="footer-logo-link" aria-label="Volver al inicio">
                     <img src="<?= htmlspecialchars($cliente['logo_img']) ?>"
                          alt="<?= htmlspecialchars($cliente['nombre']) ?>"
                          class="footer-logo"
@@ -90,6 +90,12 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
         </button>
     </footer>
 
+    <!-- Botón flotante del carrito -->
+    <a href="/carrito" class="cart-float" aria-label="Ver carrito de pedido">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-float-count" data-cart-count hidden>0</span>
+    </a>
+
     <!-- Botón flotante de WhatsApp -->
     <a href="<?= $wa_full ?>"
        target="_blank"
@@ -100,5 +106,6 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
     </a>
 
     <script src="<?= $js ?>main.js<?= JS_VERSION ?>"></script>
+    <script src="<?= $js ?>cart.js<?= CART_JS_VERSION ?>"></script>
 </body>
 </html>

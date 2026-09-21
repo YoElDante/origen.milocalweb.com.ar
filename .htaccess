@@ -25,8 +25,14 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^(config|includes)/ - [F,L]
+    RewriteRule ^(config\.php|includes/|tools/) - [F,L,NC]
 
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    RewriteRule ^(productos|ofertas|accesorios|carrito)/?$ index.php?p=$1 [L,QSA]
 </IfModule>

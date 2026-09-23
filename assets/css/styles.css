@@ -2481,6 +2481,131 @@ em, .font-accent {
     font-size: 1.6rem;
 }
 
+.catalog-section__heading {
+    min-width: 0;
+}
+
+.catalog-section__hint {
+    margin-top: 0.25rem;
+    color: var(--color-muted, #5c7c8a);
+    font-size: 0.9rem;
+}
+
+.catalog-subsection {
+    margin-top: 1.5rem;
+}
+
+.catalog-subsection:first-of-type {
+    margin-top: 0;
+}
+
+.catalog-subsection__title {
+    margin-bottom: 0.8rem;
+    font-size: 1.15rem;
+}
+
+.catalog-page--productos .catalog-grid {
+    display: flex;
+    gap: 0.75rem;
+    margin-inline: -1rem;
+    padding: 0.25rem 1rem 1.25rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-inline: 1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.catalog-page--productos .catalog-grid:focus-visible {
+    outline: 2px solid var(--color-accent, #00bbaa);
+    outline-offset: 0.35rem;
+}
+
+.catalog-page--productos .catalog-card {
+    flex: 0 0 calc((100vw - 2.75rem) / 2);
+    scroll-snap-align: start;
+}
+
+.catalog-page--productos .catalog-card__body {
+    padding: 0.85rem;
+}
+
+.catalog-page--productos .catalog-card__category {
+    margin-bottom: 0.25rem;
+    font-size: 0.64rem;
+}
+
+.catalog-page--productos .catalog-card__title {
+    margin-bottom: 0.45rem;
+    font-size: 1rem;
+    line-height: 1.15;
+}
+
+.catalog-page--productos .catalog-card__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.catalog-page--productos .catalog-card__price-row {
+    margin-bottom: 0.75rem;
+}
+
+.catalog-page--productos .catalog-card__price {
+    font-size: 1rem;
+}
+
+.catalog-page--productos .catalog-card__add {
+    min-height: 2.75rem;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.72rem;
+    line-height: 1.1;
+}
+
+.catalog-page--productos .catalog-card__add svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+}
+
+.catalog-placeholder {
+    display: flex;
+    flex: 0 0 calc((100vw - 2.75rem) / 2);
+    min-height: 13rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px dashed rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(223, 211, 202, 0.7), rgba(255, 255, 255, 0.88));
+    scroll-snap-align: start;
+}
+
+.catalog-placeholder__eyebrow {
+    margin-bottom: 0.45rem;
+    color: var(--color-muted, #5c7c8a);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.catalog-placeholder h4 {
+    margin-bottom: 0.45rem;
+    font-size: 1rem;
+}
+
+.catalog-placeholder p:last-child {
+    margin-bottom: 0;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
 .catalog-card {
     display: flex;
     flex-direction: column;
@@ -2764,11 +2889,75 @@ em, .font-accent {
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .catalog-page--productos .catalog-grid {
+        gap: 1.15rem;
+        margin-inline: 0;
+        padding-inline: 0;
+        scroll-padding-inline: 0;
+    }
+
+    .catalog-page--productos .catalog-card {
+        flex-basis: 320px;
+    }
+
+    .catalog-placeholder {
+        flex-basis: 320px;
+        min-height: 18rem;
+        padding: 1.25rem;
+    }
+
+    .catalog-page--productos .catalog-card__body {
+        padding: 1.25rem;
+    }
+
+    .catalog-page--productos .catalog-card__category {
+        margin-bottom: 0.35rem;
+        font-size: 0.75rem;
+    }
+
+    .catalog-page--productos .catalog-card__title {
+        margin-bottom: 0.6rem;
+        font-size: 1.25rem;
+        line-height: 1.2;
+    }
+
+    .catalog-page--productos .catalog-card__description {
+        display: block;
+        overflow: visible;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: inherit;
+    }
+
+    .catalog-page--productos .catalog-card__price-row {
+        margin-bottom: 1rem;
+    }
+
+    .catalog-page--productos .catalog-card__price {
+        font-size: 1.15rem;
+    }
+
+    .catalog-page--productos .catalog-card__add {
+        min-height: 0;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        line-height: inherit;
+    }
+
+    .catalog-page--productos .catalog-card__add svg {
+        width: 18px;
+        height: 18px;
+    }
 }
 
 @media (min-width: 1040px) {
     .catalog-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .catalog-page--productos .catalog-card {
+        flex-basis: 340px;
     }
 
     .cart-content {

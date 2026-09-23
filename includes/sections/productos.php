@@ -32,7 +32,7 @@ if (empty($productos)) {
             <article class="producto-card">
                 <div class="producto-img-wrapper">
                     <img src="<?= htmlspecialchars($img_file) ?>"
-                         alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — Origen 8.8 en Río Tercero"
+                         alt="<?= htmlspecialchars($p['nombre'] ?? 'Producto ' . ($i + 1)) ?> — Origen8.8 en Río Tercero"
                          class="producto-img"
                          width="600"
                          height="450"

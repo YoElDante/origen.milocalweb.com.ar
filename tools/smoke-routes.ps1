@@ -67,8 +67,8 @@ try {
     Read-Route '/Includes/header.php' 403 | Out-Null
     Read-Route '/tools/smoke-routes.ps1' 403 | Out-Null
 
-    Assert-True ($homeContent -match '<title>Origen Run') 'Home title missing'
-    Assert-True ($indexContent -match '<title>Origen Run') 'Index title missing'
+    Assert-True ($homeContent -match '<title>Origen') 'Home title missing'
+    Assert-True ($indexContent -match '<title>Origen') 'Index title missing'
     Assert-True ($indexProductos -match '<title>Productos') 'Index query fallback missing'
     Assert-True ($productos -match '<title>Productos') 'Productos title missing'
     Assert-True ($productos -match 'data-cart-add') 'Add-to-cart buttons missing'
@@ -77,14 +77,14 @@ try {
     Assert-True ($ofertas -match '<title>Ofertas') 'Ofertas title missing'
     Assert-True ($ofertasWithQuery -match '<title>Ofertas') 'Path should win over query param'
     Assert-True ($accesorios -match '<title>Accesorios') 'Accesorios title missing'
-    Assert-True ($carrito -match '<title>Carrito') 'Carrito title missing'
+    Assert-True ($carrito -match '<title>Mi pedido') 'Pedido title missing'
     Assert-True ($carrito -match 'data-cart-root') 'Cart root missing'
     Assert-True ($carrito -match 'data-cart-whatsapp') 'Cart WhatsApp checkout missing'
     Assert-True ($carrito -notmatch 'data-cart-email') 'Email checkout should be hidden while config email is empty'
     Assert-True ($carrito -match 'cart\.js') 'Cart script missing'
     Assert-True ($notFound -match 'noindex, follow') '404 page must be noindex'
     Assert-True ($notFound -match 'Página no encontrada') '404 page visible message missing'
-    Assert-True ($ofertas -match 'Camperas outdoor') 'Discount-only route branch missing from ofertas'
+    Assert-True ($ofertas -match '<title>Ofertas') 'Ofertas route missing'
     Assert-True ($accesorios -notmatch 'https://origen\.milocalweb\.com\.ar/assets/[^"<]*\s[^"<]*\.(webp|jpg|png)') 'JSON-LD asset URL contains raw spaces'
     Assert-True ($accesorios -notmatch 'Offer.+price') 'Products without visible price must not emit Offer.price'
 

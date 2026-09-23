@@ -22,10 +22,14 @@ const addButton = {
     productShowPrice: '0',
     productImage: '/assets/img/cliente/productos/short-con-calza.webp',
   },
-  textContent: 'Agregar al carrito',
+  textContent: 'Sumar a tu pedido',
   classList: {
     add() {},
     remove() {},
+  },
+  querySelector(selector) {
+    if (selector === '.catalog-card__add-text') return this;
+    return null;
   },
   addEventListener(type, callback) {
     if (type === 'click') this.click = callback;

@@ -47,7 +47,7 @@ $interior = $llegar['interior'] ?? [];
                 <?php foreach ($interior as $foto): ?>
                 <figure class="local-foto">
                     <img src="<?= htmlspecialchars($foto['imagen'] ?? '') ?>"
-                         alt="<?= htmlspecialchars($foto['alt'] ?? 'Local Origen 8.8') ?>"
+                         alt="<?= htmlspecialchars($foto['alt'] ?? 'Local Origen8.8') ?>"
                          width="800"
                          height="600"
                          loading="lazy">

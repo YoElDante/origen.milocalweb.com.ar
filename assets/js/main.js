@@ -1,5 +1,5 @@
 /**
- * Origen 8.8 — Interacciones de la landing page.
+ * Origen8.8 — Interacciones de la landing page.
  * Vanilla JS. Sin frameworks.
  */
 
@@ -74,22 +74,63 @@
     window.addEventListener('scroll', updateBackToTop, { passive: true });
     updateBackToTop();
 
-    // ─── Autoplay de videos al entrar en pantalla ───
-    const autoplayVideos = document.querySelectorAll('video[data-autoplay]');
-    if ('IntersectionObserver' in window && autoplayVideos.length) {
+    // ─── Videos: reproducir/pausar según visibilidad ───
+    const visibilityVideos = document.querySelectorAll('video[data-autoplay], video[data-stop-when-hidden]');
+    if ('IntersectionObserver' in window && visibilityVideos.length) {
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 const video = entry.target;
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && video.hasAttribute('data-autoplay')) {
                     video.play().catch(function () {});
-                } else {
+                } else if (!entry.isIntersecting) {
                     video.pause();
+                    try {
+                        video.currentTime = 0;
+                    } catch (error) {}
                 }
             });
         }, { threshold: 0.3 });
 
-        autoplayVideos.forEach(function (video) {
+        visibilityVideos.forEach(function (video) {
             observer.observe(video);
         });
     }
+
+    // ─── Click manual: habilitar sonido y reanudar ───
+    document.querySelectorAll('video[data-click-to-play]').forEach(function (video) {
+        video.addEventListener('click', function () {
+            if (video.hasAttribute('data-unmute-on-click')) {
+                video.muted = false;
+                video.volume = 1;
+            }
+
+            if (video.paused || video.ended) {
+                video.play().catch(function () {});
+            }
+        });
+    });
+
+    // ─── Sonido por gesto del usuario sin interferir controles nativos ───
+    document.querySelectorAll('video[data-unmute-on-interaction]').forEach(function (video) {
+        video.addEventListener('pointerdown', function () {
+            video.muted = false;
+            video.volume = 1;
+        });
+    });
+
+    // ─── Videos exclusivos: solo uno reproduciéndose a la vez ───
+    document.querySelectorAll('video[data-exclusive-video]').forEach(function (video) {
+        video.addEventListener('play', function () {
+            document.querySelectorAll('video[data-exclusive-video]').forEach(function (other) {
+                if (other !== video) {
+                    other.pause();
+                }
+            });
+
+            if (video.hasAttribute('data-unmute-on-play')) {
+                video.muted = false;
+                video.volume = 1;
+            }
+        });
+    });
 })();

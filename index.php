@@ -1,6 +1,6 @@
 <?php
 /**
- * Sitio catalogo — Origen 8.8.
+ * Sitio catalogo — Origen8.8.
  *
  * Router liviano para landing, catalogo y carrito de pedido asistido.
  *

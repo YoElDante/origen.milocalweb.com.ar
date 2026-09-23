@@ -14,9 +14,9 @@ $breadcrumbs = [
 ];
 
 $secciones = [
-    ['categoria' => 'Ropa', 'foto' => '/assets/img/cliente/local/interior/indumentaria.webp', 'alt' => 'Ropa en Origen 8.8'],
-    ['categoria' => 'Indumentaria', 'foto' => '/assets/img/cliente/local/interior/sox.webp', 'alt' => 'Indumentaria en Origen 8.8'],
-    ['categoria' => 'Accesorios', 'foto' => '/assets/img/cliente/local/interior/mostrador-lentes.webp', 'alt' => 'Accesorios en Origen 8.8'],
+    ['categoria' => 'Ropa', 'foto' => '/assets/img/cliente/local/interior/indumentaria.webp', 'alt' => 'Ropa en Origen8.8'],
+    ['categoria' => 'Indumentaria', 'foto' => '/assets/img/cliente/local/interior/sox.webp', 'alt' => 'Indumentaria en Origen8.8'],
+    ['categoria' => 'Accesorios', 'foto' => '/assets/img/cliente/local/interior/mostrador-lentes.webp', 'alt' => 'Accesorios en Origen8.8'],
 ];
 ?>
 <section class="catalog-page catalog-page--productos">
@@ -24,7 +24,7 @@ $secciones = [
         <?php require __DIR__ . '/../components/breadcrumb.php'; ?>
 
         <header class="catalog-page__header">
-            <p class="catalog-page__eyebrow">Origen 8.8</p>
+            <p class="catalog-page__eyebrow">Origen8.8</p>
             <h1><?= htmlspecialchars($pageConfig['h1'] ?? 'Productos') ?></h1>
             <p><?= htmlspecialchars($pageConfig['subtitulo'] ?? '') ?></p>
         </header>

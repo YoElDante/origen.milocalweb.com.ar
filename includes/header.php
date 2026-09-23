@@ -190,7 +190,7 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
                 <li><a href="/accesorios" class="<?= $currentPage === 'accesorios' ? 'is-active' : '' ?>">Accesorios</a></li>
                 <li><a href="/#nosotros">Quiénes Somos</a></li>
                 <li><a href="/#ubicacion">Ubicación</a></li>
-                <li><a href="/carrito" class="nav-cart-link <?= $currentPage === 'carrito' ? 'is-active' : '' ?>">Carrito <span class="cart-count" data-cart-count hidden>0</span></a></li>
+                <li><a href="/carrito" class="nav-cart-link <?= $currentPage === 'carrito' ? 'is-active' : '' ?>">Mi pedido <span class="cart-count" data-cart-count hidden>0</span></a></li>
                 <li><a href="<?= $wa_full ?>" target="_blank" rel="noopener noreferrer" class="nav-cta">Contactanos</a></li>
             </ul>
         </nav>

@@ -1,5 +1,5 @@
 /**
- * Origen 8.8 — Carrito local de pedido asistido.
+ * Origen8.8 — Carrito local de pedido asistido.
  * Vanilla JS. Sin backend, sin login y sin pasarela de pago.
  */
 
@@ -83,7 +83,7 @@
         }
     }
 
-    function addProduct(button) {
+    function addProduct(button, event) {
         const id = button.dataset.productId || '';
         if (!id) return;
 
@@ -106,13 +106,116 @@
         }
 
         writeCart(cart);
-        setAddButtonLabel(button, 'Agregado');
+        animateToBox(button, event);
+        setAddButtonLabel(button, 'Agregado a tu pedido');
         button.classList.add('is-added');
 
         window.setTimeout(function () {
-            setAddButtonLabel(button, 'Agregar al carrito');
+            setAddButtonLabel(button, 'Sumar a tu pedido');
             button.classList.remove('is-added');
         }, 1200);
+    }
+
+    function animateToBox(button, event) {
+        const box = document.querySelector('[data-cart-float]');
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!box || prefersReducedMotion) return;
+
+        const source = button.getBoundingClientRect();
+        const target = box.getBoundingClientRect();
+        const startX = event && Number.isFinite(event.clientX) ? event.clientX : source.left + (source.width / 2);
+        const startY = event && Number.isFinite(event.clientY) ? event.clientY : source.top + (source.height / 2);
+        const endX = target.left + (target.width / 2);
+        const endY = target.top + (target.height / 2);
+        const distance = Math.hypot(endX - startX, endY - startY);
+        const arc = Math.max(54, Math.min(120, distance * 0.18));
+        const dot = document.createElement('span');
+
+        box.classList.add('is-open');
+        dot.className = 'cart-fly-dot';
+        dot.style.left = startX + 'px';
+        dot.style.top = startY + 'px';
+        dot.style.setProperty('--cart-fly-x', (endX - startX) + 'px');
+        dot.style.setProperty('--cart-fly-y', (endY - startY) + 'px');
+        dot.style.setProperty('--cart-fly-arc', arc + 'px');
+        document.body.appendChild(dot);
+
+        if (typeof dot.animate === 'function') {
+            const keyframes = [];
+            const steps = 18;
+
+            for (let step = 0; step <= steps; step += 1) {
+                const progress = step / steps;
+                const x = (endX - startX) * progress;
+                const y = ((endY - startY) * progress) - (arc * 4 * progress * (1 - progress));
+                const scale = 0.35 + (0.65 * Math.sin(Math.PI * progress)) - (0.17 * progress);
+
+                keyframes.push({
+                    opacity: progress < 0.08 ? progress / 0.08 : 1 - Math.max(0, progress - 0.9) / 0.1,
+                    transform: 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + Math.max(0.18, scale).toFixed(3) + ')',
+                    offset: progress,
+                });
+            }
+
+            dot.style.animation = 'none';
+            dot.animate(keyframes, {
+                duration: 780,
+                easing: 'cubic-bezier(0.22, 0.72, 0.22, 1)',
+                fill: 'forwards',
+            }).addEventListener('finish', function () {
+                dot.remove();
+                box.classList.add('is-catching');
+                window.setTimeout(function () {
+                    box.classList.remove('is-catching');
+                    box.classList.remove('is-open');
+                }, 320);
+            }, { once: true });
+            return;
+        }
+
+        dot.addEventListener('animationend', function () {
+            dot.remove();
+            box.classList.add('is-catching');
+            window.setTimeout(function () {
+                box.classList.remove('is-catching');
+                box.classList.remove('is-open');
+            }, 320);
+        }, { once: true });
+    }
+
+    function animateClearBox(quantity) {
+        const box = document.querySelector('[data-cart-float]');
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!box || prefersReducedMotion) return;
+
+        const target = box.getBoundingClientRect();
+        const startX = target.left + (target.width / 2);
+        const startY = target.top + (target.height / 2) - 2;
+        const dots = Math.max(3, Math.min(9, Number(quantity || 0)));
+        const colors = ['#00bbaa', '#dfd3ca', '#5c7c8a', '#25d366', '#f77737'];
+
+        box.classList.add('is-open', 'is-emptying');
+
+        for (let index = 0; index < dots; index += 1) {
+            const dot = document.createElement('span');
+            const drift = ((index % 3) - 1) * 3;
+            const lift = 82 + (index % 4) * 10;
+
+            dot.className = 'cart-empty-dot';
+            dot.style.left = startX + 'px';
+            dot.style.top = startY + 'px';
+            dot.style.backgroundColor = colors[index % colors.length];
+            dot.style.setProperty('--cart-empty-x', drift + 'px');
+            dot.style.setProperty('--cart-empty-y', (-lift) + 'px');
+            dot.style.animationDelay = (index * 0.12) + 's';
+            document.body.appendChild(dot);
+            dot.addEventListener('animationend', function () { dot.remove(); }, { once: true });
+        }
+
+        window.setTimeout(function () {
+            box.classList.remove('is-emptying');
+            box.classList.remove('is-open');
+        }, 1400);
     }
 
     function updateQuantity(id, delta) {
@@ -133,11 +236,22 @@
     }
 
     function clearCart() {
+        const cart = readCart();
+        if (cart.length === 0) return;
+
+        const confirmed = window.confirm('¿Seguro que querés vaciar tu pedido?');
+        if (!confirmed) return;
+
+        const quantity = cart.reduce(function (sum, item) {
+            return sum + Number(item.cantidad || 0);
+        }, 0);
+
         writeCart([]);
+        animateClearBox(quantity);
     }
 
     function buildOrderMessage(root, cart) {
-        const businessName = root.dataset.businessName || 'Origen 8.8';
+        const businessName = root.dataset.businessName || 'Origen8.8';
         const lines = [
             'Hola ' + businessName + '! Quiero consultar por este pedido:',
             '',
@@ -146,7 +260,7 @@
         cart.forEach(function (item, index) {
             const price = item.mostrar_precio && item.precio !== null
                 ? formatPrice(item.precio) + ' c/u'
-                : 'consultar precio';
+                : 'precio a confirmar';
 
             lines.push((index + 1) + '. ' + item.nombre + ' x' + item.cantidad + ' — ' + price);
         });
@@ -187,7 +301,7 @@
         price.className = 'cart-item__price';
         price.textContent = item.mostrar_precio && item.precio !== null
             ? formatPrice(item.precio) + ' c/u'
-            : 'Consultar precio';
+            : 'Precio a confirmar';
 
         const controls = document.createElement('div');
         controls.className = 'cart-item__controls';
@@ -210,8 +324,9 @@
 
         const remove = document.createElement('button');
         remove.type = 'button';
-        remove.textContent = 'Quitar';
         remove.className = 'cart-item__remove';
+        remove.setAttribute('aria-label', 'Quitar producto');
+        remove.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Quitar</span>';
         remove.addEventListener('click', function () { removeItem(item.id); });
 
         controls.append(minus, qty, plus, remove);
@@ -266,8 +381,8 @@
     }
 
     document.querySelectorAll('[data-cart-add]').forEach(function (button) {
-        button.addEventListener('click', function () {
-            addProduct(button);
+        button.addEventListener('click', function (event) {
+            addProduct(button, event);
         });
     });
 

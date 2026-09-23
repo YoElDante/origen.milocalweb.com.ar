@@ -90,7 +90,7 @@ Ejemplo de referencia:
     'slug' => 'short-con-calza',
     'descripcion' => 'Doble capa: short + calza. Ajuste seguro, tela respirable, liviana y fresca.',
     'imagen' => '/assets/img/cliente/productos/short-con-calza.webp',
-    'alt' => 'Short con calza interna Origen Run & Bike',
+    'alt' => 'Short con calza interna Origen8.8',
 
     'rutas' => ['productos', 'ofertas'],
     'categoria' => 'indumentaria',

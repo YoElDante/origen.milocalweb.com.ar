@@ -23,7 +23,7 @@ $breadcrumbs = [
         </header>
 
         <div class="cart-foundation">
-            <p>Podés volver al inicio o explorar el catálogo de Origen 8.8.</p>
+            <p>Podés volver al inicio o explorar el catálogo de Origen8.8.</p>
             <a href="/" class="btn btn-primary">Volver al inicio</a>
             <a href="/productos" class="btn btn-outline">Ver productos</a>
         </div>

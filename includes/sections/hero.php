@@ -36,15 +36,17 @@ $instagram   = $cliente['redes']['instagram'] ?? '';
                      fetchpriority="high">
             </div>
             <div class="hero-content hero-content--centered">
-                <?php if (!empty($logo_img)): ?>
-                <img src="<?= htmlspecialchars($logo_img) ?>"
-                     alt="Logo <?= htmlspecialchars($cliente['nombre']) ?>"
-                     class="hero-logo"
-                     width="90"
-                     height="90"
-                     loading="eager">
-                <?php endif; ?>
-                <h1 class="hero-title">Indumentaria <em>Deportiva</em> en Río Tercero</h1>
+                <div class="hero-heading">
+                    <?php if (!empty($logo_img)): ?>
+                    <img src="<?= htmlspecialchars($logo_img) ?>"
+                         alt="Logo <?= htmlspecialchars($cliente['nombre']) ?>"
+                         class="hero-logo"
+                         width="90"
+                         height="90"
+                         loading="eager">
+                    <?php endif; ?>
+                    <h1 class="hero-title">Indumentaria <em>Deportiva</em> en Río Tercero</h1>
+                </div>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
                 <p class="hero-subtitle"><?= nl2br(htmlspecialchars($cliente['hero_descripcion'])) ?></p>
                 <?php endif; ?>
@@ -69,15 +71,17 @@ $instagram   = $cliente['redes']['instagram'] ?? '';
         <?php else: ?>
             <!-- Layout SPLIT/IMG-RIGHT/IMG-LEFT: dos columnas -->
             <div class="hero-content">
-                <?php if (!empty($logo_img)): ?>
-                <img src="<?= htmlspecialchars($logo_img) ?>"
-                     alt="Logo <?= htmlspecialchars($cliente['nombre']) ?>"
-                     class="hero-logo"
-                     width="90"
-                     height="90"
-                     loading="eager">
-                <?php endif; ?>
-                <h1 class="hero-title">Indumentaria <em>Deportiva</em> en Río Tercero</h1>
+                <div class="hero-heading">
+                    <?php if (!empty($logo_img)): ?>
+                    <img src="<?= htmlspecialchars($logo_img) ?>"
+                         alt="Logo <?= htmlspecialchars($cliente['nombre']) ?>"
+                         class="hero-logo"
+                         width="90"
+                         height="90"
+                         loading="eager">
+                    <?php endif; ?>
+                    <h1 class="hero-title">Indumentaria <em>Deportiva</em> en Río Tercero</h1>
+                </div>
                 <?php if (!empty($cliente['hero_descripcion'])): ?>
                 <p class="hero-subtitle"><?= nl2br(htmlspecialchars($cliente['hero_descripcion'])) ?></p>
                 <?php endif; ?>

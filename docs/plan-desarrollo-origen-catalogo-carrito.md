@@ -4,7 +4,7 @@
 
 ## Objetivo
 
-Convertir Origen Run & Bike en un sitio con paginas de catalogo reales, carrito local y cierre de pedido por WhatsApp/email, manteniendo PHP plano, SEO local y configuracion simple desde `config.php`.
+Convertir Origen8.8 en un sitio con paginas de catalogo reales, carrito local y cierre de pedido por WhatsApp/email, manteniendo PHP plano, SEO local y configuracion simple desde `config.php`.
 
 ## Resultado Esperado
 
@@ -62,7 +62,7 @@ Agregar una clave nueva en `config.php`:
         'slug' => 'short-con-calza',
         'descripcion' => 'Doble capa: short + calza. Ajuste seguro, tela respirable, liviana y fresca.',
         'imagen' => '/assets/img/cliente/productos/short-con-calza.webp',
-        'alt' => 'Short con calza interna Origen Run & Bike',
+        'alt' => 'Short con calza interna Origen8.8',
 
         'rutas' => ['productos'],
         'categoria' => 'indumentaria',
@@ -144,7 +144,7 @@ El carrito debe funcionar aunque algunos productos no tengan precio. En ese caso
 Formato sugerido:
 
 ```text
-Hola Origen Run & Bike! Quiero consultar por este pedido:
+Hola Origen8.8! Quiero consultar por este pedido:
 
 1. Short con calza interna x1 — consultar precio
 2. Lentes deportivos x2 — $45000 c/u
@@ -174,11 +174,11 @@ Actualizar `includes/header.php` para recibir contexto por pagina.
 
 | Pagina | Title sugerido | Description sugerida |
 |---|---|---|
-| `/` | `Origen Run & Bike — Indumentaria Deportiva en Rio Tercero` | `Running, trekking y bikes en Rio Tercero. Ropa, calzado y accesorios para volver a lo esencial.` |
-| `/productos` | `Productos — Origen Run & Bike` | `Catalogo de indumentaria deportiva Origen en Rio Tercero: shorts, tops, calzas, calzado y prendas outdoor.` |
-| `/ofertas` | `Ofertas — Origen Run & Bike` | `Ofertas y oportunidades en indumentaria deportiva, outdoor y accesorios en Origen Run & Bike.` |
-| `/accesorios` | `Accesorios — Origen Run & Bike` | `Accesorios para running, trekking y bikes: hidratacion, lentes deportivos y equipamiento liviano.` |
-| `/carrito` | `Carrito — Origen Run & Bike` | `Revisa tu pedido y envialo a Origen Run & Bike por WhatsApp para confirmar stock y precio final.` |
+| `/` | `Origen8.8 — Indumentaria Deportiva en Rio Tercero` | `Running, trekking y bikes en Rio Tercero. Ropa, calzado y accesorios para volver a lo esencial.` |
+| `/productos` | `Productos — Origen8.8` | `Catalogo de indumentaria deportiva Origen en Rio Tercero: shorts, tops, calzas, calzado y prendas outdoor.` |
+| `/ofertas` | `Ofertas — Origen8.8` | `Ofertas y oportunidades en indumentaria deportiva, outdoor y accesorios en Origen8.8.` |
+| `/accesorios` | `Accesorios — Origen8.8` | `Accesorios para running, trekking y bikes: hidratacion, lentes deportivos y equipamiento liviano.` |
+| `/carrito` | `Carrito — Origen8.8` | `Revisa tu pedido y envialo a Origen8.8 por WhatsApp para confirmar stock y precio final.` |
 
 Schemas:
 

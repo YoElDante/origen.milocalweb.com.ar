@@ -90,9 +90,10 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
         </button>
     </footer>
 
-    <!-- Botón flotante del carrito -->
-    <a href="/carrito" class="cart-float" aria-label="Ver carrito de pedido">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <!-- Botón flotante del pedido -->
+    <a href="/carrito" class="cart-float" aria-label="Ver cajita de pedido" data-cart-float>
+        <svg class="box-icon box-icon--closed" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8 9 4 9-4"/><path d="m12 12 9-4-9-4-9 4 9 4Z"/><path d="M3 8v8l9 4 9-4V8"/><path d="M12 12v8"/><path d="m7.5 5.8 9 4"/></svg>
+        <svg class="box-icon box-icon--open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8 9 4 9-4"/><path d="M3 8v8l9 4 9-4V8"/><path d="M12 12v8"/><path d="m3 8 3.8-4.2L12 6.2 17.2 3.8 21 8"/><path d="m6.8 3.8 5.2 2.4 5.2-2.4"/></svg>
         <span class="cart-float-count" data-cart-count hidden>0</span>
     </a>
 

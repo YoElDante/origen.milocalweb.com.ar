@@ -1,6 +1,6 @@
-# Origen Run & Bike — Landing Page
+# Origen8.8 — Landing Page
 
-Landing page profesional y optimizada para SEO del negocio **Origen Run & Bike**, ubicado en Río Tercero, Córdoba, Argentina.
+Landing page profesional y optimizada para SEO del negocio **Origen8.8**, ubicado en Río Tercero, Córdoba, Argentina.
 
 > **En vivo:** [https://origen.milocalweb.com.ar/](https://origen.milocalweb.com.ar/)
 
@@ -88,6 +88,6 @@ La landing se genera íntegramente desde `config.php`. Para modificar textos, co
 
 ## Licencia
 
-© Origen Run & Bike. Todos los derechos reservados.
+© Origen8.8. Todos los derechos reservados.
 
 Hecho con ❤️ por [MiLocalWeb.com.ar](https://milocalweb.com.ar).

@@ -7,7 +7,7 @@
 > `docs/plan-template-php-catalogo-carrito.md`.
 
 > **Proyecto:** origen.milocalweb.com.ar
-> **Cliente:** Origen Run & Bike — Ropa e indumentaria deportiva (running · trekking · bikes)
+> **Cliente:** Origen8.8 — Ropa e indumentaria deportiva (running · trekking · bikes)
 > **Localidad:** Río Tercero, Córdoba
 > **Referencia de arquitectura:** eznutrifit.milocalweb.com.ar (misma estructura técnica y de secciones, identidad gráfica propia)
 > **Fuentes de verdad:** `docs/ficha-cliente.md` (datos), `docs/informe_estilo_origen.md` (identidad visual), este documento (plan de implementación)
@@ -38,7 +38,7 @@ Fuente: `docs/ficha-cliente.md`.
 
 | Campo | Valor |
 |---|---|
-| Nombre comercial | Origen (en Google Business: **"Origen Run & Bike"** — usar ese nombre en SEO) |
+| Nombre comercial | Origen (en Google Business: **"Origen8.8"** — usar ese nombre en SEO) |
 | Slogan | *Sabemos dónde empieza, no dónde termina* |
 | Rubro | Ropa e indumentaria deportiva — running, trekking y bikes |
 | WhatsApp | `5493571329870` |
@@ -50,8 +50,8 @@ Fuente: `docs/ficha-cliente.md`.
 | Maps embed | `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3376.755...!2sorigen%20run%20%26%20bike...` (normalizar zoom a `!1d1500`) |
 | Maps link | https://maps.app.goo.gl/HUvBH4WQ8sBVuuQMA |
 
-**Nota SEO:** el nombre en Google Business Profile es *"Origen Run & Bike"*.
-Recomendación: `'nombre' => 'Origen Run & Bike'` en `config.php` para que el
+**Nota SEO:** el nombre en Google Business Profile es *"Origen8.8"*.
+Recomendación: `'nombre' => 'Origen8.8'` en `config.php` para que el
 title tag y el JSON-LD coincidan con el perfil (refuerza indexación local).
 El logo ya comunica "ORIGEN" visualmente.
 
@@ -254,7 +254,7 @@ configurable vía `config.php`. Copiar de EZ Nutrifit.
 
 Un solo punto de venta (a diferencia de los 4 de EZ Nutrifit):
 
-- Logo Origen + "Origen Run & Bike".
+- Logo Origen + "Origen8.8".
 - Dirección, horarios, botón "Llevame allí".
 - Mapa: Static Maps con API key (patrón `secrets.php`) o fallback iframe embed
   (normalizar `!1d1500`). Atributos `lat/lng` ya extraídos (§2).
@@ -322,7 +322,7 @@ Copiar tal cual desde EZ Nutrifit: `assets/img/milocalweb/`, `assets/img/svg/`,
 Claves estándar del template + extensiones. Resumen de valores:
 
 ```php
-'nombre'    => 'Origen Run & Bike',
+'nombre'    => 'Origen8.8',
 'slogan'    => 'Sabemos dónde empieza, no dónde termina',
 'rubro'     => 'Ropa e indumentaria deportiva — Running · Trekking · Bikes',
 'whatsapp'  => '5493571329870',
@@ -370,7 +370,7 @@ Nuevas claves SEO (mismo patrón que EZ Nutrifit):
 
 ## 9. SEO y Datos Estructurados
 
-- **Title:** `Origen Run & Bike — Indumentaria Deportiva en Río Tercero`
+- **Title:** `Origen8.8 — Indumentaria Deportiva en Río Tercero`
 - **Meta description:** armada desde `og_descripcion` / hero (≤160 chars).
 - **Canonical:** `https://origen.milocalweb.com.ar/`
 - **Open Graph:** `og:title`, `og:description`, `og:image` (1200×630 nueva),
@@ -383,7 +383,7 @@ Nuevas claves SEO (mismo patrón que EZ Nutrifit):
 - **H1 único** (hero), `<h2>` por sección, `<h3>` en cards, alt descriptivo
   con nombre + rubro + localidad en toda imagen.
 - **Google Business:** verificar que la landing esté linkeada en el perfil
-  "Origen Run & Bike" (dirección §2).
+  "Origen8.8" (dirección §2).
 
 ---
 
@@ -456,7 +456,7 @@ Técnicas ya validadas en EZ Nutrifit (ver sus informes Lighthouse en
 | Bloques de colección | Nude `#DFD3CA` (fem), Slate `#5C7C8A` (masc) | Colores de campaña identificados |
 | Textura piedra | Hero + Footer (opacidad baja) | Identidad outdoor/street |
 | Tipografía mixta | Oswald caps + palabra en Playfair Italic | Firma de las placas de la marca |
-| Nombre SEO | "Origen Run & Bike" | Coincidir con Google Business Profile |
+| Nombre SEO | "Origen8.8" | Coincidir con Google Business Profile |
 | Hero | `split` + `origen-bolsa-paisaje` | Imagen de marca disponible (no hay `hero.jpg`) |
 
 ---

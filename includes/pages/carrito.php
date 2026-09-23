@@ -9,7 +9,7 @@
 
 $breadcrumbs = [
     ['label' => 'Inicio', 'url' => '/'],
-    ['label' => 'Carrito'],
+    ['label' => 'Mi pedido'],
 ];
 
 $waNumber = preg_replace('/[^0-9]/', '', $cliente['whatsapp'] ?? '');
@@ -21,18 +21,23 @@ $businessEmail = trim($cliente['email'] ?? '');
 
         <header class="catalog-page__header">
             <p class="catalog-page__eyebrow">Pedido asistido</p>
-            <h1><?= htmlspecialchars($pageConfig['h1'] ?? 'Carrito') ?></h1>
+            <div class="cart-page-title">
+                <span class="cart-page-title__box" aria-hidden="true">
+                    <svg class="cart-page-title__box-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 9 4 9-4"/><path d="m12 12 9-4-9-4-9 4 9 4Z"/><path d="M3 8v8l9 4 9-4V8"/><path d="M12 12v8"/><path d="m7.5 5.8 9 4"/></svg>
+                </span>
+                <h1><?= htmlspecialchars($pageConfig['h1'] ?? 'Mi pedido') ?></h1>
+            </div>
             <p><?= htmlspecialchars($pageConfig['subtitulo'] ?? '') ?></p>
         </header>
 
         <div class="cart-panel"
              data-cart-root
-             data-business-name="<?= htmlspecialchars($cliente['nombre'] ?? 'Origen 8.8') ?>"
+             data-business-name="<?= htmlspecialchars($cliente['nombre'] ?? 'Origen8.8') ?>"
              data-whatsapp-number="<?= htmlspecialchars($waNumber) ?>"
              data-business-email="<?= htmlspecialchars($businessEmail) ?>">
             <div class="cart-empty" data-cart-empty>
-                <h2>Tu carrito está vacío</h2>
-                <p>Elegí productos del catálogo y prepará tu consulta para enviarla por WhatsApp.</p>
+                <h2>Tu pedido está vacío</h2>
+                <p>Elegí productos del catálogo y prepará tu pedido para enviarlo por WhatsApp.</p>
                 <a href="/productos" class="btn btn-primary">Ver productos</a>
             </div>
 
@@ -40,16 +45,22 @@ $businessEmail = trim($cliente['email'] ?? '');
                 <div class="cart-items" data-cart-items></div>
 
                 <aside class="cart-summary" aria-label="Resumen del pedido">
-                    <h2>Resumen</h2>
+                    <h2>Resumen del pedido</h2>
                     <p class="cart-summary__note">El pedido queda sujeto a confirmación de stock y precio final.</p>
                     <p class="cart-summary__subtotal" data-cart-subtotal hidden></p>
 
                     <div class="cart-actions">
-                        <a href="#" class="btn btn-whatsapp" data-cart-whatsapp target="_blank" rel="noopener noreferrer">Enviar por WhatsApp</a>
+                        <a href="#" class="btn btn-whatsapp" data-cart-whatsapp target="_blank" rel="noopener noreferrer">
+                            Enviar por WhatsApp
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
                         <?php if ($businessEmail !== ''): ?>
                         <a href="#" class="btn btn-outline" data-cart-email>Enviar por email</a>
                         <?php endif; ?>
-                        <button type="button" class="btn btn-outline" data-cart-clear>Vaciar carrito</button>
+                        <button type="button" class="btn btn-outline" data-cart-clear>
+                            Vaciar pedido
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>
+                        </button>
                     </div>
                 </aside>
             </div>

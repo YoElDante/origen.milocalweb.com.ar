@@ -36,7 +36,7 @@ $ofertas = $cliente['seccion_ofertas'] ?? [];
             <article class="oferta-card">
                 <div class="oferta-img-wrapper">
                     <img src="<?= htmlspecialchars($oferta['imagen'] ?? '') ?>"
-                         alt="<?= htmlspecialchars($oferta['nombre'] ?? 'Oferta') ?> — Origen 8.8"
+                         alt="<?= htmlspecialchars($oferta['nombre'] ?? 'Oferta') ?> — Origen8.8"
                          class="oferta-img"
                          width="600"
                          height="450"
@@ -44,6 +44,9 @@ $ofertas = $cliente['seccion_ofertas'] ?? [];
                 </div>
                 <div class="oferta-body">
                     <h3 class="oferta-nombre"><?= htmlspecialchars($oferta['nombre'] ?? '') ?></h3>
+                    <?php if (!empty($oferta['subtitulo'])): ?>
+                    <p class="oferta-subtitulo"><?= htmlspecialchars($oferta['subtitulo']) ?></p>
+                    <?php endif; ?>
                     <p class="oferta-desc"><?= htmlspecialchars($oferta['descripcion'] ?? '') ?></p>
                     <p class="oferta-pie"><?= htmlspecialchars($pie_textos[$index % count($pie_textos)]) ?></p>
                     <a href="<?= $wa_full ?>"

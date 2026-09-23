@@ -14,13 +14,16 @@ $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
 $video       = $cliente['nosotros_video'] ?? '';
 $poster      = $cliente['nosotros_video_poster'] ?? '';
 $video_titulo = $cliente['nosotros_video_titulo'] ?? 'Video sobre ' . ($cliente['nombre'] ?? 'nosotros');
+$video_origen = '/assets/vid/reels/volver-al-origen.mp4';
+$poster_origen = '/assets/vid/reels/volver-al-origen.jpg';
+$watermark_logo = '/assets/img/cliente/logos/logo-origen88.webp';
 ?>
 <section id="nosotros" class="section section-nosotros" aria-label="Quiénes somos">
     <div class="section-container">
-        <h2 class="section-title">Quiénes Somos</h2>
-
         <div class="nosotros-layout">
-            <div class="nosotros-content">
+            <div class="nosotros-content" style="--nosotros-watermark: url('<?= htmlspecialchars($watermark_logo) ?>');">
+                <h2 class="section-title">Quiénes Somos</h2>
+
                 <?php if (!empty($cliente['nosotros_texto'])): ?>
                 <p class="nosotros-texto"><?= nl2br(htmlspecialchars($cliente['nosotros_texto'])) ?></p>
                 <?php endif; ?>
@@ -40,33 +43,49 @@ $video_titulo = $cliente['nosotros_video_titulo'] ?? 'Video sobre ' . ($cliente[
                 </div>
                 <?php endif; ?>
 
-                <!-- Logo de la marca -->
-                <?php if (!empty($cliente['logo_img'])): ?>
-                <div class="nosotros-logo">
-                    <img src="<?= htmlspecialchars($cliente['logo_img']) ?>"
-                         alt="Logo <?= htmlspecialchars($cliente['nombre']) ?>"
-                         width="180"
-                         height="180"
-                         loading="lazy">
-                </div>
-                <?php endif; ?>
             </div>
 
-            <!-- Video de identidad -->
-            <?php if (!empty($video)): ?>
-            <div class="nosotros-media">
+            <?php if (!empty($video) || is_file(__DIR__ . '/../../' . ltrim($video_origen, '/'))): ?>
+            <div class="nosotros-media-grid">
+                <?php if (!empty($video)): ?>
+                <div class="nosotros-media">
+                    <video
+                        class="nosotros-video"
+                        src="<?= htmlspecialchars($video) ?>"
+                        <?php if (!empty($poster)): ?>poster="<?= htmlspecialchars($poster) ?>"<?php endif; ?>
+                        preload="none"
+                        loop
+                        muted
+                        playsinline
+                        data-exclusive-video
+                        data-autoplay
+                        data-stop-when-hidden
+                        data-click-to-play
+                        data-unmute-on-click
+                        aria-label="<?= htmlspecialchars($video_titulo) ?>">
+                        <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($video) ?>">Descargar video</a>.</p>
+                    </video>
+                </div>
+                <?php endif; ?>
+
+                <?php if (is_file(__DIR__ . '/../../' . ltrim($video_origen, '/'))): ?>
+                <div class="nosotros-media nosotros-media-secundario">
                 <video
                     class="nosotros-video"
-                    src="<?= htmlspecialchars($video) ?>"
-                    <?php if (!empty($poster)): ?>poster="<?= htmlspecialchars($poster) ?>"<?php endif; ?>
-                    preload="metadata"
-                    autoplay
-                    loop
-                    muted
+                    src="<?= htmlspecialchars($video_origen) ?>"
+                    poster="<?= htmlspecialchars($poster_origen) ?>"
+                    preload="none"
+                    controls
                     playsinline
-                    aria-label="<?= htmlspecialchars($video_titulo) ?>">
-                    <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($video) ?>">Descargar video</a>.</p>
+                    data-exclusive-video
+                    data-stop-when-hidden
+                    data-unmute-on-interaction
+                    data-unmute-on-play
+                    aria-label="Qué significa volver al origen">
+                    <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($video_origen) ?>">Descargar video</a>.</p>
                 </video>
+                </div>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
         </div>

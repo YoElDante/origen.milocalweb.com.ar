@@ -28,8 +28,8 @@ function catalog_page_config(array $cliente, string $page, bool $isNotFound = fa
     $config = $pages[$page] ?? $pages['home'] ?? [];
 
     if ($isNotFound) {
-        $config['titulo'] = 'Página no encontrada — ' . ($cliente['nombre'] ?? 'Origen 8.8');
-        $config['descripcion'] = 'La página solicitada no existe. Volvé al inicio de Origen 8.8.';
+        $config['titulo'] = 'Página no encontrada — ' . ($cliente['nombre'] ?? 'Origen8.8');
+        $config['descripcion'] = 'La página solicitada no existe. Volvé al inicio de Origen8.8.';
         $config['h1'] = 'Página no encontrada';
     }
 
@@ -126,7 +126,7 @@ function catalog_product_schema(array $cliente, array $product): array
         'category' => $product['categoria'] ?? ($cliente['seo_keywords_primarias'] ?? 'Indumentaria Deportiva'),
         'brand' => [
             '@type' => 'Brand',
-            'name' => $cliente['nombre'] ?? 'Origen 8.8',
+            'name' => $cliente['nombre'] ?? 'Origen8.8',
         ],
     ];
 
@@ -138,7 +138,7 @@ function catalog_product_schema(array $cliente, array $product): array
             'price' => (string) $product['precio'],
             'seller' => [
                 '@type' => 'Store',
-                'name' => $cliente['nombre'] ?? 'Origen 8.8',
+                'name' => $cliente['nombre'] ?? 'Origen8.8',
             ],
         ];
     }

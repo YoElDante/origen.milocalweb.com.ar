@@ -28,14 +28,14 @@ if (empty($sec)) {
         <div class="indumentaria-fotos">
             <figure class="indumentaria-foto-principal">
                 <img src="<?= htmlspecialchars($sec['intro_img'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($sec['intro_alt'] ?? 'Indumentaria Origen 8.8') ?>"
+                     alt="<?= htmlspecialchars($sec['intro_alt'] ?? 'Indumentaria Origen8.8') ?>"
                      width="768"
                      height="1020"
                      loading="lazy">
             </figure>
             <figure class="indumentaria-foto-secundaria">
                 <img src="<?= htmlspecialchars($sec['mostrador_img'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($sec['mostrador_alt'] ?? 'Mostrador Origen 8.8') ?>"
+                     alt="<?= htmlspecialchars($sec['mostrador_alt'] ?? 'Mostrador Origen8.8') ?>"
                      width="900"
                      height="1820"
                      loading="lazy">

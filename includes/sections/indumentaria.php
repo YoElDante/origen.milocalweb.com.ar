@@ -21,42 +21,58 @@ if (empty($sec)) {
         </svg>
     </div>
     <div class="section-container">
-        <h2 class="section-title"><?= htmlspecialchars($sec['titulo'] ?? 'Indumentaria y accesorios') ?></h2>
-        <p class="section-subtitle"><?= htmlspecialchars($sec['mensaje'] ?? '') ?></p>
+        <div class="indumentaria-showcase">
+            <div class="indumentaria-heading">
+                <h2 class="section-title"><?= htmlspecialchars($sec['titulo'] ?? 'Indumentaria y accesorios') ?></h2>
+                <p class="section-subtitle"><?= htmlspecialchars($sec['mensaje'] ?? '') ?></p>
+            </div>
 
-        <!-- Fotos: indumentaria (grande) + mostrador de lentes (alta y angosta) -->
-        <div class="indumentaria-fotos">
-            <figure class="indumentaria-foto-principal">
-                <img src="<?= htmlspecialchars($sec['intro_img'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($sec['intro_alt'] ?? 'Indumentaria Origen8.8') ?>"
-                     width="768"
-                     height="1020"
-                     loading="lazy">
-            </figure>
-            <figure class="indumentaria-foto-secundaria">
-                <img src="<?= htmlspecialchars($sec['mostrador_img'] ?? '') ?>"
-                     alt="<?= htmlspecialchars($sec['mostrador_alt'] ?? 'Mostrador Origen8.8') ?>"
-                     width="900"
-                     height="1820"
-                     loading="lazy">
-            </figure>
+            <!-- Fotos: indumentaria (grande) + mostrador de lentes + video en bucle -->
+            <div class="indumentaria-fotos">
+                <figure class="indumentaria-foto-principal">
+                    <img src="<?= htmlspecialchars($sec['intro_img'] ?? '') ?>"
+                         alt="<?= htmlspecialchars($sec['intro_alt'] ?? 'Indumentaria Origen8.8') ?>"
+                         width="768"
+                         height="1020"
+                         loading="lazy">
+                </figure>
+                <figure class="indumentaria-foto-secundaria">
+                    <img src="<?= htmlspecialchars($sec['mostrador_img'] ?? '') ?>"
+                         alt="<?= htmlspecialchars($sec['mostrador_alt'] ?? 'Mostrador Origen8.8') ?>"
+                         width="900"
+                         height="1820"
+                         loading="lazy">
+                </figure>
+
+                <div class="indumentaria-lentes-media">
+                    <video class="indumentaria-video"
+                           src="<?= htmlspecialchars($sec['lentes_video'] ?? '') ?>"
+                           <?php if (!empty($sec['lentes_poster'])): ?>poster="<?= htmlspecialchars($sec['lentes_poster']) ?>"<?php endif; ?>
+                           preload="metadata"
+                           muted
+                           loop
+                           playsinline
+                           data-autoplay
+                           aria-label="<?= htmlspecialchars($sec['lentes_titulo'] ?? 'Lentes de montaña') ?>">
+                        <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($sec['lentes_video'] ?? '') ?>">Descargar video</a>.</p>
+                    </video>
+                </div>
+
+                <div class="indumentaria-lentes indumentaria-lentes--inline">
+                    <div class="indumentaria-lentes-body">
+                        <h3><?= htmlspecialchars($sec['lentes_titulo'] ?? '') ?></h3>
+                        <p><?= htmlspecialchars($sec['lentes_texto'] ?? '') ?></p>
+                        <a href="<?= htmlspecialchars($sec['accesorios_link'] ?? '/accesorios') ?>" class="btn-ver-productos">
+                            <?= htmlspecialchars($sec['accesorios_cta'] ?? 'Pasa a ver todos nuestros accesorios') ?>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Línea de lentes: video + texto + botón -->
-        <div class="indumentaria-lentes">
-            <div class="indumentaria-lentes-media">
-                <video class="indumentaria-video"
-                       src="<?= htmlspecialchars($sec['lentes_video'] ?? '') ?>"
-                       <?php if (!empty($sec['lentes_poster'])): ?>poster="<?= htmlspecialchars($sec['lentes_poster']) ?>"<?php endif; ?>
-                       preload="metadata"
-                       muted
-                       loop
-                       playsinline
-                       data-autoplay
-                       aria-label="<?= htmlspecialchars($sec['lentes_titulo'] ?? 'Lentes de montaña') ?>">
-                    <p>Tu navegador no soporta videos. <a href="<?= htmlspecialchars($sec['lentes_video'] ?? '') ?>">Descargar video</a>.</p>
-                </video>
-            </div>
+        <!-- Línea de lentes: texto + botón -->
+        <div class="indumentaria-lentes indumentaria-lentes--below">
             <div class="indumentaria-lentes-body">
                 <h3><?= htmlspecialchars($sec['lentes_titulo'] ?? '') ?></h3>
                 <p><?= htmlspecialchars($sec['lentes_texto'] ?? '') ?></p>

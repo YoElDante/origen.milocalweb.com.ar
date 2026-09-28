@@ -195,6 +195,104 @@
         });
     }
 
+    // ─── Buscador del catálogo de productos ───
+    const catalogSearch = document.querySelector('[data-catalog-search]');
+    if (catalogSearch) {
+        const clearSearch = document.querySelector('[data-catalog-search-clear]');
+        const searchStatus = document.querySelector('[data-catalog-search-status]');
+        const items = Array.from(document.querySelectorAll('[data-catalog-search-item]'));
+        const videos = Array.from(document.querySelectorAll('.catalog-video-card'));
+        const subsections = Array.from(document.querySelectorAll('.catalog-subsection'));
+        const sections = Array.from(document.querySelectorAll('.catalog-section'));
+
+        function normalizeSearchText(value) {
+            return String(value || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .trim();
+        }
+
+        function updateCatalogSearch() {
+            const query = normalizeSearchText(catalogSearch.value);
+            let visibleCount = 0;
+
+            items.forEach(function (item) {
+                const text = normalizeSearchText(item.dataset.searchText || item.textContent);
+                const isVisible = query === '' || text.indexOf(query) !== -1;
+                item.hidden = !isVisible;
+                if (isVisible) visibleCount += 1;
+            });
+
+            videos.forEach(function (video) {
+                video.hidden = query !== '';
+            });
+
+            subsections.forEach(function (subsection) {
+                const visibleItems = subsection.querySelectorAll('[data-catalog-search-item]:not([hidden])');
+                subsection.hidden = query !== '' && visibleItems.length === 0;
+            });
+
+            sections.forEach(function (section) {
+                const visibleSubsections = section.querySelectorAll('.catalog-subsection:not([hidden])');
+                section.hidden = query !== '' && visibleSubsections.length === 0;
+            });
+
+            if (clearSearch) {
+                clearSearch.hidden = query === '';
+            }
+
+            if (searchStatus) {
+                searchStatus.textContent = query === ''
+                    ? ''
+                    : visibleCount === 1
+                        ? 'Encontramos 1 producto.'
+                        : 'Encontramos ' + visibleCount + ' productos.';
+            }
+
+            document.querySelectorAll('.catalog-grid').forEach(function (track) {
+                track.scrollLeft = 0;
+            });
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        catalogSearch.addEventListener('input', updateCatalogSearch);
+
+        if (clearSearch) {
+            clearSearch.addEventListener('click', function () {
+                catalogSearch.value = '';
+                updateCatalogSearch();
+                catalogSearch.focus();
+            });
+        }
+    }
+
+    const categoryMenus = document.querySelectorAll('.catalog-category-menu');
+    if (categoryMenus.length) {
+        categoryMenus.forEach(function (menu) {
+            menu.querySelectorAll('.catalog-category-menu__panel a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    menu.open = false;
+                });
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            categoryMenus.forEach(function (menu) {
+                if (menu.open && !menu.contains(event.target)) {
+                    menu.open = false;
+                }
+            });
+        });
+
+        window.addEventListener('keydown', function (event) {
+            if (event.key !== 'Escape') return;
+            categoryMenus.forEach(function (menu) {
+                menu.open = false;
+            });
+        });
+    }
+
     // ─── Controles desktop para carriles horizontales de productos ───
     document.querySelectorAll('[data-catalog-rail]').forEach(function (rail) {
         const track = rail.querySelector('.catalog-grid');

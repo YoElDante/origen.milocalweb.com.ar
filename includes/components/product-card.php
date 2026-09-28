@@ -17,8 +17,19 @@ $miniatura = !empty($product['miniatura']) ? $product['miniatura'] : $image;
 $video = $product['video'] ?? '';
 $name = $product['nombre'] ?? 'Producto';
 $description = $product['descripcion'] ?? '';
+$anchorId = $productAnchorId ?? '';
+$searchText = trim(implode(' ', [
+    $name,
+    $description,
+    $product['categoria'] ?? '',
+    implode(' ', $product['tags'] ?? []),
+]));
 ?>
-<article class="catalog-card" data-product-id="<?= htmlspecialchars($product['id'] ?? '') ?>">
+<article class="catalog-card"
+         <?php if ($anchorId !== ''): ?>id="<?= htmlspecialchars($anchorId) ?>"<?php endif; ?>
+         data-product-id="<?= htmlspecialchars($product['id'] ?? '') ?>"
+         data-catalog-search-item
+         data-search-text="<?= htmlspecialchars($searchText) ?>">
     <div class="catalog-card__image-wrap">
         <?php if ($discountLabel !== ''): ?>
         <span class="catalog-card__badge"><?= htmlspecialchars($discountLabel) ?></span>

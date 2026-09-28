@@ -98,24 +98,54 @@ $secciones = [
                 $grupoProducts = array_filter($pageProducts, function ($product) use ($grupo, $productMatches) {
                     return $productMatches($product, $grupo['tags'], $grupo['exclude'] ?? []);
                 });
+                $grupoVideos = array_values(array_filter($grupoProducts, function ($product) {
+                    return !empty($product['video']);
+                }));
             ?>
             <section class="catalog-subsection">
                 <h3 class="catalog-subsection__title"><?= htmlspecialchars($grupo['titulo']) ?></h3>
-                <div class="catalog-grid" tabindex="0" aria-label="<?= htmlspecialchars($grupo['titulo']) ?>">
-                    <?php if (empty($grupoProducts)): ?>
-                    <article class="catalog-placeholder" aria-label="<?= htmlspecialchars($grupo['titulo']) ?> pendiente">
-                        <p class="catalog-placeholder__eyebrow">Próximamente</p>
-                        <h4><?= htmlspecialchars($grupo['titulo']) ?></h4>
-                        <p>Estamos preparando productos para esta categoría.</p>
-                    </article>
-                    <?php else: ?>
-                    <?php foreach ($grupoProducts as $product): ?>
-                    <?php
-                        $product = array_merge($product, ['categoria' => $grupo['titulo']]);
-                        require __DIR__ . '/../components/product-card.php';
-                    ?>
-                    <?php endforeach; ?>
-                    <?php endif; ?>
+                <div class="catalog-rail" data-catalog-rail>
+                    <button type="button" class="catalog-rail__button catalog-rail__button--prev" data-catalog-scroll="prev" aria-label="Ver productos anteriores" hidden>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+
+                    <div class="catalog-grid" tabindex="0" aria-label="<?= htmlspecialchars($grupo['titulo']) ?>">
+                        <?php if (empty($grupoProducts)): ?>
+                        <article class="catalog-placeholder" aria-label="<?= htmlspecialchars($grupo['titulo']) ?> pendiente">
+                            <p class="catalog-placeholder__eyebrow">Próximamente</p>
+                            <h4><?= htmlspecialchars($grupo['titulo']) ?></h4>
+                            <p>Estamos preparando productos para esta categoría.</p>
+                        </article>
+                        <?php else: ?>
+                        <?php foreach ($grupoVideos as $videoProduct): ?>
+                        <article class="catalog-video-card" aria-label="Video de <?= htmlspecialchars($grupo['titulo']) ?>">
+                            <video class="catalog-video-card__media"
+                                   src="<?= htmlspecialchars($videoProduct['video']) ?>"
+                                   poster="<?= htmlspecialchars($videoProduct['imagen'] ?? '') ?>"
+                                   preload="metadata"
+                                   controls
+                                   playsinline
+                                   muted
+                                   aria-label="Video ilustrativo de <?= htmlspecialchars($grupo['titulo']) ?>"></video>
+                            <div class="catalog-video-card__body">
+                                <p class="catalog-video-card__eyebrow">Video</p>
+                                <h4><?= htmlspecialchars($grupo['titulo']) ?></h4>
+                            </div>
+                        </article>
+                        <?php endforeach; ?>
+                        <?php foreach ($grupoProducts as $product): ?>
+                        <?php
+                            $product = array_merge($product, ['categoria' => $grupo['titulo']]);
+                            $product['video'] = '';
+                            require __DIR__ . '/../components/product-card.php';
+                        ?>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <button type="button" class="catalog-rail__button catalog-rail__button--next" data-catalog-scroll="next" aria-label="Ver más productos">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
                 </div>
             </section>
             <?php endforeach; ?>

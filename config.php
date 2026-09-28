@@ -386,7 +386,7 @@ return [
             'slug' => 'bolso-irun-47',
             'descripcion' => 'Bolso I-RUN de 47x20x28 cm.',
             'imagen' => '/assets/img/cliente/productos/catalogo/bolso-irun-47.webp',
-            'miniatura' => '',
+            'miniatura' => '/assets/img/cliente/productos/catalogo/miniatura/bolso-irun-47.webp',
             'video' => '',
             'alt' => 'Bolso I-RUN 47x20x28 Origen8.8',
             'rutas' => ['productos', 'accesorios'],

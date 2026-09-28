@@ -194,4 +194,45 @@
             }
         });
     }
+
+    // ─── Controles desktop para carriles horizontales de productos ───
+    document.querySelectorAll('[data-catalog-rail]').forEach(function (rail) {
+        const track = rail.querySelector('.catalog-grid');
+        const previous = rail.querySelector('[data-catalog-scroll="prev"]');
+        const next = rail.querySelector('[data-catalog-scroll="next"]');
+        if (!track || !previous || !next) return;
+
+        function canScroll() {
+            return track.scrollWidth > track.clientWidth + 2;
+        }
+
+        function updateButtons() {
+            if (!canScroll()) {
+                previous.hidden = true;
+                next.hidden = true;
+                return;
+            }
+
+            previous.hidden = track.scrollLeft <= 2;
+            next.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+        }
+
+        function scrollProducts(direction) {
+            const firstCard = track.querySelector('.catalog-video-card, .catalog-card, .catalog-placeholder');
+            const step = firstCard ? firstCard.getBoundingClientRect().width + 18 : track.clientWidth * 0.85;
+            track.scrollBy({ left: direction * step, behavior: 'smooth' });
+        }
+
+        previous.addEventListener('click', function () {
+            scrollProducts(-1);
+        });
+
+        next.addEventListener('click', function () {
+            scrollProducts(1);
+        });
+
+        track.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        window.setTimeout(updateButtons, 0);
+    });
 })();

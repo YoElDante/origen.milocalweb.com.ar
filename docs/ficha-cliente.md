@@ -36,7 +36,7 @@
   - `img-left`: imagen grande a la izquierda, texto y logo a la derecha
   - `stacked`: imagen arriba ocupando todo el ancho, texto abajo centrado
 - **Archivo de la imagen hero** (nombre del archivo en `assets/img/`): `hero.jpg`
-- **Texto del botón principal** (ej: `Escribinos por WhatsApp`): 
+- **Texto del botón principal** (ej: `Escribinos por WhatsApp`): Escribinos por WhatsApp
 - **Descripción breve debajo del slogan** (2-3 líneas): 𝘈𝘭𝘨𝘰 𝘮á𝘴 𝘲𝘶𝘦 𝘶𝘯 𝘭𝘰𝘤𝘢𝘭 𝘥𝘦 𝘪𝘯𝘥𝘶𝘮𝘦𝘯𝘵𝘢𝘳𝘪𝘢 🚴‍♀️🏃‍♀️⛰️
 
 ---
@@ -106,42 +106,6 @@ Gracias por acompañar en este caminito
   - Foto 1: C:\workspace\MiLocalWeb-WorkSpace\ProyectosWebs\landingpages.clientes\origen.milocalweb.com.ar\assets\img\interior del local\interiorLocal1.webp
   - Foto 2: C:\workspace\MiLocalWeb-WorkSpace\ProyectosWebs\landingpages.clientes\origen.milocalweb.com.ar\assets\img\interior del local\interiorLocal2.webp
   - Foto 3 (opcional): 
-
----
-
-## Sección: Ofertas de la temporada que se va
-
-- **Ubicación en config.php**: `seccion_ofertas`
-- **Archivos de imagen** (en `assets/img/cliente/ofertas/`):
-  - `outdoor.jpg`
-  - `outdoor-colorcrema.jpg`
-  - `outdoor-campera.jpg`
-- **CTA**: WhatsApp con mensaje configurado en `whatsapp_mensaje_ofertas`.
-- **Notas**: Cada oferta muestra un pie que invita a pedir el catálogo de oportunidades por WhatsApp.
-
----
-
-## Sección: Lo indispensable
-
-- **Ubicación en config.php**: `seccion_indispensables`
-- **Bloque de identidad**:
-  - Imagen: `assets/img/cliente/identidad/renovando.jpg`
-  - Mensaje: renovación de energías y transición al calorcito.
-- **Items** (en `assets/img/cliente/indispensables/`):
-  - `indispensable ella.jpg`
-  - `indispensable el.jpg`
-- **Notas**: Sección con enfoque estético/identitario, no de venta directa.
-
----
-
-## Sección: Lo que se viene
-
-- **Ubicación en config.php**: `seccion_campania_verano`
-- **Archivos de imagen** (en `assets/img/cliente/campañas/`):
-  - `verano fem.jpg`
-  - `verano fem 2.jpg`
-- **CTA**: Botón a Instagram con gradiente de marca.
-- **Notas**: Campaña de verano con colores cálidos. Invita a seguir el Instagram para novedades.
 
 ---
 

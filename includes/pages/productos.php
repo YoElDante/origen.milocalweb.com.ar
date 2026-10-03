@@ -38,7 +38,8 @@ $secciones = [
         'foto' => '/assets/img/cliente/local/interior/indumentaria.webp',
         'alt' => 'Ropa deportiva en Origen8.8',
         'grupos' => [
-            ['titulo' => 'Remeras y musculosas', 'tags' => ['remeras']],
+            ['titulo' => 'Remeras y musculosas — Hombre', 'tags' => ['hombre']],
+            ['titulo' => 'Remeras y musculosas — Mujer', 'tags' => ['remeras'], 'exclude' => ['hombre']],
             ['titulo' => 'Tops', 'tags' => ['tops']],
             ['titulo' => 'Calzas y bikers', 'tags' => ['calzas', 'biker']],
             ['titulo' => 'Shorts', 'tags' => ['shorts']],

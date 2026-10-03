@@ -134,9 +134,9 @@
         });
     });
 
-    // ─── Lightbox para fotos del local e indumentaria ───
-    const lightboxImages = document.querySelectorAll('.section-local img, .section-indumentaria .indumentaria-fotos img, .catalog-card__image, .section-productos .producto-img');
-    if (lightboxImages.length) {
+    // ─── Lightbox para fotos del local, indumentaria, catálogo y carrito ───
+    const LIGHTBOX_SELECTOR = '.section-local img, .section-indumentaria .indumentaria-fotos img, .catalog-card__image, .section-productos .producto-img, .cart-item__image';
+    if (document.querySelector(LIGHTBOX_SELECTOR)) {
         const lightbox = document.createElement('div');
         const dialog = document.createElement('div');
         const image = document.createElement('img');
@@ -174,11 +174,10 @@
             close.focus({ preventScroll: true });
         }
 
-        lightboxImages.forEach(function (photo) {
-            photo.classList.add('js-lightbox-image');
-            photo.addEventListener('click', function () {
-                openLightbox(photo);
-            });
+        document.body.addEventListener('click', function (event) {
+            const photo = event.target.closest(LIGHTBOX_SELECTOR);
+            if (!photo) return;
+            openLightbox(photo);
         });
 
         close.addEventListener('click', closeLightbox);

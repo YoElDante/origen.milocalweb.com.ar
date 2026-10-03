@@ -28,6 +28,13 @@
         }
     }
 
+    function normalizeImageUrl(url) {
+        if (!url || typeof url !== 'string') return '';
+        return url
+            .replace(/\/miniatura\//g, '/')
+            .replace(/-miniatura(\.[^.]+)$/i, '$1');
+    }
+
     function normalizeItem(item) {
         if (!item || typeof item !== 'object') return null;
 
@@ -45,7 +52,7 @@
             precio: hasPrice ? price : null,
             mostrar_precio: hasPrice,
             cantidad: quantity,
-            imagen: String(item.imagen || ''),
+            imagen: normalizeImageUrl(String(item.imagen || '')),
         };
     }
 

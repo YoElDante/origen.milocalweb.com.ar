@@ -135,7 +135,7 @@
     });
 
     // ─── Lightbox para fotos del local e indumentaria ───
-    const lightboxImages = document.querySelectorAll('.section-local img, .section-indumentaria .indumentaria-fotos img');
+    const lightboxImages = document.querySelectorAll('.section-local img, .section-indumentaria .indumentaria-fotos img, .catalog-card__image');
     if (lightboxImages.length) {
         const lightbox = document.createElement('div');
         const dialog = document.createElement('div');

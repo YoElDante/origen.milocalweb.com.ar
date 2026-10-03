@@ -58,17 +58,17 @@ return [
         [
             'nombre'      => 'Biker I-Run',
             'descripcion' => 'Calza biker de tela elastizada, talle S al 2XL. Ideal para running, gym y uso diario. Variedad de talles y colores.',
-            'imagen'      => '/assets/img/cliente/productos/biker-irun.webp',
+            'imagen'      => '/assets/img/cliente/productos/catalogo/biker-irun-mujer.webp',
         ],
         [
             'nombre'      => 'Top Deportivo I-Run Dama',
             'descripcion' => 'Top con taza fija, soporte y comodidad para entrenar. Talle S al 2XL. Variedad de talles y colores.',
-            'imagen'      => '/assets/img/cliente/productos/top-deportivo-irun-dama.webp',
+            'imagen'      => '/assets/img/cliente/productos/catalogo/top-deportivo-irun-dama.webp',
         ],
         [
             'nombre'      => 'Remera Cuello en V Microperforada',
             'descripcion' => 'Remera microperforada cuello en V, liviana y transpirable. Variedad de talles y colores.',
-            'imagen'      => '/assets/img/cliente/productos/remera-cuello-v-microperforada.webp',
+            'imagen'      => '/assets/img/cliente/productos/catalogo/remera-cuello-v-microperforada.webp',
         ],
     ],
 

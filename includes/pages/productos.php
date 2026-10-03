@@ -135,7 +135,10 @@ $productIndex = [];
                      loading="lazy">
                 <div class="catalog-section__heading">
                     <h2 class="catalog-section__title"><?= htmlspecialchars($seccion['titulo']) ?></h2>
-                    <p class="catalog-section__hint">Deslizá para ver más productos</p>
+                    <p class="catalog-section__hint">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+                        Deslizá para ver más productos
+                    </p>
                 </div>
             </header>
 

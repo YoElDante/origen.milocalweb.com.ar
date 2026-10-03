@@ -38,7 +38,10 @@ $businessEmail = trim($cliente['email'] ?? '');
             <div class="cart-empty" data-cart-empty>
                 <h2>Tu pedido está vacío</h2>
                 <p>Elegí productos del catálogo y prepará tu pedido para enviarlo por WhatsApp.</p>
-                <a href="/productos" class="btn btn-primary">Ver productos</a>
+                <a href="/productos" class="btn-ver-productos">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Volver al catálogo
+                </a>
             </div>
 
             <div class="cart-content" data-cart-content hidden>
@@ -62,6 +65,11 @@ $businessEmail = trim($cliente['email'] ?? '');
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>
                         </button>
                     </div>
+
+                    <a href="/productos" class="btn-ver-productos cart-summary__continue">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Seguir comprando
+                    </a>
                 </aside>
             </div>
         </div>

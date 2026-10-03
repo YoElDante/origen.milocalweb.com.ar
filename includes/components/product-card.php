@@ -84,6 +84,7 @@ $searchText = trim(implode(' ', [
                     data-product-name="<?= htmlspecialchars($name) ?>"
                     data-product-price="<?= $hasPrice ? htmlspecialchars((string) $product['precio']) : '' ?>"
                     data-product-show-price="<?= $hasPrice ? '1' : '0' ?>"
+                    data-product-description="<?= htmlspecialchars($description) ?>"
                     data-product-image="<?= htmlspecialchars($image) ?>">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8 9 4 9-4"/><path d="m12 12 9-4-9-4-9 4 9 4Z"/><path d="M3 8v8l9 4 9-4V8"/><path d="M12 12v8"/><path d="m7.5 5.8 9 4"/></svg>
                 <span class="catalog-card__add-text">Sumar a tu pedido</span>

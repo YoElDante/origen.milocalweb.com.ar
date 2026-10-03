@@ -49,6 +49,7 @@
         return {
             id: id,
             nombre: String(item.nombre || 'Producto'),
+            descripcion: String(item.descripcion || ''),
             precio: hasPrice ? price : null,
             mostrar_precio: hasPrice,
             cantidad: quantity,
@@ -105,6 +106,7 @@
             cart.push({
                 id: id,
                 nombre: button.dataset.productName || 'Producto',
+                descripcion: button.dataset.productDescription || '',
                 precio: button.dataset.productPrice ? Number(button.dataset.productPrice) : null,
                 mostrar_precio: button.dataset.productShowPrice === '1',
                 cantidad: 1,
@@ -306,9 +308,14 @@
 
         const price = document.createElement('p');
         price.className = 'cart-item__price';
-        price.textContent = item.mostrar_precio && item.precio !== null
-            ? formatPrice(item.precio) + ' c/u'
-            : 'Precio a confirmar';
+        if (item.mostrar_precio && item.precio !== null) {
+            price.textContent = formatPrice(item.precio) + ' c/u';
+        } else if (item.descripcion) {
+            price.textContent = item.descripcion;
+            price.classList.add('cart-item__description');
+        } else {
+            price.textContent = 'Precio a confirmar';
+        }
 
         const controls = document.createElement('div');
         controls.className = 'cart-item__controls';

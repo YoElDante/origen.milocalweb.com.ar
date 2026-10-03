@@ -27,6 +27,10 @@ $breadcrumbs = [
         <?php else: ?>
         <div class="catalog-grid">
             <?php foreach ($pageProducts as $product): ?>
+            <?php
+                $product = array_merge($product, ['categoria' => 'Accesorios']);
+                $product['video'] = '';
+            ?>
             <?php require __DIR__ . '/../components/product-card.php'; ?>
             <?php endforeach; ?>
         </div>

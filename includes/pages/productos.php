@@ -177,7 +177,6 @@ $productIndex = [];
                                    preload="metadata"
                                    controls
                                    playsinline
-                                   muted
                                    aria-label="Video ilustrativo de <?= htmlspecialchars($grupo['titulo']) ?>"></video>
                             <div class="catalog-video-card__body">
                                 <p class="catalog-video-card__eyebrow">Video</p>

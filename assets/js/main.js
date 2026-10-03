@@ -330,4 +330,18 @@
         window.addEventListener('resize', updateButtons);
         window.setTimeout(updateButtons, 0);
     });
+
+    // ─── Pausar videos cuando salen del viewport ───
+    if ('IntersectionObserver' in window) {
+        document.querySelectorAll('video').forEach(function (video) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting && !video.paused) {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0 });
+            observer.observe(video);
+        });
+    }
 })();

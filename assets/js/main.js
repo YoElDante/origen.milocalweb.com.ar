@@ -136,63 +136,61 @@
 
     // ─── Lightbox para fotos del local, indumentaria, catálogo y carrito ───
     const LIGHTBOX_SELECTOR = '.section-local img, .section-indumentaria .indumentaria-fotos img, .catalog-card__image, .section-productos .producto-img, .cart-item__image';
-    if (document.querySelector(LIGHTBOX_SELECTOR)) {
-        const lightbox = document.createElement('div');
-        const dialog = document.createElement('div');
-        const image = document.createElement('img');
-        const close = document.createElement('button');
+    const lightbox = document.createElement('div');
+    const dialog = document.createElement('div');
+    const image = document.createElement('img');
+    const close = document.createElement('button');
 
-        lightbox.className = 'image-lightbox';
+    lightbox.className = 'image-lightbox';
+    lightbox.hidden = true;
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Imagen ampliada');
+
+    dialog.className = 'image-lightbox__dialog';
+    image.className = 'image-lightbox__image';
+    close.className = 'image-lightbox__close';
+    close.type = 'button';
+    close.setAttribute('aria-label', 'Cerrar imagen ampliada');
+    close.textContent = '×';
+
+    dialog.append(image, close);
+    lightbox.appendChild(dialog);
+    document.body.appendChild(lightbox);
+
+    function closeLightbox() {
         lightbox.hidden = true;
-        lightbox.setAttribute('role', 'dialog');
-        lightbox.setAttribute('aria-modal', 'true');
-        lightbox.setAttribute('aria-label', 'Imagen ampliada');
-
-        dialog.className = 'image-lightbox__dialog';
-        image.className = 'image-lightbox__image';
-        close.className = 'image-lightbox__close';
-        close.type = 'button';
-        close.setAttribute('aria-label', 'Cerrar imagen ampliada');
-        close.textContent = '×';
-
-        dialog.append(image, close);
-        lightbox.appendChild(dialog);
-        document.body.appendChild(lightbox);
-
-        function closeLightbox() {
-            lightbox.hidden = true;
-            document.body.classList.remove('lightbox-open');
-            image.removeAttribute('src');
-            image.removeAttribute('alt');
-        }
-
-        function openLightbox(source) {
-            image.src = source.currentSrc || source.src;
-            image.alt = source.alt || 'Imagen ampliada';
-            lightbox.hidden = false;
-            document.body.classList.add('lightbox-open');
-            close.focus({ preventScroll: true });
-        }
-
-        document.body.addEventListener('click', function (event) {
-            const photo = event.target.closest(LIGHTBOX_SELECTOR);
-            if (!photo) return;
-            openLightbox(photo);
-        });
-
-        close.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function (event) {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        window.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && !lightbox.hidden) {
-                closeLightbox();
-            }
-        });
+        document.body.classList.remove('lightbox-open');
+        image.removeAttribute('src');
+        image.removeAttribute('alt');
     }
+
+    function openLightbox(source) {
+        image.src = source.currentSrc || source.src;
+        image.alt = source.alt || 'Imagen ampliada';
+        lightbox.hidden = false;
+        document.body.classList.add('lightbox-open');
+        close.focus({ preventScroll: true });
+    }
+
+    document.body.addEventListener('click', function (event) {
+        const photo = event.target.closest(LIGHTBOX_SELECTOR);
+        if (!photo) return;
+        openLightbox(photo);
+    });
+
+    close.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    window.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !lightbox.hidden) {
+            closeLightbox();
+        }
+    });
 
     // ─── Buscador del catálogo de productos ───
     const catalogSearch = document.querySelector('[data-catalog-search]');

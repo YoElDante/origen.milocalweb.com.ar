@@ -51,6 +51,8 @@ $secciones = [
         'titulo' => 'Medias SOX',
         'foto' => '/assets/img/cliente/local/interior/sox.webp',
         'alt' => 'Stand de medias SOX en Origen8.8',
+        'video' => '/assets/vid/productos/catalogo/seccion-sox.mp4',
+        'video_poster' => '/assets/img/cliente/local/interior/sox.webp',
         'grupos' => [
             ['titulo' => 'Medias SOX', 'tags' => ['medias']],
         ],
@@ -169,6 +171,21 @@ $productIndex = [];
                             <p>Estamos preparando productos para esta categoría.</p>
                         </article>
                         <?php else: ?>
+                        <?php if ($groupIndex === 0 && !empty($seccion['video'])): ?>
+                        <article class="catalog-video-card" aria-label="Video de <?= htmlspecialchars($seccion['titulo']) ?>">
+                            <video class="catalog-video-card__media"
+                                   src="<?= htmlspecialchars($seccion['video']) ?>"
+                                   <?php if (!empty($seccion['video_poster'])): ?>poster="<?= htmlspecialchars($seccion['video_poster']) ?>"<?php endif; ?>
+                                   preload="metadata"
+                                   controls
+                                   playsinline
+                                   aria-label="Video ilustrativo de <?= htmlspecialchars($seccion['titulo']) ?>"></video>
+                            <div class="catalog-video-card__body">
+                                <p class="catalog-video-card__eyebrow">Video</p>
+                                <h4><?= htmlspecialchars($seccion['titulo']) ?></h4>
+                            </div>
+                        </article>
+                        <?php endif; ?>
                         <?php foreach ($grupoVideos as $videoProduct): ?>
                         <article class="catalog-video-card" aria-label="Video de <?= htmlspecialchars($grupo['titulo']) ?>">
                             <video class="catalog-video-card__media"

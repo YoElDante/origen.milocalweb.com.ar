@@ -56,16 +56,10 @@ $searchText = trim(implode(' ', [
     <div class="catalog-card__body">
         <p class="catalog-card__category"><?= htmlspecialchars($product['categoria'] ?? 'Catálogo') ?></p>
         <h2 class="catalog-card__title"><?= htmlspecialchars($name) ?></h2>
-        <p class="catalog-card__description"><?= htmlspecialchars($description) ?></p>
 
-        <?php if ($hasPrice): ?>
-        <div class="catalog-card__price-row">
-            <?php if ($hasPrice && !empty($product['precio_anterior'])): ?>
-            <span class="catalog-card__old-price">$<?= htmlspecialchars(number_format((float) $product['precio_anterior'], 0, ',', '.')) ?></span>
-            <?php endif; ?>
-            <span class="catalog-card__price"><?= htmlspecialchars($priceText) ?></span>
+        <div class="catalog-card__details">
+            <p class="catalog-card__description"><?= htmlspecialchars($description) ?></p>
         </div>
-        <?php endif; ?>
 
         <div class="catalog-card__actions">
             <?php if ($showProductWhatsapp): ?>
@@ -77,8 +71,18 @@ $searchText = trim(implode(' ', [
                 Consultar por WhatsApp
             </a>
             <?php endif; ?>
+
+            <?php if ($hasPrice): ?>
+            <p class="catalog-card__price-line">
+                <?php if (!empty($product['precio_anterior'])): ?>
+                <span class="catalog-card__old-price">$<?= htmlspecialchars(number_format((float) $product['precio_anterior'], 0, ',', '.')) ?></span>
+                <?php endif; ?>
+                <span class="catalog-card__price"><?= htmlspecialchars($priceText) ?></span>
+            </p>
+            <?php endif; ?>
+
             <button type="button"
-                    class="catalog-card__add"
+                    class="catalog-card__add catalog-card__add--primary"
                     data-cart-add
                     data-product-id="<?= htmlspecialchars($product['id'] ?? '') ?>"
                     data-product-name="<?= htmlspecialchars($name) ?>"

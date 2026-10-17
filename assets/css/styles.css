@@ -711,6 +711,54 @@ em, .font-accent {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
+/* Hero banner apilado: imagen 100vw arriba, contenido abajo */
+.hero--stacked .hero-container {
+    max-width: none;
+    padding: 0;
+    gap: 0;
+}
+
+.hero--stacked .hero-image-wrapper {
+    display: block;
+    width: 100%;
+}
+
+.hero--stacked .hero-image-wrapper::before {
+    content: none;
+}
+
+.hero--stacked .hero-image {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.hero--stacked .hero-content {
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.hero--stacked .hero-heading {
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero--stacked .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+}
+
+.hero--stacked .hero-subtitle {
+    max-width: 640px;
+}
+
+.hero--stacked .hero-actions {
+    justify-content: center;
+}
+
 @media (min-width: 768px) {
     .hero {
         min-height: 80vh;
@@ -747,6 +795,18 @@ em, .font-accent {
     .hero--img-right .hero-image-wrapper { order: 2; }
     .hero--img-left .hero-content { order: 2; }
     .hero--img-left .hero-image-wrapper { order: 1; }
+
+    .hero--stacked {
+        min-height: auto;
+    }
+
+    .hero--stacked .hero-container {
+        flex-direction: column;
+    }
+
+    .hero--stacked .hero-content {
+        padding: 3rem 1.5rem;
+    }
 
     .hero-title {
         font-size: clamp(2rem, 3.6vw, 3rem);
@@ -2660,17 +2720,9 @@ em, .font-accent {
 }
 
 .catalog-page--accesorios .catalog-card__description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     font-size: 0.8rem;
     line-height: 1.35;
-}
-
-.catalog-page--accesorios .catalog-card__price-row {
-    margin-bottom: 0.75rem;
 }
 
 .catalog-page--accesorios .catalog-card__price {
@@ -2713,13 +2765,9 @@ em, .font-accent {
     .catalog-page--accesorios .catalog-card__description {
         display: block;
         overflow: visible;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         font-size: 0.95rem;
         line-height: inherit;
-    }
-
-    .catalog-page--accesorios .catalog-card__price-row {
-        margin-bottom: 1rem;
     }
 
     .catalog-page--accesorios .catalog-card__price {
@@ -3203,21 +3251,14 @@ em, .font-accent {
 }
 
 .catalog-page--productos .catalog-card__description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     font-size: 0.8rem;
     line-height: 1.35;
 }
 
-.catalog-page--productos .catalog-card__price-row {
-    margin-bottom: 0.75rem;
-}
-
 .catalog-page--productos .catalog-card__price {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.5rem;
 }
 
 .catalog-page--productos .catalog-card__add {
@@ -3345,18 +3386,14 @@ em, .font-accent {
     font-size: 1.25rem;
 }
 
-.catalog-card__description {
+.catalog-card__details {
     flex: 1;
     margin-bottom: 1rem;
-    font-size: 0.95rem;
 }
 
-.catalog-card__price-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+.catalog-card__description {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
 }
 
 .catalog-card__old-price {
@@ -3365,9 +3402,15 @@ em, .font-accent {
 }
 
 .catalog-card__price {
+    display: inline-block;
     font-family: 'Oswald', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
+    white-space: nowrap;
+    padding: 0.3rem 0.7rem;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .catalog-card__price--consult {
@@ -3377,7 +3420,12 @@ em, .font-accent {
 .catalog-card__actions {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 0.5rem;
+}
+
+.catalog-card__price-line {
+    margin: 0;
+    text-align: right;
 }
 
 .catalog-card__add {
@@ -3651,21 +3699,14 @@ em, .font-accent {
     }
 
     .catalog-page--productos .catalog-card__description {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        margin-bottom: 0.7rem;
+        margin-bottom: 0.5rem;
         font-size: 0.8rem;
         line-height: 1.35;
     }
 
-    .catalog-page--productos .catalog-card__price-row {
-        margin-bottom: 0.7rem;
-    }
-
     .catalog-page--productos .catalog-card__price {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        padding: 0.3rem 0.55rem;
     }
 
     .catalog-page--productos .catalog-card__add {

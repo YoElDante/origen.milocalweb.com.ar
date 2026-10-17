@@ -30,8 +30,6 @@ $instagram   = $cliente['redes']['instagram'] ?? '';
                 <img src="<?= htmlspecialchars($hero_img) ?>"
                      alt="<?= htmlspecialchars($cliente['nombre']) ?> — <?= htmlspecialchars($cliente['rubro']) ?> en Río Tercero"
                      class="hero-image"
-                     width="800"
-                     height="600"
                      loading="eager"
                      fetchpriority="high">
             </div>

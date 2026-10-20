@@ -7,6 +7,62 @@
  * @package MiLocalWeb\Clientes
  */
 
+$storeAddress = [
+    'street_address' => 'Ejército de los Andes 129',
+    'neighborhood' => 'Villa Zoila',
+    'locality' => 'Río Tercero',
+    'postal_code' => 'X5850',
+    'region' => 'Córdoba',
+    'country' => 'AR',
+    'country_name' => 'Argentina',
+];
+
+$storeOpeningHours = [
+    [
+        'days' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'display_days' => 'Lunes a Viernes',
+        'opens' => '10:00',
+        'closes' => '12:45',
+    ],
+    [
+        'days' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        'display_days' => 'Lunes a Viernes',
+        'opens' => '17:15',
+        'closes' => '20:30',
+    ],
+    [
+        'days' => ['Saturday'],
+        'display_days' => 'Sábados',
+        'opens' => '10:00',
+        'closes' => '12:45',
+    ],
+    [
+        'days' => ['Saturday'],
+        'display_days' => 'Sábados',
+        'opens' => '17:15',
+        'closes' => '20:30',
+    ],
+];
+
+$googleBusinessProfile = 'https://maps.app.goo.gl/HUvBH4WQ8sBVuuQMA';
+
+$formatDisplayTime = function (string $time): string {
+    return ltrim($time, '0');
+};
+
+$displayHoursByDay = [];
+foreach ($storeOpeningHours as $hours) {
+    $displayHoursByDay[$hours['display_days']][] = $formatDisplayTime($hours['opens'])
+        . '-'
+        . $formatDisplayTime($hours['closes']);
+}
+
+$displayHours = [];
+foreach ($displayHoursByDay as $days => $ranges) {
+    $displayHours[] = $days . ' ' . implode(' y ', $ranges);
+}
+$displayHours[] = 'Domingo Cerrado';
+
 return [
 
     // ─── Datos básicos ───────────────────────────────────────────────
@@ -15,7 +71,9 @@ return [
     'site_url'  => 'https://origen.milocalweb.com.ar',
     'slogan'    => 'Línea tiempo libre',
     'rubro'     => 'Indumentaria y accesorios para el tiempo libre',
+    'telefono'  => '3571329870',
     'whatsapp'  => '5493571329870',
+    'whatsapp_disponibilidad' => 'Respondemos mensajes todos los días',
     'email'     => '', // Pendiente con el cliente
     'whatsapp_mensaje' => 'Hola! Vi tu web y quisiera más info',
     'whatsapp_mensaje_ofertas' => 'Hola! Estoy en la web y me gustaría ver oportunidades en ropa de invierno y camperas',
@@ -57,16 +115,19 @@ return [
     'productos' => [
         [
             'nombre'      => 'Biker I-Run',
+            'marca'       => 'I-Run',
             'descripcion' => 'Calza biker de tela elastizada, talle S al 2XL. Ideal para running, gym y uso diario.',
             'imagen'      => '/assets/img/cliente/productos/catalogo/biker-irun-mujer.webp',
         ],
         [
             'nombre'      => 'Top Deportivo I-Run Dama',
+            'marca'       => 'I-Run',
             'descripcion' => 'Top con taza fija, soporte y comodidad para entrenar. Talle S al 2XL.',
             'imagen'      => '/assets/img/cliente/productos/catalogo/top-deportivo-irun-dama.webp',
         ],
         [
             'nombre'      => 'Remera Cuello en V Microperforada',
+            'marca'       => 'I-Run',
             'descripcion' => 'Remera microperforada cuello en V, liviana y transpirable.',
             'imagen'      => '/assets/img/cliente/productos/catalogo/remera-cuello-v-microperforada.webp',
         ],
@@ -77,26 +138,26 @@ return [
     'paginas' => [
         'home' => [
             'titulo' => 'Origen8.8 — Indumentaria Deportiva en Río Tercero',
-            'descripcion' => 'Running, trekking y bikes en Río Tercero. Ropa, calzado y accesorios para volver a lo esencial.',
+            'descripcion' => 'Encontrá indumentaria deportiva, calzado y accesorios para running, trekking y bikes en Origen8.8, Río Tercero. Consultá stock y precios por WhatsApp.',
             'h1' => 'Indumentaria Deportiva en Río Tercero',
         ],
         'productos' => [
-            'titulo' => 'Productos — Origen8.8',
-            'descripcion' => 'Catálogo de indumentaria deportiva Origen8.8 en Río Tercero: shorts, tops, calzas, calzado y prendas outdoor.',
-            'h1' => 'Productos',
-            'subtitulo' => 'Indumentaria deportiva para running, trekking, gym y movimiento diario.',
+            'titulo' => 'Indumentaria deportiva en Río Tercero | Origen8.8',
+            'descripcion' => 'Explorá el catálogo de indumentaria deportiva Origen8.8 en Río Tercero: shorts, tops, calzas, calzado y prendas para actividades al aire libre.',
+            'h1' => 'Indumentaria deportiva',
+            'subtitulo' => 'Productos para running, trekking, gym y movimiento diario en Río Tercero.',
         ],
         'ofertas' => [
-            'titulo' => 'Ofertas — Origen8.8',
-            'descripcion' => 'Ofertas y oportunidades en indumentaria deportiva, outdoor y accesorios en Origen8.8.',
-            'h1' => 'Ofertas',
-            'subtitulo' => 'Oportunidades seleccionadas y productos con descuento para consultar por WhatsApp.',
+            'titulo' => 'Ofertas de indumentaria en Río Tercero | Origen8.8',
+            'descripcion' => 'Consultá ofertas y oportunidades en indumentaria deportiva, prendas outdoor y accesorios en Origen8.8, Río Tercero. Pedí detalles por WhatsApp.',
+            'h1' => 'Ofertas de indumentaria deportiva',
+            'subtitulo' => 'Oportunidades seleccionadas en Río Tercero para consultar por WhatsApp.',
         ],
         'accesorios' => [
-            'titulo' => 'Accesorios — Origen8.8',
-            'descripcion' => 'Accesorios para running, trekking y bikes: hidratación, lentes deportivos y equipamiento liviano.',
-            'h1' => 'Accesorios',
-            'subtitulo' => 'Complementos para entrenar, salir a la montaña o pedalear con más comodidad.',
+            'titulo' => 'Accesorios deportivos en Río Tercero | Origen8.8',
+            'descripcion' => 'Descubrí accesorios para running, trekking y bikes en Origen8.8, Río Tercero: hidratación, lentes deportivos, bolsos y equipamiento liviano.',
+            'h1' => 'Accesorios deportivos',
+            'subtitulo' => 'Complementos para entrenar, salir a la montaña o pedalear desde Río Tercero.',
         ],
         'carrito' => [
             'titulo' => 'Mi pedido — Origen8.8',
@@ -110,6 +171,7 @@ return [
         [
             'id' => 'medias-tenis-blanca',
             'nombre' => 'Pack x3 Medias Tenis Blanca',
+            'marca' => 'SOX',
             'slug' => 'medias-tenis-blanca',
             'descripcion' => 'Pack de 3 pares de medias de tenis blancas, talle 35-39.',
             'imagen' => '/assets/img/cliente/productos/catalogo/medias-tenis-blanca.webp',
@@ -127,6 +189,7 @@ return [
         [
             'id' => 'medias-tenis-colores',
             'nombre' => 'Pack x3 Medias Tenis Colores',
+            'marca' => 'SOX',
             'slug' => 'medias-tenis-colores',
             'descripcion' => 'Pack de 3 pares de medias de tenis en colores, talle 35-39.',
             'imagen' => '/assets/img/cliente/productos/catalogo/medias-tenis-colores.webp',
@@ -144,6 +207,7 @@ return [
         [
             'id' => 'medias-tobilleras-irun',
             'nombre' => 'Pack x3 Medias Tobilleras I-Run Unisex',
+            'marca' => 'I-Run',
             'slug' => 'medias-tobilleras-irun',
             'descripcion' => 'Pack de 3 pares de medias tobilleras I-Run unisex, talle 39-44.',
             'imagen' => '/assets/img/cliente/productos/catalogo/medias-tobilleras-irun.webp',
@@ -161,6 +225,7 @@ return [
         [
             'id' => 'medias-unisex-irun',
             'nombre' => 'Pack x3 Medias Unisex I-Run',
+            'marca' => 'I-Run',
             'slug' => 'medias-unisex-irun',
             'descripcion' => 'Pack de 3 pares de medias unisex I-Run, talle 39-44.',
             'imagen' => '/assets/img/cliente/productos/catalogo/medias-unisex-irun.webp',
@@ -178,6 +243,7 @@ return [
         [
             'id' => 'biker-irun-mujer',
             'nombre' => 'Biker I-Run Mujer',
+            'marca' => 'I-Run',
             'slug' => 'biker-irun-mujer',
             'descripcion' => 'Biker I-Run mujer, talle S al 2XL.',
             'imagen' => '/assets/img/cliente/productos/catalogo/biker-irun-mujer.webp',
@@ -195,6 +261,7 @@ return [
         [
             'id' => 'biker-irun-negro',
             'nombre' => 'Biker I-Run Negro',
+            'marca' => 'I-Run',
             'slug' => 'biker-irun-negro',
             'descripcion' => 'Biker I-Run color negro, talle S al 2XL.',
             'imagen' => '/assets/img/cliente/productos/catalogo/biker-irun-negro.webp',
@@ -259,6 +326,7 @@ return [
         [
             'id' => 'short-microfibra-irun',
             'nombre' => 'Short Microfibra Elastizada I-Run Dama',
+            'marca' => 'I-Run',
             'slug' => 'short-microfibra-irun',
             'descripcion' => 'Short de microfibra elastizada I-Run dama, talle S al 2XL.',
             'imagen' => '/assets/img/cliente/productos/catalogo/short-microfibra-irun.webp',
@@ -289,6 +357,7 @@ return [
         [
             'id' => 'musculosa-dryfit-irun',
             'nombre' => 'Musculosa Dryfit I-Run',
+            'marca' => 'I-Run',
             'slug' => 'musculosa-dryfit-irun',
             'descripcion' => 'Musculosa dryfit I-Run, talle S al 2XL. $28.000 efectivo/transferencia; $30.000 con tarjeta de crédito hasta 6 pagos.',
             'imagen' => '/assets/img/cliente/productos/catalogo/musculosa-dryfit-irun.webp',
@@ -306,6 +375,7 @@ return [
         [
             'id' => 'remera-corte-alto',
             'nombre' => 'Remera Corte Alto',
+            'marca' => 'I-Run',
             'slug' => 'remera-corte-alto',
             'descripcion' => 'Remera corte alto, varios colores.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-corte-alto.webp',
@@ -323,6 +393,7 @@ return [
         [
             'id' => 'remera-cuello-v-microperforada',
             'nombre' => 'Remera Cuello en V Microperforada',
+            'marca' => 'I-Run',
             'slug' => 'remera-cuello-v-microperforada',
             'descripcion' => 'Remera microperforada cuello en V, liviana y transpirable.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-cuello-v-microperforada.webp',
@@ -340,6 +411,7 @@ return [
         [
             'id' => 'remera-cuello-v-talles',
             'nombre' => 'Remera Cuello en V Varios Talles',
+            'marca' => 'I-Run',
             'slug' => 'remera-cuello-v-talles',
             'descripcion' => 'Remera cuello en V, varios talles.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-cuello-v-talles.webp',
@@ -357,6 +429,7 @@ return [
         [
             'id' => 'remera-cuello-v-cintura',
             'nombre' => 'Remera Cuello V Detalle en Cintura',
+            'marca' => 'I-Run',
             'slug' => 'remera-cuello-v-cintura',
             'descripcion' => 'Remera cuello en V con detalle en cintura.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-cuello-v-cintura.webp',
@@ -370,6 +443,7 @@ return [
         [
             'id' => 'remera-hombre-cuello-redondo',
             'nombre' => 'Remera Hombre Cuello Redondo',
+            'marca' => 'I-Run',
             'slug' => 'remera-hombre-cuello-redondo',
             'descripcion' => 'Remera hombre cuello redondo, varios colores. $28.000 efectivo/transferencia; $30.000 con tarjeta de crédito hasta 6 pagos.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-hombre-cuello-redondo.webp',
@@ -387,6 +461,7 @@ return [
         [
             'id' => 'remera-irun-dama-espalda',
             'nombre' => 'Remera I-Run Dama Detalle Espalda',
+            'marca' => 'I-Run',
             'slug' => 'remera-irun-dama-espalda',
             'descripcion' => 'Remera I-Run dama con detalle en espalda, talle S al 2XL.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-irun-dama-espalda.webp',
@@ -404,6 +479,7 @@ return [
         [
             'id' => 'remera-irun-dama',
             'nombre' => 'Remera I-Run Dama',
+            'marca' => 'I-Run',
             'slug' => 'remera-irun-dama',
             'descripcion' => 'Remera I-Run dama.',
             'imagen' => '/assets/img/cliente/productos/catalogo/remera-irun-dama.webp',
@@ -421,6 +497,7 @@ return [
         [
             'id' => 'top-deportivo-irun-dama',
             'nombre' => 'Top Deportivo I-Run Dama',
+            'marca' => 'I-Run',
             'slug' => 'top-deportivo-irun-dama',
             'descripcion' => 'Top deportivo con taza fija, talle S al 2XL.',
             'imagen' => '/assets/img/cliente/productos/catalogo/top-deportivo-irun-dama.webp',
@@ -451,6 +528,7 @@ return [
         [
             'id' => 'bolso-irun-negro',
             'nombre' => 'Bolso I-RUN Negro',
+            'marca' => 'I-Run',
             'slug' => 'bolso-irun-negro',
             'descripcion' => 'Bolso I-RUN deportivo color negro.',
             'imagen' => '/assets/img/cliente/productos/catalogo/bolso-irun-negro.webp',
@@ -464,6 +542,7 @@ return [
         [
             'id' => 'bolso-irun-47',
             'nombre' => 'Bolso I-RUN 47x20x28',
+            'marca' => 'I-Run',
             'slug' => 'bolso-irun-47',
             'descripcion' => 'Bolso I-RUN de 47x20x28 cm.',
             'imagen' => '/assets/img/cliente/productos/catalogo/bolso-irun-47.webp',
@@ -581,6 +660,7 @@ return [
         [
             'id' => 'cinturon-hidratacion-navajo',
             'nombre' => 'Cinturón de Hidratación Navajo',
+            'marca' => 'Navajo',
             'slug' => 'cinturon-hidratacion-navajo',
             'descripcion' => 'Cinturón de hidratación Navajo, liviano para running y trekking.',
             'imagen' => '/assets/img/cliente/productos/catalogo/cinturon-hidratacion-navajo.webp',
@@ -594,6 +674,7 @@ return [
         [
             'id' => 'chaleco-hidratacion-navajo',
             'nombre' => 'Chaleco de Hidratación Navajo 7L',
+            'marca' => 'Navajo',
             'slug' => 'chaleco-hidratacion-navajo',
             'descripcion' => 'Chaleco Navajo Kaizen 7L con 8 bolsillos y 2 softflask de 500ml.',
             'imagen' => '/assets/img/cliente/productos/catalogo/chaleco-hidratacion-navajo.webp',
@@ -678,13 +759,19 @@ return [
 
     // ─── Ubicación ───────────────────────────────────────────────────
 
-    'direccion'    => "Ejército de los Andes 129\nX5850\nRío Tercero\nCórdoba, Argentina",
+    'direccion'    => implode("\n", [
+        $storeAddress['street_address'],
+        $storeAddress['neighborhood'],
+        $storeAddress['postal_code'],
+        $storeAddress['locality'],
+        $storeAddress['region'] . ', ' . $storeAddress['country_name'],
+    ]),
     'gmaps_embed'  => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d-64.1177626!3d-32.18387920000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cd6f33c8d75d99%3A0xea6f9f9ecb87cfe0!2sorigen%20run%20%26%20bike!5e0!3m2!1ses!2sar!4v1787875054834!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
-    'gmaps_link'   => 'https://maps.app.goo.gl/HUvBH4WQ8sBVuuQMA',
+    'gmaps_link'   => $googleBusinessProfile,
     'mostrar_estrellas' => false,
     'estrellas'    => 5,
     'total_resenas'=> 1,
-    'horario'      => 'Lunes a Viernes 9:00-20:00 | Sábados 9:00-12:00 | Domingo Cerrado',
+    'horario'      => implode(' | ', $displayHours),
 
     // ─── Nuestro Local ──────────────────────────────────────────────
 
@@ -731,6 +818,7 @@ return [
         'instagram' => 'https://www.instagram.com/origen8.8/',
         'facebook'  => '',
         'tiktok'    => '',
+        'youtube'   => '',
         'web'       => 'https://origen.milocalweb.com.ar/',
     ],
 
@@ -765,9 +853,17 @@ return [
     'seo_zona_influencia' => 'Valle de Calamuchita, Almafuerte, Tancacha, Santa Rosa de Calamuchita, Embalse, Villa General Belgrano',
     'seo_lat' => '-32.1838792',
     'seo_long' => '-64.1177626',
-    'seo_og_image' => '/assets/img/cliente/logos/logo-origen88.webp',
+    'seo_store' => [
+        'address' => $storeAddress,
+        'opening_hours' => $storeOpeningHours,
+        'google_business_profile' => $googleBusinessProfile,
+    ],
+    'seo_og_image' => '/assets/img/cliente/logos/og-origen-88-1200x630.jpg',
+    'seo_og_image_width' => 1200,
+    'seo_og_image_height' => 630,
+    'seo_og_image_alt' => 'Origen8.8 — Indumentaria y accesorios para disfrutar al aire libre',
     'og_descripcion' => 'Indumentaria deportiva en Río Tercero. Running, trekking y bikes. Calzas, shorts, tops y accesorios. ¡Escribinos por WhatsApp!',
     'seo_categorias' => ['Running', 'Trekking', 'Bikes', 'Calzas', 'Shorts', 'Tops', 'Camperas outdoor', 'Hidratación', 'Lentes deportivos'],
-    'seo_marcas' => ['Navajo', 'Kaizen'], // Confirmar con el cliente
+    'seo_marcas' => ['Navajo', 'Kaizen', 'SOX', 'I-Run'],
 
 ];

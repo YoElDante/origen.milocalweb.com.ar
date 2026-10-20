@@ -19,11 +19,48 @@ $site_base   = catalog_site_url($cliente);
 $site_url    = $site_base . '/';
 $currentPage = $page ?? 'home';
 $currentUrl  = $pageConfig['url'] ?? catalog_page_url($cliente, $currentPage);
+$isNotFound  = !empty($pageConfig['is_not_found']);
+$noindex     = $isNotFound || $currentPage === 'carrito';
 $og_image    = $cliente['seo_og_image'] ?? $cliente['logo_img'] ?? '';
-$og_desc     = $pageConfig['descripcion'] ?? $cliente['og_descripcion'] ?? $cliente['hero_descripcion'] ?? $cliente['slogan'];
-$meta_desc   = $og_desc;
+$og_image_width = (int) ($cliente['seo_og_image_width'] ?? 0);
+$og_image_height = (int) ($cliente['seo_og_image_height'] ?? 0);
+$og_image_alt = $cliente['seo_og_image_alt'] ?? ($cliente['nombre'] ?? 'Origen8.8');
+$meta_desc   = $pageConfig['descripcion'] ?? $cliente['og_descripcion'] ?? $cliente['hero_descripcion'] ?? $cliente['slogan'];
+$og_desc     = $meta_desc;
 $pageTitle   = $pageConfig['titulo'] ?? ($cliente['nombre'] . ' — ' . $cliente['slogan']);
 $schemaGraph = [];
+
+if (!$isNotFound && !empty($pageProducts) && is_array($pageProducts[0] ?? null)) {
+    $firstProduct = $pageProducts[0];
+
+    if (!empty($firstProduct['imagen'])) {
+        $og_image = $firstProduct['imagen'];
+        $og_image_width = (int) ($firstProduct['imagen_ancho'] ?? 0);
+        $og_image_height = (int) ($firstProduct['imagen_alto'] ?? 0);
+        $og_image_alt = $firstProduct['alt'] ?? ($firstProduct['nombre'] ?? $og_image_alt);
+    }
+
+    if (!empty($firstProduct['descripcion'])) {
+        $og_desc = $firstProduct['descripcion'];
+    }
+}
+
+$og_image_url = empty($og_image)
+    ? ''
+    : ((strpos($og_image, 'http') === 0) ? $og_image : catalog_absolute_asset_url($cliente, $og_image));
+$storeConfig = $cliente['seo_store'] ?? [];
+$storeAddress = $storeConfig['address'] ?? [];
+$storeSameAs = array_values(array_filter([
+    $cliente['redes']['instagram'] ?? '',
+    $cliente['redes']['facebook'] ?? '',
+    $cliente['redes']['tiktok'] ?? '',
+    $cliente['redes']['youtube'] ?? '',
+    $storeConfig['google_business_profile'] ?? '',
+]));
+$storeBrands = array_values(array_filter(array_map(function ($brand) {
+    return is_string($brand) ? trim($brand) : '';
+}, $cliente['seo_marcas'] ?? [])));
+$storePhone = $wa_number !== '' ? '+' . $wa_number : null;
 
 $schemaGraph[] = [
     '@type' => 'Store',
@@ -31,38 +68,46 @@ $schemaGraph[] = [
     'name'  => $cliente['nombre'],
     'description' => $cliente['rubro'],
     'url'   => $site_url,
-    'telephone' => '+54' . ltrim($wa_number, '54'),
+    'telephone' => $storePhone,
     'email' => $cliente['email'] ?: null,
     'address' => [
         '@type' => 'PostalAddress',
-        'streetAddress' => 'Ejército de los Andes 129',
-        'addressLocality' => 'Río Tercero',
-        'postalCode' => 'X5850',
-        'addressRegion' => 'Córdoba',
-        'addressCountry' => 'AR',
+        'streetAddress' => implode(', ', array_filter([
+            $storeAddress['street_address'] ?? '',
+            $storeAddress['neighborhood'] ?? '',
+        ])),
+        'addressLocality' => $storeAddress['locality'] ?? '',
+        'postalCode' => $storeAddress['postal_code'] ?? '',
+        'addressRegion' => $storeAddress['region'] ?? '',
+        'addressCountry' => $storeAddress['country'] ?? '',
     ],
     'geo' => [
         '@type' => 'GeoCoordinates',
-        'latitude' => $cliente['seo_lat'] ?? '-32.1838792',
-        'longitude' => $cliente['seo_long'] ?? '-64.1177626',
+        'latitude' => $cliente['seo_lat'] ?? '',
+        'longitude' => $cliente['seo_long'] ?? '',
     ],
-    'openingHoursSpecification' => [
-        [
+    'openingHoursSpecification' => array_map(function ($hours) {
+        return [
             '@type' => 'OpeningHoursSpecification',
-            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-            'opens' => '09:00',
-            'closes' => '20:00',
-        ],
-        [
-            '@type' => 'OpeningHoursSpecification',
-            'dayOfWeek' => 'Saturday',
-            'opens' => '09:00',
-            'closes' => '12:00',
-        ],
+            'dayOfWeek' => $hours['days'] ?? [],
+            'opens' => $hours['opens'] ?? '',
+            'closes' => $hours['closes'] ?? '',
+        ];
+    }, $storeConfig['opening_hours'] ?? []),
+    'brand' => array_map(function ($brand) {
+        return [
+            '@type' => 'Brand',
+            'name' => $brand,
+        ];
+    }, $storeBrands),
+    'contactPoint' => $storePhone === null ? null : [
+        '@type' => 'ContactPoint',
+        'telephone' => $storePhone,
+        'contactType' => 'customer service',
+        'availableLanguage' => 'Spanish',
+        'description' => $cliente['whatsapp_disponibilidad'] ?? '',
     ],
-    'sameAs' => array_values(array_filter([
-        $cliente['redes']['instagram'] ?? '',
-    ])),
+    'sameAs' => $storeSameAs,
 ];
 
 $schemaGraph[] = [
@@ -120,21 +165,42 @@ $json_ld = json_encode($structured_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= htmlspecialchars($meta_desc) ?>">
-    <meta name="robots" content="<?= !empty($pageConfig['is_not_found']) ? 'noindex, follow' : 'index, follow' ?>">
+    <meta name="robots" content="<?= $noindex ? 'noindex, follow' : 'index, follow' ?>">
 
     <!-- Open Graph -->
     <meta property="og:title" content="<?= htmlspecialchars($pageTitle) ?>">
     <meta property="og:description" content="<?= htmlspecialchars($og_desc) ?>">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="<?= htmlspecialchars($cliente['nombre']) ?>">
+    <?php if (!$isNotFound): ?>
     <meta property="og:url" content="<?= htmlspecialchars($currentUrl) ?>">
-    <?php if (!empty($og_image)): ?>
-    <meta property="og:image" content="<?= htmlspecialchars((strpos($og_image, 'http') === 0) ? $og_image : $site_url . ltrim($og_image, '/')) ?>">
+    <?php if ($og_image_url !== ''): ?>
+    <meta property="og:image" content="<?= htmlspecialchars($og_image_url) ?>">
+    <?php if ($og_image_width > 0): ?>
+    <meta property="og:image:width" content="<?= $og_image_width ?>">
+    <?php endif; ?>
+    <?php if ($og_image_height > 0): ?>
+    <meta property="og:image:height" content="<?= $og_image_height ?>">
+    <?php endif; ?>
+    <meta property="og:image:alt" content="<?= htmlspecialchars($og_image_alt) ?>">
+    <?php endif; ?>
+    <?php endif; ?>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= htmlspecialchars($pageTitle) ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($og_desc) ?>">
+    <?php if (!$isNotFound && $og_image_url !== ''): ?>
+    <meta name="twitter:image" content="<?= htmlspecialchars($og_image_url) ?>">
+    <meta name="twitter:image:alt" content="<?= htmlspecialchars($og_image_alt) ?>">
     <?php endif; ?>
 
     <title><?= htmlspecialchars($pageTitle) ?></title>
 
+    <?php if (!$isNotFound): ?>
     <link rel="canonical" href="<?= htmlspecialchars($currentUrl) ?>">
+    <?php endif; ?>
 
     <!-- Favicon -->
     <?php if (!empty($cliente['favicon'])): ?>

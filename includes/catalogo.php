@@ -124,11 +124,14 @@ function catalog_product_schema(array $cliente, array $product): array
         'description' => $product['descripcion'] ?? '',
         'image' => catalog_absolute_asset_url($cliente, $product['imagen'] ?? ''),
         'category' => $product['categoria'] ?? ($cliente['seo_keywords_primarias'] ?? 'Indumentaria Deportiva'),
-        'brand' => [
-            '@type' => 'Brand',
-            'name' => $cliente['nombre'] ?? 'Origen8.8',
-        ],
     ];
+
+    if (!empty($product['marca'])) {
+        $schema['brand'] = [
+            '@type' => 'Brand',
+            'name' => $product['marca'],
+        ];
+    }
 
     if (catalog_product_has_price($product)) {
         $schema['offers'] = [

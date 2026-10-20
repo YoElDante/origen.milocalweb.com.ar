@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /includes/
 Disallow: /tools/
+Disallow: /assets/vid/
 
 Sitemap: https://origen.milocalweb.com.ar/sitemap.xml

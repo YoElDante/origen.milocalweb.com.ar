@@ -1,0 +1,348 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Landing Page Styles
+   Mobile-first, CSS custom properties desde config.php.
+   No frameworks. Vanilla CSS.
+   Primer parcial del bundle: reset, tipografía, layout y botones.
+   El orden de carga lo fija tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Fuentes locales ─── */
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: local('Oswald'), local('Oswald-Bold'),
+         url('/assets/fonts/oswald-v53-latin-700.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+    src: local('Open Sans'), local('OpenSans-Regular'),
+         url('/assets/fonts/open-sans-v40-latin-regular.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: local('Playfair Display Italic'), local('PlayfairDisplay-Italic'),
+         url('/assets/fonts/playfair-display-v37-latin-italic.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Space Mono'), local('SpaceMono-Regular'),
+         url('/assets/fonts/space-mono-v17-latin-regular.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Space Mono Bold'), local('SpaceMono-Bold'),
+         url('/assets/fonts/space-mono-v17-latin-700.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F;
+}
+
+/* ─── Reset y base ─── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Las variables --color-* y --tipografia llegan inline desde header.php,
+   generadas a partir de la paleta de config.php. */
+body {
+    margin: 0;
+    font-family: var(--tipografia, "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text, #2b2b2b);
+    background-color: var(--color-bg, #ffffff);
+    -webkit-font-smoothing: antialiased;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.js-lightbox-image {
+    cursor: zoom-in;
+}
+
+/* Lightbox creado por main.js; el selector [hidden] debe ganar al display:grid. */
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.82);
+}
+
+.image-lightbox[hidden] {
+    display: none;
+}
+
+.image-lightbox__dialog {
+    position: relative;
+    max-width: 80vw;
+    max-height: 80vh;
+}
+
+.image-lightbox__image {
+    width: auto;
+    height: auto;
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45);
+    cursor: default;
+}
+
+.image-lightbox__close {
+    position: absolute;
+    top: -0.85rem;
+    right: -0.85rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    font-size: 1.6rem;
+    line-height: 1;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.image-lightbox__close:hover,
+.image-lightbox__close:focus-visible {
+    background-color: var(--color-accent, #00bbaa);
+    color: #ffffff;
+}
+
+@media (max-width: 640px) {
+    .image-lightbox {
+        padding: 1rem;
+    }
+
+    .image-lightbox__dialog,
+    .image-lightbox__image {
+        max-width: 88vw;
+        max-height: 80vh;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0 0 1rem;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 5vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 4vw, 1.6rem); }
+
+em, .font-accent {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.font-mono {
+    font-family: 'Space Mono', monospace;
+}
+
+/* ─── Layout ─── */
+.section {
+    padding: 4rem 1rem;
+}
+
+.section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-muted, #5c7c8a);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+/* ─── Botones ─── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--color-primary, #000000);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover, #2b2b2b);
+}
+
+.btn-accent {
+    background-color: var(--color-accent, #00bbaa);
+    color: #ffffff;
+}
+
+.btn-accent:hover {
+    background-color: var(--color-accent-hover, #2accb8);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary, #000000);
+    border: 2px solid currentColor;
+}
+
+.btn-instagram {
+    background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%);
+    color: #ffffff;
+}
+
+.btn-instagram:hover {
+    filter: brightness(1.1);
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe5b;
+}
+
+/* ─── Botón "ver productos" al pie de sección ─── */
+.section-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.75rem;
+}
+
+.btn-ver-productos {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+    border: 1.5px solid transparent;
+    background: linear-gradient(135deg, var(--color-accent, #00bbaa) 0%, var(--color-accent-hover, #2accb8) 55%, var(--color-soft-aqua, #8eaaaf) 100%);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 0 rgba(0, 187, 170, 0);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    animation: cta-soft-pulse 5.5s ease-in-out infinite;
+}
+
+.btn-ver-productos::after,
+.productos-cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,0.55) 42%, rgba(0, 187, 170, 0.35) 50%, rgba(255,255,255,0.25) 58%, transparent 66% 100%);
+    transform: translateX(-130%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.btn-ver-productos svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-ver-productos:hover,
+.btn-ver-productos:focus-visible {
+    background: #000000;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.35), 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+.btn-ver-productos:hover::after,
+.btn-ver-productos:focus-visible::after,
+.productos-cta-btn:hover::after,
+.productos-cta-btn:focus-visible::after {
+    background: linear-gradient(110deg, transparent 0 34%, rgba(255,255,255,0.65) 42%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0.25) 58%, transparent 66% 100%);
+    animation: cta-shimmer-sweep 0.85s ease forwards;
+}
+
+.btn-ver-productos:hover svg,
+.btn-ver-productos:focus-visible svg {
+    transform: translateX(4px);
+}
+
+.section-productos .btn-ver-productos {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+}
+

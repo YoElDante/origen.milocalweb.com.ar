@@ -5,6 +5,10 @@
  * Incluye metadatos, Open Graph, favicon, inyección de colores
  * del cliente, fuentes y la barra de navegación sticky.
  *
+ * El JSON-LD se arma como un único @graph con Store, WebSite,
+ * BreadcrumbList (en páginas internas) e ItemList (cuando hay productos).
+ * Carrito y 404 se marcan como noindex.
+ *
  * @package MiLocalWeb\Clientes
  */
 
@@ -20,7 +24,12 @@ $site_url    = $site_base . '/';
 $currentPage = $page ?? 'home';
 $currentUrl  = $pageConfig['url'] ?? catalog_page_url($cliente, $currentPage);
 $isNotFound  = !empty($pageConfig['is_not_found']);
-$noindex     = $isNotFound || $currentPage === 'carrito';
+// El carrito es una vista privada del pedido: no debe indexarse.
+// Carrito y 404 son privados. /ofertas también queda noindex mientras no
+// tenga productos reales, para no indexar una página vacía.
+$noindex     = $isNotFound
+    || $currentPage === 'carrito'
+    || ($currentPage === 'ofertas' && empty($pageProducts));
 $og_image    = $cliente['seo_og_image'] ?? $cliente['logo_img'] ?? '';
 $og_image_width = (int) ($cliente['seo_og_image_width'] ?? 0);
 $og_image_height = (int) ($cliente['seo_og_image_height'] ?? 0);
@@ -30,6 +39,8 @@ $og_desc     = $meta_desc;
 $pageTitle   = $pageConfig['titulo'] ?? ($cliente['nombre'] . ' — ' . $cliente['slogan']);
 $schemaGraph = [];
 
+// Open Graph: si la página es de catálogo, prioriza la imagen del primer
+// producto sobre la imagen institucional del cliente.
 if (!$isNotFound && !empty($pageProducts) && is_array($pageProducts[0] ?? null)) {
     $firstProduct = $pageProducts[0];
 
@@ -62,6 +73,7 @@ $storeBrands = array_values(array_filter(array_map(function ($brand) {
 }, $cliente['seo_marcas'] ?? [])));
 $storePhone = $wa_number !== '' ? '+' . $wa_number : null;
 
+// Store: datos comerciales, dirección, horarios y perfiles oficiales.
 $schemaGraph[] = [
     '@type' => 'Store',
     '@id'   => $site_url . '#store',
@@ -110,6 +122,7 @@ $schemaGraph[] = [
     'sameAs' => $storeSameAs,
 ];
 
+// WebSite: identidad del sitio para el grafo de schema.org.
 $schemaGraph[] = [
     '@type' => 'WebSite',
     '@id' => $site_url . '#website',
@@ -118,6 +131,7 @@ $schemaGraph[] = [
     'inLanguage' => 'es-AR',
 ];
 
+// BreadcrumbList solo en páginas internas; la home no necesita migas.
 if ($currentPage !== 'home') {
     $schemaGraph[] = [
         '@type' => 'BreadcrumbList',
@@ -138,6 +152,8 @@ if ($currentPage !== 'home') {
     ];
 }
 
+// ItemList: cada producto delega en catalog_product_schema(), que omite
+// Offer.price cuando el precio es "a consultar".
 if (!empty($pageProducts)) {
     $schemaGraph[] = [
         '@type' => 'ItemList',
@@ -152,6 +168,8 @@ if (!empty($pageProducts)) {
     ];
 }
 
+// Un único @context para todo el grafo; los flags evitan escapar slashes
+// y caracteres UTF-8 en el HTML.
 $structured_data = [
     '@context' => 'https://schema.org',
     '@graph'   => $schemaGraph,

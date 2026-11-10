@@ -2,6 +2,7 @@
 # Reglas de seguridad, caché y rendimiento.
 
 # ---- Headers de seguridad ----
+# Evitan sniffing de tipos MIME, framing externo y fuga de referrer.
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"
     Header always set X-Frame-Options "SAMEORIGIN"
@@ -9,6 +10,8 @@
 </IfModule>
 
 # ---- Cache para assets ----
+# CSS/JS se cachean un año porque index.php agrega ?v=mtime (cache busting).
+# Imágenes y videos usan una ventana menor; HTML/PHP nunca se cachean.
 <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
 </FilesMatch>
@@ -25,14 +28,21 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^(config\.php|includes/|tools/) - [F,L,NC]
+    # Bloquea acceso directo a configuración, parciales PHP, scripts,
+    # documentación interna y metadatos del repo.
+    RewriteRule ^(?:config\.php|includes|tools|docs|\.git|\.atl)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:AGENTS|README)\.md$ - [F,L,NC]
+    RewriteRule ^\.gitignore$ - [F,L,NC]
 
+    # Fuerza HTTPS en producción (301 permanente).
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+    # Archivos y directorios existentes se sirven sin pasar por el router.
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
+    # Rutas públicas limpias -> index.php?p=... (el router valida la whitelist).
     RewriteRule ^(productos|ofertas|accesorios|carrito)/?$ index.php?p=$1 [L,QSA]
 </IfModule>

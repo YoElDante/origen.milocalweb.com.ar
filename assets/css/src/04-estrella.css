@@ -1,0 +1,119 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Parcial 04: bloque estrella / destacados.
+   Grilla progresiva: 1 columna mobile, 1.2fr/1fr y luego 3 cards.
+   Orden de cascada: tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Estrella / Destacados ─── */
+.section-estrella {
+    background-color: var(--color-verano-fem, #dfd3ca);
+}
+
+.estrella-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.estrella-main {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 320px;
+}
+
+.estrella-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.estrella-main .estrella-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    color: #ffffff;
+}
+
+.estrella-main .estrella-overlay h3 {
+    margin-bottom: 0.25rem;
+}
+
+.estrella-main .estrella-overlay p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.estrella-cards {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.estrella-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 180px;
+}
+
+.estrella-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+.estrella-card .estrella-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    color: #ffffff;
+}
+
+.estrella-card .estrella-overlay h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.estrella-card .estrella-overlay p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.92;
+}
+
+.estrella-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+    .estrella-grid {
+        grid-template-columns: 1.2fr 1fr;
+    }
+    .estrella-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .estrella-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .estrella-main {
+        grid-row: span 1;
+    }
+}
+

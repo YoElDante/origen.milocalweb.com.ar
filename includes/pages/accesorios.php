@@ -3,6 +3,7 @@
  * Pagina de accesorios.
  *
  * Renderiza productos configurados para la ruta `accesorios`.
+ * El filtro real lo resuelve catalog_products_for_page() en index.php.
  *
  * @package MiLocalWeb\Clientes
  */
@@ -28,6 +29,8 @@ $breadcrumbs = [
         <div class="catalog-grid">
             <?php foreach ($pageProducts as $product): ?>
             <?php
+                // La categoría visible se fuerza a Accesorios y se omiten
+                // videos para priorizar la grilla compacta de esta página.
                 $product = array_merge($product, ['categoria' => 'Accesorios']);
                 $product['video'] = '';
             ?>

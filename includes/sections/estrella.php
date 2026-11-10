@@ -25,6 +25,7 @@ $ofertas = $cliente['seccion_ofertas'] ?? [];
 
         <div class="ofertas-grid">
             <?php
+            // Textos rotativos por posición; el módulo evita índices fuera de rango.
             $cta_textos = ['Preguntá por la oferta', 'No te lo pierdas', 'Pedí el tuyo'];
             $pie_textos = [
                 '¡Consultanos por las promos de otoño-invierno que ya se van! Dale, preguntanos por WhatsApp.',

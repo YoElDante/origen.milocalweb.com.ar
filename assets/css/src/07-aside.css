@@ -1,0 +1,98 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Parcial 07: aside publicitario de MiLocalWeb.
+   Promoción discreta; en mobile se apila y centra.
+   Orden de cascada: tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Aside Publicitario MiLocalWeb ─── */
+.publicidad-aside {
+    padding: 2rem 1.5rem;
+    background-color: var(--color-bg, #ffffff);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.aside-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.aside-logo {
+    flex-shrink: 0;
+    display: flex;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.aside-logo:hover {
+    opacity: 1;
+}
+
+.aside-logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.aside-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.aside-slogan {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--color-accent, #00bbaa);
+    text-transform: uppercase;
+}
+
+.aside-pregunta {
+    font-size: 0.9rem;
+    color: var(--color-muted, #5c7c8a);
+}
+
+.aside-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.3rem;
+    background-color: var(--color-primary, #000000);
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.aside-cta:hover {
+    background-color: var(--color-primary-hover, #2b2b2b);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .aside-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.9rem;
+    }
+
+    .aside-texto {
+        align-items: center;
+    }
+
+    .aside-logo-img {
+        height: 58px;
+    }
+}
+

@@ -8,6 +8,8 @@
  * @package MiLocalWeb\Clientes
  */
 
+// El aside es obligatorio en el modelo MiLocalWeb, pero config puede
+// ocultarlo con `aside`/`aside_visible`.
 $aside_visibilidad = $cliente['aside'] ?? $cliente['aside_visible'] ?? true;
 if (!$aside_visibilidad) {
     return;

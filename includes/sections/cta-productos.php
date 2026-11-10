@@ -7,6 +7,7 @@
  * @package MiLocalWeb\Clientes
  */
 ?>
+<?php /* Imagen de fondo del CTA: carga eager por ser candidata a LCP. */ ?>
 <section id="conoce-productos" class="section-productos-cta" aria-label="Entrá a nuestro ShowRoom">
     <div class="productos-cta-media">
         <img src="/assets/img/cliente/local/interior/interior2.webp"

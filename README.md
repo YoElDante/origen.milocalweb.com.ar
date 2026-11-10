@@ -20,7 +20,7 @@ Desarrollada con el template de **MiLocalWeb** (`milocalweb.com.ar`), pensado pa
 - **HTML5 semántico**
 - **CSS3** con custom properties (variables CSS)
 - **JavaScript** vanilla (sin frameworks)
-- **Google Fonts** (Open Sans)
+- **Fuentes locales auto-hospedadas** (Oswald, Open Sans, Playfair Display, Space Mono) en `assets/fonts/`
 - **SVG inline** para iconos
 
 ---

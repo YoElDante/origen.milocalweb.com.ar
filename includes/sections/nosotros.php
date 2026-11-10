@@ -8,6 +8,7 @@
  * @package MiLocalWeb\Clientes
  */
 
+// Se listan solo redes con URL para no mostrar enlaces vacíos.
 $redes_vivas = array_filter($cliente['redes'] ?? [], function ($url) {
     return !empty($url);
 });
@@ -45,6 +46,7 @@ $watermark_logo = '/assets/img/cliente/logos/logo-origen88.webp';
 
             </div>
 
+            <?php /* El bloque de video solo existe si el archivo está en disco. */ ?>
             <?php if (!empty($video) || is_file(__DIR__ . '/../../' . ltrim($video_origen, '/'))): ?>
             <div class="nosotros-media-grid">
                 <?php if (!empty($video)): ?>
@@ -68,6 +70,7 @@ $watermark_logo = '/assets/img/cliente/logos/logo-origen88.webp';
                 </div>
                 <?php endif; ?>
 
+                <?php /* Video secundario oculto en mobile, visible desde 900px. */ ?>
                 <?php if (is_file(__DIR__ . '/../../' . ltrim($video_origen, '/'))): ?>
                 <div class="nosotros-media nosotros-media-secundario">
                 <video

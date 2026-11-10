@@ -1,0 +1,270 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Parcial 10: vitrina de clientes y footer.
+   El badge de MiLocalWeb es obligatorio; no eliminar sus estilos.
+   Orden de cascada: tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Clientes ─── */
+.section-clientes {
+    background-color: var(--color-bg, #ffffff);
+    padding: 2rem 1rem;
+}
+
+.clientes-titulo {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-muted, #5c7c8a);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.clientes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cliente-logo-link {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.cliente-logo-link:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.cliente-logo {
+    max-width: 120px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+    position: relative;
+    background-color: var(--color-bg-alt, #e5e5e5);
+    padding: 3rem 1rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--texture-stone, none);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer-brand {
+    text-align: center;
+}
+
+.footer-logo-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.footer-logo {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin: 0 auto 0.75rem;
+}
+
+.footer-slogan {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--color-muted, #5c7c8a);
+}
+
+.footer-social, .footer-actions {
+    text-align: center;
+}
+
+.footer-social h4, .footer-actions h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.footer-social .btn-instagram,
+.footer-wa-link {
+    box-sizing: border-box;
+    width: min(100%, 280px);
+    height: 52px;
+    padding: 0 1rem;
+    white-space: nowrap;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--color-primary, #000000);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-link:hover {
+    background-color: var(--color-primary, #000000);
+    color: #ffffff;
+}
+
+.footer-wa-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #25d366;
+    color: #ffffff;
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.88rem;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s ease;
+}
+
+.footer-wa-link svg {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+}
+
+.footer-wa-link:hover {
+    background-color: #1ebe5b;
+}
+
+/* ─── Badge MiLocalWeb ─── */
+.footer-badge {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 1.5rem auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+
+.footer-mlw-logo {
+    flex-shrink: 0;
+    display: flex;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.footer-mlw-logo:hover {
+    opacity: 1;
+}
+
+.mlw-logo-img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: right;
+}
+
+.footer-badge-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text, #2b2b2b);
+}
+
+.footer-badge-text .mlw-link {
+    color: var(--color-accent, #00bbaa);
+    transition: opacity 0.2s ease;
+}
+
+.footer-badge-text .mlw-link:hover {
+    opacity: 0.7;
+}
+
+.footer-badge-cta {
+    font-size: 0.82rem;
+}
+
+.footer-badge-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-muted, #5c7c8a);
+    font-weight: 500;
+    border-bottom: 1px dashed rgba(92, 124, 138, 0.4);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-badge-cta a:hover {
+    color: var(--color-accent, #00bbaa);
+    border-color: var(--color-accent, #00bbaa);
+}
+
+@media (max-width: 768px) {
+    .footer-badge {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .footer-badge-text {
+        text-align: center;
+        align-items: center;
+    }
+
+    .mlw-logo-img {
+        height: 38px;
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+    }
+    .footer-brand {
+        text-align: center;
+    }
+    .footer-logo {
+        margin: 0 auto 0.75rem;
+    }
+}
+

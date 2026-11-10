@@ -9,11 +9,13 @@
  * @package MiLocalWeb\Clientes
  */
 
+// Doble flag por compatibilidad con configs históricas.
 $clientes_mostrar = $cliente['clientes_mostrar'] ?? $cliente['mostrar_clientes'] ?? true;
 if (!$clientes_mostrar) {
     return;
 }
 
+// Sin logos cargados no se renderiza la vitrina.
 $lista_clientes = $cliente['clientes'] ?? [];
 if (empty($lista_clientes)) {
     return;

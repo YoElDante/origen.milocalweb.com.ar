@@ -1,0 +1,238 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Parcial 12: flotantes y animaciones del carrito.
+   Los tres botones se apilan por offset: WhatsApp 1rem, carrito 5rem,
+   volver arriba 9rem. Las animaciones respetan prefers-reduced-motion.
+   Orden de cascada: tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Back to top ─── */
+.back-to-top {
+    position: fixed;
+    right: 1rem;
+    bottom: 9rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-primary, #000000);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 900;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ─── WhatsApp float ─── */
+.whatsapp-float {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #25d366;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+}
+
+/* ─── Carrito float ─── */
+.cart-float {
+    position: fixed;
+    right: 1rem;
+    bottom: 5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-primary, #000000);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.cart-float.is-catching {
+    animation: cart-catch 0.32s ease;
+}
+
+.cart-float.is-emptying {
+    animation: cart-empty-box 0.86s ease;
+}
+
+.box-icon {
+    position: absolute;
+    transform-origin: center;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.box-icon--open {
+    opacity: 0;
+    transform: translateY(1px) scale(0.92);
+}
+
+.cart-float.is-open .box-icon--closed {
+    opacity: 0;
+    transform: translateY(1px) scale(0.92);
+}
+
+.cart-float.is-open .box-icon--open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.cart-float-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    border-radius: 11px;
+    background-color: var(--color-accent, #00bbaa);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff;
+}
+
+.cart-float-count[hidden] {
+    display: none;
+}
+
+.cart-fly-dot {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0 12%, var(--color-accent, #00bbaa) 18% 100%);
+    box-shadow: 0 8px 18px rgba(0, 187, 170, 0.35);
+    pointer-events: none;
+    z-index: 1100;
+    animation: cart-fly 0.78s cubic-bezier(0.22, 0.72, 0.22, 1) forwards;
+}
+
+.cart-empty-dot {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    pointer-events: none;
+    z-index: 1100;
+    animation: cart-empty-dot 1.05s cubic-bezier(0.22, 0.7, 0.18, 1) forwards;
+}
+
+/* Trayectoria del punto: usa --cart-fly-x/y/arc inyectadas por cart.js;
+   el arco simula un lanzamiento y el punto se encoge al llegar. */
+@keyframes cart-fly {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.35);
+    }
+    12% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.12), calc(var(--cart-fly-y) * 0.12 - var(--cart-fly-arc) * 0.42), 0) scale(0.72);
+    }
+    24% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.24), calc(var(--cart-fly-y) * 0.24 - var(--cart-fly-arc) * 0.73), 0) scale(0.9);
+    }
+    38% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.38), calc(var(--cart-fly-y) * 0.38 - var(--cart-fly-arc) * 0.94), 0) scale(0.98);
+    }
+    52% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.52), calc(var(--cart-fly-y) * 0.52 - var(--cart-fly-arc) * 1), 0) scale(0.93);
+    }
+    68% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.68), calc(var(--cart-fly-y) * 0.68 - var(--cart-fly-arc) * 0.87), 0) scale(0.76);
+    }
+    84% {
+        opacity: 1;
+        transform: translate3d(calc(var(--cart-fly-x) * 0.84), calc(var(--cart-fly-y) * 0.84 - var(--cart-fly-arc) * 0.54), 0) scale(0.54);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--cart-fly-x), var(--cart-fly-y), 0) scale(0.18);
+    }
+}
+
+@keyframes cart-catch {
+    0%, 100% { transform: scale(1); }
+    45% { transform: scale(1.16) rotate(-5deg); }
+}
+
+@keyframes cart-empty-box {
+    0%, 100% { transform: scale(1); }
+    45% { transform: scale(1.05) rotate(1.5deg); }
+}
+
+@keyframes cart-empty-dot {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.28);
+    }
+    16% {
+        opacity: 1;
+        transform: translate3d(0, -16px, 0) scale(1);
+    }
+    44% {
+        opacity: 0.9;
+        transform: translate3d(calc(var(--cart-empty-x) * 0.35), calc(var(--cart-empty-y) * 0.42), 0) scale(0.92);
+    }
+    76% {
+        opacity: 0.45;
+        transform: translate3d(calc(var(--cart-empty-x) * 0.72), calc(var(--cart-empty-y) * 0.78), 0) scale(0.62);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--cart-empty-x), var(--cart-empty-y), 0) scale(0.18);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cart-float.is-catching,
+    .cart-float.is-emptying,
+    .cart-fly-dot,
+    .cart-empty-dot {
+        animation: none;
+    }
+}
+

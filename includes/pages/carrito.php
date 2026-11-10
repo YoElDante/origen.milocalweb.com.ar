@@ -4,6 +4,9 @@
  *
  * Renderiza el contenedor del carrito local y los canales de checkout.
  *
+ * El bloque `data-cart-root` es el contrato con assets/js/cart.js: expone
+ * nombre del negocio, WhatsApp y email para armar el mensaje del pedido.
+ *
  * @package MiLocalWeb\Clientes
  */
 
@@ -30,6 +33,7 @@ $businessEmail = trim($cliente['email'] ?? '');
             <p><?= htmlspecialchars($pageConfig['subtitulo'] ?? '') ?></p>
         </header>
 
+        <?php /* data-* alimenta el mensaje de WhatsApp/email; no cambiar nombres. */ ?>
         <div class="cart-panel"
              data-cart-root
              data-business-name="<?= htmlspecialchars($cliente['nombre'] ?? 'Origen8.8') ?>"
@@ -57,6 +61,7 @@ $businessEmail = trim($cliente['email'] ?? '');
                             Enviar por WhatsApp
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                         </a>
+                        <?php // El canal email es opcional: se oculta si config no lo define. ?>
                         <?php if ($businessEmail !== ''): ?>
                         <a href="#" class="btn btn-outline" data-cart-email>Enviar por email</a>
                         <?php endif; ?>

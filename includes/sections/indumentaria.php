@@ -14,6 +14,7 @@ if (empty($sec)) {
 }
 ?>
 <section id="indumentaria" class="section section-indumentaria" aria-label="Indumentaria y accesorios">
+    <?php /* Divisor SVG decorativo: colores fijos de la paleta, no datos. */ ?>
     <div class="indumentaria-divider" aria-hidden="true">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 60 L120 20 L240 46 L360 12 L480 42 L600 18 L720 48 L840 24 L960 44 L1080 14 L1200 40 L1320 22 L1440 46 L1440 60 Z" fill="#8eaaaf" opacity="0.55"/>
@@ -71,6 +72,7 @@ if (empty($sec)) {
             </div>
         </div>
 
+        <?php /* Segunda copia del bloque lentes para el layout apilado en mobile. */ ?>
         <!-- Línea de lentes: texto + botón -->
         <div class="indumentaria-lentes indumentaria-lentes--below">
             <div class="indumentaria-lentes-body">

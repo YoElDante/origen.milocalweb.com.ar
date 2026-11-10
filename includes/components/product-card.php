@@ -3,10 +3,12 @@
  * Card reutilizable de producto de catalogo.
  *
  * Espera `$product` y `$cliente` definidos por la pagina contenedora.
+ * `$showProductWhatsapp` y `$productAnchorId` son opcionales.
  *
  * @package MiLocalWeb\Clientes
  */
 
+// Valores derivados: badge, precio visible, URL de consulta y datos de carrito.
 $discountLabel = catalog_discount_label($product);
 $hasPrice = catalog_product_has_price($product);
 $priceText = catalog_format_price($product);
@@ -18,6 +20,7 @@ $video = $product['video'] ?? '';
 $name = $product['nombre'] ?? 'Producto';
 $description = $product['descripcion'] ?? '';
 $anchorId = $productAnchorId ?? '';
+// Texto plano para el buscador client-side (incluye tags y categoría).
 $searchText = trim(implode(' ', [
     $name,
     $description,
@@ -34,6 +37,7 @@ $searchText = trim(implode(' ', [
         <?php if ($discountLabel !== ''): ?>
         <span class="catalog-card__badge"><?= htmlspecialchars($discountLabel) ?></span>
         <?php endif; ?>
+        <?php /* Si hay video se prioriza sobre la imagen; la imagen queda de poster. */ ?>
         <?php if (!empty($video)): ?>
         <video class="catalog-card__video"
                src="<?= htmlspecialchars($video) ?>"
@@ -81,6 +85,7 @@ $searchText = trim(implode(' ', [
             </p>
             <?php endif; ?>
 
+            <?php /* data-* es el contrato con cart.js; no renombrar atributos. */ ?>
             <button type="button"
                     class="catalog-card__add catalog-card__add--primary"
                     data-cart-add

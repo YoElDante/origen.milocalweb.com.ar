@@ -1,6 +1,8 @@
 /**
- * Origen8.8 — Interacciones de la landing page.
- * Vanilla JS. Sin frameworks.
+ * Origen8.8 — Interacciones de la landing page. Vanilla JS, sin frameworks.
+ * Orden: navbar, smooth scroll, volver arriba, videos, lightbox, buscador,
+ * carriles de productos y pausa de videos fuera del viewport.
+ * Cada bloque sale temprano si su markup no existe.
  */
 
 (function () {
@@ -11,6 +13,11 @@
     const toggle = document.querySelector('.navbar-toggle');
     const menu   = document.querySelector('.navbar-menu');
 
+    /**
+     * Agrega la clase `scrolled` al header según la posición del scroll.
+     *
+     * @returns {void}
+     */
     function updateHeader() {
         if (!header) return;
         if (window.scrollY > 20) {
@@ -56,6 +63,11 @@
     // ─── Back to top ───
     const backToTop = document.querySelector('.back-to-top');
 
+    /**
+     * Muestra u oculta el botón "volver arriba" después de 400 px.
+     *
+     * @returns {void}
+     */
     function updateBackToTop() {
         if (!backToTop) return;
         if (window.scrollY > 400) {
@@ -158,6 +170,11 @@
     lightbox.appendChild(dialog);
     document.body.appendChild(lightbox);
 
+    /**
+     * Cierra el lightbox y limpia la imagen para liberar memoria.
+     *
+     * @returns {void}
+     */
     function closeLightbox() {
         lightbox.hidden = true;
         document.body.classList.remove('lightbox-open');
@@ -165,6 +182,12 @@
         image.removeAttribute('alt');
     }
 
+    /**
+     * Abre el lightbox con la imagen de origen y mueve el foco al cierre.
+     *
+     * @param {HTMLImageElement} source Imagen clickeada.
+     * @returns {void}
+     */
     function openLightbox(source) {
         image.src = source.currentSrc || source.src;
         image.alt = source.alt || 'Imagen ampliada';
@@ -202,6 +225,12 @@
         const subsections = Array.from(document.querySelectorAll('.catalog-subsection'));
         const sections = Array.from(document.querySelectorAll('.catalog-section'));
 
+        /**
+         * Normaliza texto para búsquedas sin mayúsculas ni acentos.
+         *
+         * @param {string} value Texto original.
+         * @returns {string} Texto normalizado.
+         */
         function normalizeSearchText(value) {
             return String(value || '')
                 .toLowerCase()
@@ -210,6 +239,14 @@
                 .trim();
         }
 
+        /**
+         * Filtra tarjetas y oculta secciones vacías según el texto buscado.
+         *
+         * Los videos se ocultan durante la búsqueda y se reinician los
+         * carriles horizontales para evitar scrolls huérfanos.
+         *
+         * @returns {void}
+         */
         function updateCatalogSearch() {
             const query = normalizeSearchText(catalogSearch.value);
             let visibleCount = 0;
@@ -297,10 +334,20 @@
         const next = rail.querySelector('[data-catalog-scroll="next"]');
         if (!track || !previous || !next) return;
 
+        /**
+         * Detecta si el carril tiene contenido desbordado.
+         *
+         * @returns {boolean}
+         */
         function canScroll() {
             return track.scrollWidth > track.clientWidth + 2;
         }
 
+        /**
+         * Oculta las flechas cuando no hay overflow o se llegó a un extremo.
+         *
+         * @returns {void}
+         */
         function updateButtons() {
             if (!canScroll()) {
                 previous.hidden = true;
@@ -312,6 +359,12 @@
             next.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
         }
 
+        /**
+         * Desplaza el carril un ancho de tarjeta (o el 85% del carril).
+         *
+         * @param {number} direction -1 para anterior, 1 para siguiente.
+         * @returns {void}
+         */
         function scrollProducts(direction) {
             const firstCard = track.querySelector('.catalog-video-card, .catalog-card, .catalog-placeholder');
             const step = firstCard ? firstCard.getBoundingClientRect().width + 18 : track.clientWidth * 0.85;

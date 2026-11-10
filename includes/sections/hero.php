@@ -10,6 +10,8 @@
  * @package MiLocalWeb\Clientes
  */
 
+// La clase `hero--{layout}` activa el CSS de cada variante; el fallback
+// `split` mantiene el comportamiento de dos columnas.
 $layout      = $cliente['hero_layout'] ?? 'split';
 $hero_class  = 'hero hero--' . $layout;
 $wa_number   = preg_replace('/[^0-9]/', '', $cliente['whatsapp']);
@@ -24,6 +26,7 @@ $instagram   = $cliente['redes']['instagram'] ?? '';
     <div class="hero-effects" aria-hidden="true"></div>
     <div class="hero-container">
 
+        <?php /* Variante stacked: imagen a todo el ancho y contenido centrado. */ ?>
         <?php if ($layout === 'stacked'): ?>
             <!-- Layout STACKED: imagen arriba, texto abajo centrado -->
             <div class="hero-image-wrapper">
@@ -66,6 +69,7 @@ $instagram   = $cliente['redes']['instagram'] ?? '';
                 </div>
             </div>
 
+        <?php /* Variantes split/img-right/img-left: dos columnas con orden CSS. */ ?>
         <?php else: ?>
             <!-- Layout SPLIT/IMG-RIGHT/IMG-LEFT: dos columnas -->
             <div class="hero-content">

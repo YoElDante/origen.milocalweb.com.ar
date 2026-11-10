@@ -3,11 +3,19 @@
  * Script de organización inicial de assets para Origen.
  *
  * Crea la estructura destino y copia/renombra los assets crudos.
- * No elimina archivos originales.
+ * No elimina archivos originales: es seguro re-ejecutarlo, pero solo copia
+ * los pares listados en `$map`.
+ *
+ * Uso:
+ *   php tools/organize-assets.php
+ *
+ * @package MiLocalWeb\Clientes
  */
 
 $root = dirname(__DIR__);
 
+// Mapa origen -> destino. Las claves son rutas relativas al root del sitio
+// y pueden contener espacios o acentos porque son las originales del cliente.
 $map = [
     // Logos
     'assets/img/logos/origen logo limpio 600x600 transp.webp' => 'assets/img/cliente/logos/logo-600x600-transp.webp',
@@ -46,6 +54,7 @@ $map = [
     'assets/vid/productos/lentes deportivos caratula.jpg'               => 'assets/vid/reels/lentes-deportivos.jpg',
 ];
 
+// Copia no destructiva: omite orígenes ausentes y crea el destino si falta.
 foreach ($map as $src => $dst) {
     $srcPath = $root . DIRECTORY_SEPARATOR . $src;
     $dstPath = $root . DIRECTORY_SEPARATOR . $dst;

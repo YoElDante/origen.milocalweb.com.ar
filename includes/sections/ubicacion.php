@@ -15,6 +15,7 @@ $interior = $llegar['interior'] ?? [];
     <div class="section-container">
         <h2 class="section-title"><?= htmlspecialchars($llegar['titulo'] ?? '¿Cómo llegar?') ?></h2>
 
+        <?php /* El iframe se inyecta tal cual desde config; no se escapa. */ ?>
         <div class="ubicacion-grid">
             <div class="ubicacion-mapa">
                 <?= $cliente['gmaps_embed'] ?? '' ?>

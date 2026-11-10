@@ -4,6 +4,9 @@
  *
  * Agrupa el catalogo por familias comerciales y subcategorias.
  *
+ * La agrupación se define por tags del producto, no por su categoría.
+ * Cada grupo acepta `tags` (al menos uno) y `exclude` (ninguno).
+ *
  * @package MiLocalWeb\Clientes
  */
 
@@ -14,6 +17,17 @@ $breadcrumbs = [
 
 $showProductWhatsapp = false;
 
+/**
+ * Evalúa si un producto pertenece a un grupo de tags.
+ *
+ * Los tags excluidos tienen prioridad: si aparece uno, el producto queda
+ * fuera aunque cumpla los requeridos.
+ *
+ * @param array $product      Producto del catálogo.
+ * @param array $requiredTags Tags que habilitan la inclusión.
+ * @param array $excludedTags Tags que fuerzan la exclusión.
+ * @return bool
+ */
 $productMatches = function (array $product, array $requiredTags, array $excludedTags = []): bool {
     $tags = array_map('strtolower', $product['tags'] ?? []);
 
@@ -70,6 +84,7 @@ $secciones = [
         ],
     ],
 ];
+// Índice de categorías para el menú desplegable: un ancla por grupo.
 $categoryIndex = [];
 foreach ($secciones as $sectionIndex => $seccion) {
     foreach ($seccion['grupos'] as $groupIndex => $grupo) {
@@ -111,6 +126,7 @@ $productIndex = [];
             <p><?= htmlspecialchars($pageConfig['subtitulo'] ?? '') ?></p>
         </header>
 
+        <?php /* Buscador client-side: main.js filtra por data-search-text. */ ?>
         <div class="catalog-search" role="search">
             <label class="catalog-search__label" for="catalog-search-input">¿Qué estás buscando?</label>
             <div class="catalog-search__control">
@@ -126,6 +142,7 @@ $productIndex = [];
             <p class="catalog-search__status" data-catalog-search-status aria-live="polite"></p>
         </div>
 
+        <?php // Una sección por familia; dentro se renderizan los carriles por grupo. ?>
         <?php foreach ($secciones as $sectionIndex => $seccion): ?>
         <?php $sectionAnchor = 'catalog-section-' . ($sectionIndex + 1); ?>
         <section class="catalog-section" id="<?= htmlspecialchars($sectionAnchor) ?>">
@@ -147,6 +164,7 @@ $productIndex = [];
 
             <?php foreach ($seccion['grupos'] as $groupIndex => $grupo): ?>
             <?php
+                // Se separan videos y tarjetas para anteponer los videos al carril.
                 $grupoProducts = array_filter($pageProducts, function ($product) use ($grupo, $productMatches) {
                     return $productMatches($product, $grupo['tags'], $grupo['exclude'] ?? []);
                 });
@@ -236,6 +254,7 @@ $productIndex = [];
         </section>
         <?php endforeach; ?>
 
+        <?php // Índice final de productos: solo si algún grupo renderizó tarjetas. ?>
         <?php if (!empty($productIndex)): ?>
         <details class="catalog-index">
             <summary class="catalog-index__summary">Ver índice de productos</summary>

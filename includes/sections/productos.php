@@ -12,6 +12,7 @@ $wa_number   = preg_replace('/[^0-9]/', '', $cliente['whatsapp']);
 $wa_link     = 'https://wa.me/' . $wa_number;
 $productos   = $cliente['productos'] ?? [];
 
+// Sin destacados configurados la sección no se renderiza.
 if (empty($productos)) {
     return;
 }
@@ -24,6 +25,7 @@ if (empty($productos)) {
         <div class="productos-grid">
             <?php foreach ($productos as $i => $p): ?>
             <?php
+                // Mensaje por producto: cada tarjeta consulta por su nombre.
                 $prod_name = htmlspecialchars_decode($p['nombre'] ?? '');
                 $prod_msg  = urlencode('Hola! Vi ' . $prod_name . ' en tu web y quisiera más información');
                 $prod_wa   = $wa_link . '?text=' . $prod_msg;

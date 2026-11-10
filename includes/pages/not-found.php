@@ -3,6 +3,7 @@
  * Pagina 404.
  *
  * Muestra una respuesta visible para rutas no permitidas.
+ * El status 404 y el noindex los aplica index.php/header.php.
  *
  * @package MiLocalWeb\Clientes
  */

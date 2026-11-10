@@ -3,6 +3,7 @@
  * Pagina de ofertas.
  *
  * Renderiza productos marcados como ofertas o con descuento.
+ * El filtro real lo resuelve catalog_products_for_page() en index.php.
  *
  * @package MiLocalWeb\Clientes
  */
@@ -22,6 +23,7 @@ $breadcrumbs = [
             <p><?= htmlspecialchars($pageConfig['subtitulo'] ?? '') ?></p>
         </header>
 
+        <?php /* Sin ofertas se muestra un CTA de WhatsApp en lugar de un grid vacío. */ ?>
         <?php if (empty($pageProducts)): ?>
         <p class="catalog-empty">Todavía no hay ofertas publicadas. Consultanos por WhatsApp para conocer oportunidades vigentes.</p>
         <?php else: ?>

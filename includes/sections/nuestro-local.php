@@ -13,11 +13,15 @@ $llegar      = $cliente['seccion_como_llegar'] ?? [];
 $exterior    = $local['exterior'] ?? [];
 $interior    = $llegar['interior'] ?? [];
 $frente      = $exterior[0] ?? [];
+// El frente se muestra aparte; el resto de las fotos alimenta el carrusel.
 $carousel    = array_values(array_filter(array_merge(array_slice($exterior, 1), $interior)));
 if (empty($local)) {
     return;
 }
 ?>
+<!-- Ancla de navegación: el navbar enlaza a #ubicacion y esta sección
+     contiene el mapa y la dirección. Se conserva #nuestro-local como alias. -->
+<div id="ubicacion" class="anchor-ubicacion" aria-hidden="true"></div>
 <section id="nuestro-local" class="section section-local" aria-label="Nuestro Local">
     <div class="section-container">
         <h2 class="section-title"><?= htmlspecialchars($local['titulo'] ?? 'Nuestro Local') ?></h2>
@@ -63,6 +67,7 @@ if (empty($local)) {
         <?php if (!empty($carousel)): ?>
         <div class="local-carousel" aria-label="Fotos del local">
             <div class="local-carousel-track">
+                <?php // Duplicado a propósito: el track anima al 50% para loop continuo. ?>
                 <?php foreach (array_merge($carousel, $carousel) as $foto): ?>
                 <figure class="local-carousel-item">
                     <img src="<?= htmlspecialchars($foto['imagen'] ?? '') ?>"

@@ -1,6 +1,11 @@
 /**
  * Origen8.8 — Carrito local de pedido asistido.
  * Vanilla JS. Sin backend, sin login y sin pasarela de pago.
+ *
+ * Este archivo abre el IIFE; 99-footer.js lo cierra. tools/build-js.php
+ * concatena los parciales en orden y todos comparten el mismo scope.
+ * No usar import/export ni mover código entre parciales sin actualizar
+ * el orden de build.
  */
 
 (function () {
@@ -8,6 +13,15 @@
 
     const STORAGE_KEY = 'origen_carrito';
 
+    /**
+     * Lee y normaliza el carrito desde localStorage.
+     *
+     * Si el JSON es inválido o no es un array, limpia la clave y devuelve
+     * un carrito vacío. Si detecta ítems fuera de esquema, reescribe el
+     * storage con la versión normalizada.
+     *
+     * @returns {Array<Object>} Ítems válidos del carrito.
+     */
     function readCart() {
         try {
             const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -28,6 +42,12 @@
         }
     }
 
+    /**
+     * Corrige rutas de imagen heredadas de variantes con miniaturas.
+     *
+     * @param {string} url Ruta original.
+     * @returns {string} Ruta normalizada.
+     */
     function normalizeImageUrl(url) {
         if (!url || typeof url !== 'string') return '';
         return url
@@ -35,6 +55,15 @@
             .replace(/-miniatura(\.[^.]+)$/i, '$1');
     }
 
+    /**
+     * Normaliza un ítem del carrito al esquema mínimo permitido.
+     *
+     * Solo conserva id, nombre, descripción, precio visible, cantidad e
+     * imagen. El precio se anula si el producto es "a consultar".
+     *
+     * @param {Object} item Ítem crudo de localStorage.
+     * @returns {Object|null} Ítem normalizado o null si no tiene id.
+     */
     function normalizeItem(item) {
         if (!item || typeof item !== 'object') return null;
 
@@ -57,12 +86,24 @@
         };
     }
 
+    /**
+     * Persiste el carrito y refresca contador y vista del carrito.
+     *
+     * @param {Array<Object>} cart Ítems a guardar.
+     * @returns {void}
+     */
     function writeCart(cart) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
         updateCartCount(cart);
         renderCart();
     }
 
+    /**
+     * Formatea un número como precio en pesos argentinos.
+     *
+     * @param {number|string} value Monto a formatear.
+     * @returns {string}
+     */
     function formatPrice(value) {
         return new Intl.NumberFormat('es-AR', {
             style: 'currency',
@@ -71,6 +112,12 @@
         }).format(Number(value || 0));
     }
 
+    /**
+     * Actualiza todos los contadores del carrito en navbar y flotante.
+     *
+     * @param {Array<Object>} cart Ítems del carrito.
+     * @returns {void}
+     */
     function updateCartCount(cart) {
         const total = cart.reduce(function (sum, item) {
             return sum + Number(item.cantidad || 0);
@@ -82,6 +129,13 @@
         });
     }
 
+    /**
+     * Cambia la etiqueta del botón "sumar" preservando su ícono.
+     *
+     * @param {HTMLElement} button Botón de agregar.
+     * @param {string}      text   Nueva etiqueta.
+     * @returns {void}
+     */
     function setAddButtonLabel(button, text) {
         const label = button.querySelector('.catalog-card__add-text');
         if (label) {
@@ -91,6 +145,16 @@
         }
     }
 
+    /**
+     * Agrega un producto al carrito o incrementa su cantidad.
+     *
+     * Lee los datos desde los atributos data-* de la card y da feedback
+     * visual temporal en el botón.
+     *
+     * @param {HTMLElement} button Botón con data-product-*.
+     * @param {Event}       event  Evento de click para el origen de la animación.
+     * @returns {void}
+     */
     function addProduct(button, event) {
         const id = button.dataset.productId || '';
         if (!id) return;
@@ -125,6 +189,16 @@
         }, 1200);
     }
 
+    /**
+     * Anima un punto desde el botón hasta el flotante del carrito.
+     *
+     * Usa Web Animations API cuando está disponible y cae a la animación
+     * CSS con animationend. Se desactiva con prefers-reduced-motion.
+     *
+     * @param {HTMLElement} button Botón de origen.
+     * @param {Event}       event  Click que aporta las coordenadas iniciales.
+     * @returns {void}
+     */
     function animateToBox(button, event) {
         const box = document.querySelector('[data-cart-float]');
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -150,6 +224,7 @@
         document.body.appendChild(dot);
 
         if (typeof dot.animate === 'function') {
+            // Curva parabólica: el arco sube y baja mientras avanza al destino.
             const keyframes = [];
             const steps = 18;
 
@@ -192,6 +267,14 @@
         }, { once: true });
     }
 
+    /**
+     * Celebra el vaciado con puntos de color que salen del flotante.
+     *
+     * La cantidad de puntos se limita entre 3 y 9 para no saturar.
+     *
+     * @param {number} quantity Unidades que había en el carrito.
+     * @returns {void}
+     */
     function animateClearBox(quantity) {
         const box = document.querySelector('[data-cart-float]');
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -227,6 +310,13 @@
         }, 1400);
     }
 
+    /**
+     * Suma o resta una unidad a un ítem, con mínimo de 1.
+     *
+     * @param {string} id    Identificador del producto.
+     * @param {number} delta 1 para sumar, -1 para restar.
+     * @returns {void}
+     */
     function updateQuantity(id, delta) {
         const cart = readCart().map(function (item) {
             if (item.id === id) {
@@ -238,12 +328,23 @@
         writeCart(cart);
     }
 
+    /**
+     * Quita un producto del carrito por id.
+     *
+     * @param {string} id Identificador del producto.
+     * @returns {void}
+     */
     function removeItem(id) {
         writeCart(readCart().filter(function (item) {
             return item.id !== id;
         }));
     }
 
+    /**
+     * Vacía el carrito completo después de confirmación del usuario.
+     *
+     * @returns {void}
+     */
     function clearCart() {
         const cart = readCart();
         if (cart.length === 0) return;
@@ -259,6 +360,17 @@
         animateClearBox(quantity);
     }
 
+    /**
+     * Arma el texto del pedido para WhatsApp o email.
+     *
+     * El subtotal solo suma ítems con precio visible; los productos a
+     * consultar se listan como "precio a confirmar". Cierra siempre con la
+     * aclaración comercial de stock y precio final.
+     *
+     * @param {HTMLElement}   root Contenedor con data-business-name.
+     * @param {Array<Object>} cart Ítems del carrito.
+     * @returns {string} Mensaje multilínea listo para codificar.
+     */
     function buildOrderMessage(root, cart) {
         const businessName = root.dataset.businessName || 'Origen8.8';
         const lines = [
@@ -288,6 +400,15 @@
         return lines.join('\n');
     }
 
+    /**
+     * Crea el nodo DOM de un ítem del carrito.
+     *
+     * Se construye con createElement/textContent (no innerHTML con datos)
+     * para evitar inyección. Los controles incluyen etiquetas ARIA.
+     *
+     * @param {Object} item Ítem normalizado.
+     * @returns {HTMLElement}
+     */
     function createItemNode(item) {
         const row = document.createElement('article');
         row.className = 'cart-item';
@@ -350,6 +471,14 @@
         return row;
     }
 
+    /**
+     * Renderiza la página del carrito y actualiza los enlaces de checkout.
+     *
+     * Si la página actual no tiene `[data-cart-root]`, sale sin hacer nada.
+     * También recalcula el subtotal visible y los href de WhatsApp/email.
+     *
+     * @returns {void}
+     */
     function renderCart() {
         const root = document.querySelector('[data-cart-root]');
         if (!root) return;
@@ -394,6 +523,8 @@
         }
     }
 
+    // Wiring inicial: delegación por botón, vaciado con confirmación y
+    // primer render para restaurar el carrito persistido al recargar.
     document.querySelectorAll('[data-cart-add]').forEach(function (button) {
         button.addEventListener('click', function (event) {
             addProduct(button, event);
@@ -406,4 +537,5 @@
 
     updateCartCount(readCart());
     renderCart();
+// Cierre del IIFE abierto en 00-header.js. Debe quedar siempre al final.
 })();

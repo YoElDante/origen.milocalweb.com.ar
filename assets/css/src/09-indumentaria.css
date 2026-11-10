@@ -1,0 +1,241 @@
+/* ──────────────────────────────────────────────────────────────
+   Origen8.8 — Parcial 09: indumentaria, fotos y línea de lentes.
+   Mobile usa scroll horizontal; desde 600px pasa a grilla y desde 880px
+   muestra el bloque de lentes inline. Hay dos copias del texto por layout.
+   Orden de cascada: tools/build-css.php; no reordenar.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Indumentaria ─── */
+.section-indumentaria {
+    background-color: var(--color-bg, #ffffff);
+    position: relative;
+    padding-top: 6rem;
+}
+
+.indumentaria-divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.10));
+    pointer-events: none;
+}
+
+.indumentaria-divider svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.indumentaria-showcase {
+    margin-bottom: 3rem;
+}
+
+.indumentaria-fotos {
+    display: flex;
+    gap: 0.85rem;
+    margin: 0 -1rem 2rem;
+    padding: 0.1rem 12vw 0.8rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+}
+
+.indumentaria-foto-principal,
+.indumentaria-foto-secundaria {
+    flex: 0 0 min(76vw, 340px);
+    margin: 0;
+}
+
+.indumentaria-foto-principal {
+    min-width: 0;
+}
+
+.indumentaria-foto-secundaria {
+    min-width: 0;
+}
+
+.indumentaria-foto-principal img {
+    width: 100%;
+    height: min(62svh, 430px);
+    aspect-ratio: 768 / 1020;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    display: block;
+}
+
+.indumentaria-foto-secundaria img {
+    width: 100%;
+    height: min(62svh, 430px);
+    aspect-ratio: 900 / 1820;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    display: block;
+}
+
+.indumentaria-lentes {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    align-items: center;
+}
+
+.indumentaria-lentes--inline {
+    display: none;
+}
+
+.indumentaria-lentes-media {
+    flex: 0 0 min(76vw, 340px);
+    order: -1;
+    max-width: 380px;
+    width: 100%;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    background-color: #000000;
+}
+
+.indumentaria-video {
+    width: 100%;
+    height: min(62svh, 430px);
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    display: block;
+}
+
+.indumentaria-lentes-body {
+    text-align: center;
+}
+
+.indumentaria-lentes-body h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.indumentaria-lentes-body p {
+    margin: 0 0 1.5rem;
+    line-height: 1.7;
+    color: var(--color-text, #2b2b2b);
+}
+
+.section-indumentaria .btn-ver-productos {
+    min-height: 3.25rem;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* 600px: el bloque se fija a 80svh y las fotos pasan de scroll a grilla. */
+@media (min-width: 600px) {
+    .section-indumentaria {
+        --indumentaria-nav-offset: 76px;
+    }
+
+    .indumentaria-showcase {
+        height: calc(80svh - var(--indumentaria-nav-offset));
+        max-height: calc(80svh - var(--indumentaria-nav-offset));
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        gap: 1rem;
+        margin-bottom: 3rem;
+        overflow: hidden;
+    }
+
+    .indumentaria-heading .section-title {
+        margin-bottom: 0.35rem;
+    }
+
+    .indumentaria-heading .section-subtitle {
+        margin-bottom: 0;
+    }
+
+    .indumentaria-fotos {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.72fr) minmax(0, 0.62fr);
+        align-items: stretch;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 0;
+        overflow: hidden;
+        scroll-snap-type: none;
+    }
+
+    .indumentaria-foto-principal,
+    .indumentaria-foto-secundaria,
+    .indumentaria-lentes-media {
+        flex: initial;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+        scroll-snap-align: none;
+    }
+
+    .indumentaria-foto-principal img,
+    .indumentaria-foto-secundaria img,
+    .indumentaria-video {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        object-fit: contain;
+    }
+
+    .indumentaria-lentes--below {
+        display: block;
+    }
+
+    .indumentaria-lentes--inline {
+        display: none;
+    }
+
+    .indumentaria-lentes-media {
+        max-width: none;
+        margin: 0;
+        order: initial;
+    }
+
+    .indumentaria-lentes-body {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+/* 880px: cuarta columna para el texto de lentes y se oculta la copia apilada. */
+@media (min-width: 880px) {
+    .indumentaria-fotos {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.72fr) minmax(0, 0.62fr) minmax(240px, 0.88fr);
+    }
+
+    .indumentaria-lentes--inline {
+        display: flex;
+        align-items: center;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .indumentaria-lentes--below {
+        display: none;
+    }
+
+    .indumentaria-lentes--inline .indumentaria-lentes-body {
+        max-width: none;
+        margin: 0;
+        text-align: left;
+    }
+
+    .indumentaria-lentes--inline .indumentaria-lentes-body h3 {
+        font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+    }
+
+    .indumentaria-lentes--inline .indumentaria-lentes-body p {
+        font-size: clamp(0.84rem, 1vw, 0.98rem);
+        line-height: 1.45;
+    }
+}
+
